@@ -17,15 +17,15 @@ namespace negocio
 
             try
             {
-                //datos.setearConsulta("Select Id, Descripcion From ELEMENTOS");
+                datos.setearConsulta("Select Nombre from Especialidad");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     Especialidad aux = new Especialidad();
-                    aux.Id = (int)datos.Lector["Id"];
+                    //aux.Id = (int)datos.Lector["Id"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.Copago = (float)datos.Lector["Copago"];
+                    //aux.Copago = (float)datos.Lector["Copago"];
 
                     lista.Add(aux);
                 }

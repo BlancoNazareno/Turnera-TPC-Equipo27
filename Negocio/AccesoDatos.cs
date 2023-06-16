@@ -19,8 +19,8 @@ namespace negocio
 
         public AccesoDatos()
         {
-            //conexion = new SqlConnection(ConfigurationManager.AppSettings["cadenaConexion"]);
-            //conexion = new SqlConnection("server=.\\SQLEXPRESS; database=POKEDEX_DB; integrated security=true");
+            conexion = new SqlConnection("server=localhost; database=Clinica_DB; integrated security=true");
+            //conexion = new SqlConnection("server=.\\SQLEXPRESS; database=Clinica_DB; integrated security=true");
             comando = new SqlCommand();
         }
 
@@ -41,6 +41,7 @@ namespace negocio
             comando.Connection = conexion;
             try
             {
+                conexion.Close();
                 conexion.Open();
                 lector = comando.ExecuteReader();
             }
