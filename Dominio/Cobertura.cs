@@ -10,7 +10,7 @@ namespace dominio
     {
         public int Id{ get; set; }
         public string Nombre{ get; set; }
-        public Especialidad Especialidad{ get; set; }//deben ser varias Especialidades que abarca
-
+        public Especialidad Especialidad{ get; set; }//deben ser varias Especialidades que abarca///VERRR, es un plus, hacer lo basico primero(manejar los horarios de pacientes/medicos)
+        //Plan o Lista de especialidades
     }
 }
