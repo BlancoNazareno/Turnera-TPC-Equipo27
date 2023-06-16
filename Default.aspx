@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Turnera_TPC_Equipo27.Default" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -12,8 +13,8 @@
         }
     </style>
 
-    <!-- Catálogo -->
-    <div id="Catalogo">
+    <!-- Inicio -->
+    <div id="Inicio">
         <div class="container" style="background-color: rgb(65, 65, 65);">
             <div class="text-light p-3 text-center" style="margin-top: 3rem; margin-bottom: 2rem">
                 <h4><strong>Turnos disponibles</strong></h4>
@@ -24,8 +25,29 @@
         </div>
     </div>
 
+    <%--    <div id="GrillaPrincipal">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <!-- Grilla ASP centrada a la izquierda -->
+                    <asp:GridView ID="gridView1" runat="server" AutoGenerateColumns="true" CssClass="text-center">
+                        <SelectedRowStyle CssClass="selected-row" />
+                        <RowStyle CssClass="grid-row" />
+                    </asp:GridView>
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- Grilla centrada en el medio -->
+                    <asp:GridView ID="gridView2" runat="server" AutoGenerateColumns="true" CssClass="text-center">
+                        <RowStyle CssClass="grid-row" />
+                    </asp:GridView>
+                </div>
+            </div>
+        </div>
+    </div>--%>
+
     <!-- Cards con foreach -->
-<%--    <div class="container">
+    <%--    <div class="container">
         <div class="row row-cols-1 row-cols-md-4">
             <%foreach (Dominio.Articulo item in ListaArticulo)
                 { %>
@@ -45,5 +67,43 @@
         </div>
     </div>--%>
 
+    <style>
+        h3, .Busqueda {
+            color: yellow;
+        }
 
+        .table {
+            color: white;
+        }
+    </style>
+
+    <div class="row row col-4   " style="margin-left: 3rem">
+        <h3>Lista de Especialidades</h3>
+
+        <div class="Busqueda">
+            <div class="row">
+                <div class="col-8">
+                    <div class="mb-3">
+                        <asp:Label Text="Filtrar" runat="server" />
+                        <asp:TextBox runat="server" ID="txtfiltro" CssClass="form-control" AutoPostBack="true"
+                            OnTextChanged="filtro_TextChanged" />
+                    </div>
+                </div>
+
+
+                <asp:GridView ID="dgvEspecialidades" DataKeyNames="id"
+                    CssClass="table" runat="server" AutoGenerateColumns="false"
+                    OnSelectedIndexChanged="dgvEspecialidades_SelectedIndexChanged"
+                    OnPageIndexChanging="dgvEspecialidades_PageIndexChanging"
+                    AllowPaging="true" PageSize="5">
+                    <Columns>
+                        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                        <%--                <asp:BoundField HeaderText="Marca" DataField="Marca.Descripcion" />
+                <asp:BoundField HeaderText="Categoria" DataField="Categoria.Descripcion" />--%>
+                        <%--aca el DataField es diferente porque tengo en mi clase Articulo la propiedad Marca y Categoria(las cuales son otra clase) --%>
+                    </Columns>
+                </asp:GridView>
+            </div>
+        </div>
+        </div>
 </asp:Content>

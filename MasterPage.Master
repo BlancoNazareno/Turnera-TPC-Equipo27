@@ -19,8 +19,8 @@
             <!-- NavBar    -->
             <nav class="navbar navbar-expand-lg navbar-dark p3" style="background-color: black">
                 <div class="container">
-                    <a class="navbar-brand" href="#">
-                        <img src="multimedia\head.png" alt="" height="100" class="d-inline-block align-text-center"
+                    <a class="navbar-brand" href="Default.aspx">
+                        <img src="multimedia\head.png" href="Default.aspx" alt="" height="100" class="d-inline-block align-text-center"
                             style="margin-right: 1rem; border-width: 0.3rem; border-style: solid; border-color: black;">
                         <strong>Space Medicine</strong>
                     </a>
@@ -59,7 +59,7 @@
 
             <footer>
                 <div id="AcercaDe">
-                    <ul class="nav justify-content-center p-3" style="background: rgb(65, 65, 65); margin-top:2rem">
+                    <ul class="nav justify-content-center p-3" style="background: rgb(65, 65, 65); margin-top: 2rem; width: 100vw">
                         <li class="nav-item my-auto px-0 px-xl-4">
                             <a class="nav-link" href="https://google.com" target="_blank"
                                 style="color: whitesmoke; font-weight: bold;">Space Medicine - 2023</a>
@@ -67,6 +67,7 @@
                     </ul>
                 </div>
             </footer>
+
         </div>
     </form>
 </body>

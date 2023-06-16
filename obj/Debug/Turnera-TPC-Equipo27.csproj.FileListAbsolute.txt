@@ -57,3 +57,7 @@ C:\Users\nazab\Desktop\nWhite\Estudios\Programming\UTN\PrograIII\TPCuatrimestral
 C:\Users\nazab\Desktop\nWhite\Estudios\Programming\UTN\PrograIII\TPCuatrimestral\Turnera-TPC-Equipo27\obj\Debug\Turnera-TPC-Equipo27.csproj.CopyComplete
 C:\Users\nazab\Desktop\nWhite\Estudios\Programming\UTN\PrograIII\TPCuatrimestral\Turnera-TPC-Equipo27\obj\Debug\Turnera-TPC-Equipo27.dll
 C:\Users\nazab\Desktop\nWhite\Estudios\Programming\UTN\PrograIII\TPCuatrimestral\Turnera-TPC-Equipo27\obj\Debug\Turnera-TPC-Equipo27.pdb
+C:\Users\nazab\Desktop\nWhite\Estudios\Programming\UTN\PrograIII\TPCuatrimestral\Turnera-TPC-Equipo27\bin\dominio.dll
+C:\Users\nazab\Desktop\nWhite\Estudios\Programming\UTN\PrograIII\TPCuatrimestral\Turnera-TPC-Equipo27\bin\negocio.dll
+C:\Users\nazab\Desktop\nWhite\Estudios\Programming\UTN\PrograIII\TPCuatrimestral\Turnera-TPC-Equipo27\bin\dominio.pdb
+C:\Users\nazab\Desktop\nWhite\Estudios\Programming\UTN\PrograIII\TPCuatrimestral\Turnera-TPC-Equipo27\bin\negocio.pdb

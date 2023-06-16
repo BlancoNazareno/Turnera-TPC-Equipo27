@@ -1,0 +1,9 @@
+C:\Users\nazab\Desktop\nWhite\Estudios\Programming\UTN\PrograIII\TPCuatrimestral\Turnera-TPC-Equipo27\Negocio\bin\Debug\negocio.dll
+C:\Users\nazab\Desktop\nWhite\Estudios\Programming\UTN\PrograIII\TPCuatrimestral\Turnera-TPC-Equipo27\Negocio\bin\Debug\negocio.pdb
+C:\Users\nazab\Desktop\nWhite\Estudios\Programming\UTN\PrograIII\TPCuatrimestral\Turnera-TPC-Equipo27\Negocio\bin\Debug\dominio.dll
+C:\Users\nazab\Desktop\nWhite\Estudios\Programming\UTN\PrograIII\TPCuatrimestral\Turnera-TPC-Equipo27\Negocio\bin\Debug\dominio.pdb
+C:\Users\nazab\Desktop\nWhite\Estudios\Programming\UTN\PrograIII\TPCuatrimestral\Turnera-TPC-Equipo27\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\nazab\Desktop\nWhite\Estudios\Programming\UTN\PrograIII\TPCuatrimestral\Turnera-TPC-Equipo27\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\nazab\Desktop\nWhite\Estudios\Programming\UTN\PrograIII\TPCuatrimestral\Turnera-TPC-Equipo27\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\Users\nazab\Desktop\nWhite\Estudios\Programming\UTN\PrograIII\TPCuatrimestral\Turnera-TPC-Equipo27\Negocio\obj\Debug\negocio.dll
+C:\Users\nazab\Desktop\nWhite\Estudios\Programming\UTN\PrograIII\TPCuatrimestral\Turnera-TPC-Equipo27\Negocio\obj\Debug\negocio.pdb
