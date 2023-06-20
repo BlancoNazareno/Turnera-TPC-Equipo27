@@ -36,8 +36,8 @@ namespace negocio
                 while (lector.Read())
                 {
                     Turno aux = new Turno();
+
                     aux.Id = (int)lector["Id"];
-                    aux.Cancelado = bool.Parse(lector["Cancelado"].ToString());
                   
                     aux.Medico = new Medico();
                     aux.Medico.Apellido= (string)lector["ApellidoMedico"];
@@ -46,12 +46,19 @@ namespace negocio
                     aux.Paciente = new Paciente();
                     aux.Paciente.Apellido = (string)lector["ApellidoPaciente"];
                     aux.Paciente.Nombre = (string)lector["NombrePaciente"];
-                    
+
+                    aux.FechaTurno = (DateTime)lector["FechaTurno"];
+
+                    aux.HorarioTurno = new Horario();
+                    aux.HorarioTurno.HoraInicio = (DateTime)lector["HoraInicioTurno"];
+                    aux.HorarioTurno.HoraFin = (DateTime)lector["HoraFinTurno"];
+
                     aux.Cobertura = new Cobertura();
                     aux.Cobertura.Nombre = (string)lector["CoberturaPaciente"];
 
-                    aux.Cancelado = bool.Parse(lector["Activo"].ToString());
-               
+                    aux.MotivoDeConsulta = (string)lector["MotivoDeConsulta"];
+                    aux.Estado = (string)lector["Estado"];
+
                     lista.Add(aux);
                 }
 
@@ -64,47 +71,6 @@ namespace negocio
             }
 
         }
-
-    //    public List<Pokemon> listarConSP()
-    //    {
-    //        List<Pokemon> lista = new List<Pokemon>();
-    //        AccesoDatos datos = new AccesoDatos();
-    //        try
-    //        {
-    //            //string consulta = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id From POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo And D.Id = P.IdDebilidad And P.Activo = 1";
-    //            //datos.setearConsulta(consulta);
-    //            datos.setearProcedimiento("storedListar");
-
-    //            datos.ejecutarLectura();
-    //            while (datos.Lector.Read())
-    //            {
-    //                Pokemon aux = new Pokemon();
-    //                aux.Id = (int)datos.Lector["Id"];
-    //                aux.Numero = datos.Lector.GetInt32(0);
-    //                aux.Nombre = (string)datos.Lector["Nombre"];
-    //                aux.Descripcion = (string)datos.Lector["Descripcion"];
-    //                if (!(datos.Lector["UrlImagen"] is DBNull))
-    //                    aux.UrlImagen = (string)datos.Lector["UrlImagen"];
-
-    //                aux.Tipo = new Elemento();
-    //                aux.Tipo.Id = (int)datos.Lector["IdTipo"];
-    //                aux.Tipo.Descripcion = (string)datos.Lector["Tipo"];
-    //                aux.Debilidad = new Elemento();
-    //                aux.Debilidad.Id = (int)datos.Lector["IdDebilidad"];
-    //                aux.Debilidad.Descripcion = (string)datos.Lector["Debilidad"];
-
-    //                aux.Activo = bool.Parse(datos.Lector["Activo"].ToString());
-
-    //                lista.Add(aux);
-    //            }
-
-    //            return lista;
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            throw ex;
-    //        }
-    //    }
 
     //    public void agregar(Pokemon nuevo)
     //    {
@@ -128,64 +94,12 @@ namespace negocio
     //        }
     //    }
 
-    //    public void agregarConSP(Pokemon nuevo)
-    //    {
-    //        AccesoDatos datos = new AccesoDatos();
-
-    //        try
-    //        {
-    //            datos.setearProcedimiento("storedAltaPokemon");
-    //            datos.setearParametro("@numero", nuevo.Numero);
-    //            datos.setearParametro("@nombre", nuevo.Nombre);
-    //            datos.setearParametro("@desc", nuevo.Descripcion);
-    //            datos.setearParametro("@img", nuevo.UrlImagen);
-    //            datos.setearParametro("@idTipo", nuevo.Tipo.Id);
-    //            datos.setearParametro("@idDebilidad", nuevo.Debilidad.Id);
-    //            //datos.setearParametro("@idEvolucion", null);
-    //            datos.ejecutarAccion();
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            throw ex;
-    //        }
-    //        finally
-    //        {
-    //            datos.cerrarConexion();
-    //        }
-    //    }
-
     //    public void modificar(Pokemon poke)
     //    {
     //        AccesoDatos datos = new AccesoDatos();
     //        try
     //        {
     //            datos.setearConsulta("update POKEMONS set Numero = @numero, Nombre = @nombre, Descripcion = @desc, UrlImagen = @img, IdTipo = @idTipo, IdDebilidad = @idDebilidad Where Id = @id");
-    //            datos.setearParametro("@numero", poke.Numero);
-    //            datos.setearParametro("@nombre", poke.Nombre);
-    //            datos.setearParametro("@desc", poke.Descripcion);
-    //            datos.setearParametro("@img", poke.UrlImagen);
-    //            datos.setearParametro("@idTipo", poke.Tipo.Id);
-    //            datos.setearParametro("@idDebilidad", poke.Debilidad.Id);
-    //            datos.setearParametro("@id", poke.Id);
-
-    //            datos.ejecutarAccion();
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            throw ex;
-    //        }
-    //        finally
-    //        {
-    //            datos.cerrarConexion();
-    //        }
-    //    }
-
-    //    public void modificarConSP(Pokemon poke)
-    //    {
-    //        AccesoDatos datos = new AccesoDatos();
-    //        try
-    //        {
-    //            datos.setearProcedimiento("storedModificarPokemon");
     //            datos.setearParametro("@numero", poke.Numero);
     //            datos.setearParametro("@nombre", poke.Nombre);
     //            datos.setearParametro("@desc", poke.Descripcion);

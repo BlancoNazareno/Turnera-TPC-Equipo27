@@ -12,7 +12,7 @@ namespace dominio
 
         public string Nombre { get; set; }
 
-        public float Copago { get; set; }//ver de ponerlo en Money
+        public float Copago { get; set; }//solo si el paciente es Particular
 
     }
 }

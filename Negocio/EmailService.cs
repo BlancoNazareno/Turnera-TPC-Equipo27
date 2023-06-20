@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
+//es un plus, hacerlo despues de que tengamos todo lo BASICO
 namespace negocio
 {
     public class EmailService

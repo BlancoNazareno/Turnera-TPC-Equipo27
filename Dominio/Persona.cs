@@ -16,7 +16,7 @@ namespace dominio
 
         public int Celular { get; set; } 
         public string Direccion{ get; set; }
-        public bool Genero{ get; set; }
+        public bool Genero{ get; set; }//0 mujer 1 hombre
 
     }
 }

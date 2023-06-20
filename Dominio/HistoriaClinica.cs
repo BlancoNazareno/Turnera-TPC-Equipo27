@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace dominio
 {
-    public class HistoriaClinica:Turno//que no herede, será un listado filtrado por paciente de los turnos
-    {
+    public class HistoriaClinica
+    {//será un listado filtrado por paciente de los turnos, hacerlo cuando ya tengamos todo lo BASICO
         public int IdHistoriaClinica { get; set; }
 
     }
