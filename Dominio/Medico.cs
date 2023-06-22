@@ -23,6 +23,9 @@ namespace dominio
             Horario = horario;
             Especialidad = especialidad;
         }
+
+        public Medico() { }
+
         // Crear médicos
         //Medico medico1 = new Medico( . . . , horarioMedico1, especialidad);
     }

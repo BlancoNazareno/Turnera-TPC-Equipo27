@@ -13,11 +13,14 @@ namespace dominio
         public DateTime Fecha { get; set; }
         public DateTime HoraInicio { get; set; }
         public DateTime HoraFin { get; set; }
+
         public Horario(DateTime horaInicio, DateTime horaFin)//Constructor
         {
             HoraInicio = horaInicio;
             HoraFin = horaFin;
         }
+
+        public Horario() { }
     }
 }
 // Crear horario, ejemplo aca atiende el medico de 8 a 12hs el 19/6/23

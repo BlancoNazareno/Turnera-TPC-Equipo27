@@ -30,6 +30,8 @@ namespace dominio
             MotivoDeConsulta = motivoDeConsulta;
             Estado = estado;
         }
+
+        public Turno() { }
     }
 }
 //Cargar un turno ej

@@ -15,9 +15,14 @@ namespace Turnera_TPC_Equipo27
         {
             if (!IsPostBack)
             {
-                EspecialidadNegocio negocio = new EspecialidadNegocio();
-                Session.Add("listaEspecialidades", negocio.listar());//capturo con Session para dps usar la Session en el filtro
+                EspecialidadNegocio especialidad = new EspecialidadNegocio();
+                Session.Add("listaEspecialidades", especialidad.listar());//capturo con Session para dps usar la Session en el filtro
                 dgvEspecialidades.DataSource = Session["listaEspecialidades"];
+                dgvEspecialidades.DataBind();
+
+                MedicoNegocio medico = new MedicoNegocio();
+                Session.Add("listaEspecialidades", medico.listar());//capturo con Session para dps usar la Session en el filtro
+                dgvEspecialidades.DataSource = Session["listaMedicos"];
                 dgvEspecialidades.DataBind();
             }
         }
@@ -27,7 +32,7 @@ namespace Turnera_TPC_Equipo27
             string id = dgvEspecialidades.SelectedDataKey.Value.ToString();
             Response.Redirect("Default.aspx?id=" + id);
         }
-        protected void filtro_TextChanged(object sender, EventArgs e)
+        protected void filtroEspecialidades_TextChanged(object sender, EventArgs e)
         {
             List<Especialidad> lista = (List<Especialidad>)Session["listaEspecialidades"];
             List<Especialidad> listaFiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(txtfiltro.Text.ToUpper()));
@@ -36,6 +41,27 @@ namespace Turnera_TPC_Equipo27
         }
 
         protected void dgvEspecialidades_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvEspecialidades.PageIndex = e.NewPageIndex;
+            dgvEspecialidades.DataBind();
+        }
+
+        --
+
+                protected void dgvMedicos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = dgvMedicos.SelectedDataKey.Value.ToString();
+            Response.Redirect("Default.aspx?id=" + id);
+        }
+        protected void filtroMedicos_TextChanged(object sender, EventArgs e)
+        {
+            List<Especialidad> lista = (List<Especialidad>)Session["listaEspecialidades"];
+            List<Especialidad> listaFiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(txtfiltro.Text.ToUpper()));
+            dgvEspecialidades.DataSource = listaFiltrada;
+            dgvEspecialidades.DataBind();
+        }
+
+        protected void dgvMedicos_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             dgvEspecialidades.PageIndex = e.NewPageIndex;
             dgvEspecialidades.DataBind();

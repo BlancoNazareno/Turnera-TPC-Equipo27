@@ -25,48 +25,6 @@
         </div>
     </div>
 
-    <%--    <div id="GrillaPrincipal">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <!-- Grilla ASP centrada a la izquierda -->
-                    <asp:GridView ID="gridView1" runat="server" AutoGenerateColumns="true" CssClass="text-center">
-                        <SelectedRowStyle CssClass="selected-row" />
-                        <RowStyle CssClass="grid-row" />
-                    </asp:GridView>
-                </div>
-
-                <div class="col-lg-6">
-                    <!-- Grilla centrada en el medio -->
-                    <asp:GridView ID="gridView2" runat="server" AutoGenerateColumns="true" CssClass="text-center">
-                        <RowStyle CssClass="grid-row" />
-                    </asp:GridView>
-                </div>
-            </div>
-        </div>
-    </div>--%>
-
-    <!-- Cards con foreach -->
-    <%--    <div class="container">
-        <div class="row row-cols-1 row-cols-md-4">
-            <%foreach (Dominio.Articulo item in ListaArticulo)
-                { %>
-
-            <div class="col mb-4">
-                <div class="card border-dark align-content-sm-center">
-                    <img style="max-width: 300px; max-height: 300px; object-fit: contain" src="<%= item.ImagenUrl %>" class="card-img-top" alt="Imagen no disponible">
-                    <div class="card-body">
-                        <h5 class="card-title"><%= item.Nombre %></h5>
-                        <p class="card-text"><%= item.Marca %></p>
-                        <a href="Detalle.aspx?idArticulo=<%=item.ID.ToString()%>" class="btn btn-info mb-1">Detalle</a>
-                        <a href="Carrito.aspx?idArticulo=<%=item.ID.ToString()%>" class="btn btn-primary mb-1">Añadir al carrito</a>
-                    </div>
-                </div>
-            </div>
-            <% } %>
-        </div>
-    </div>--%>
-
     <style>
         h3, .Busqueda {
             color: yellow;
@@ -77,33 +35,71 @@
         }
     </style>
 
-    <div class="row row col-4   " style="margin-left: 3rem">
-        <h3>Lista de Especialidades</h3>
+    <div>
+        <div id="Especialidades">
+            <div class="row row col-4   " style="margin-left: 3rem">
+                <h3>Lista de Especialidades</h3>
 
-        <div class="Busqueda">
-            <div class="row">
-                <div class="col-8">
-                    <div class="mb-3">
-                        <asp:Label Text="Filtrar" runat="server" />
-                        <asp:TextBox runat="server" ID="txtfiltro" CssClass="form-control" AutoPostBack="true"
-                            OnTextChanged="filtro_TextChanged" />
+                <div class="Busqueda">
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="mb-3">
+                                <asp:Label Text="Filtrar" runat="server" />
+                                <asp:TextBox runat="server" ID="txtfiltro" CssClass="form-control" AutoPostBack="true"
+                                    OnTextChanged="filtroEspecialidades_TextChanged" />
+                            </div>
+                        </div>
+
+
+                        <asp:GridView ID="dgvEspecialidades" DataKeyNames="id1"
+                            CssClass="table" runat="server" AutoGenerateColumns="false"
+                            OnSelectedIndexChanged="dgvEspecialidades_SelectedIndexChanged"
+                            OnPageIndexChanging="dgvEspecialidades_PageIndexChanging"
+                            AllowPaging="true" PageSize="5">
+                            <Columns>
+                                <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                                <%--                <asp:BoundField HeaderText="Marca" DataField="Marca.Descripcion" />
+                <asp:BoundField HeaderText="Categoria" DataField="Categoria.Descripcion" />--%>
+                                <%--aca el DataField es diferente porque tengo en mi clase Articulo la propiedad Marca y Categoria(las cuales son otra clase) --%>
+                            </Columns>
+                        </asp:GridView>
                     </div>
                 </div>
-
-
-                <asp:GridView ID="dgvEspecialidades" DataKeyNames="id"
-                    CssClass="table" runat="server" AutoGenerateColumns="false"
-                    OnSelectedIndexChanged="dgvEspecialidades_SelectedIndexChanged"
-                    OnPageIndexChanging="dgvEspecialidades_PageIndexChanging"
-                    AllowPaging="true" PageSize="5">
-                    <Columns>
-                        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                        <%--                <asp:BoundField HeaderText="Marca" DataField="Marca.Descripcion" />
-                <asp:BoundField HeaderText="Categoria" DataField="Categoria.Descripcion" />--%>
-                        <%--aca el DataField es diferente porque tengo en mi clase Articulo la propiedad Marca y Categoria(las cuales son otra clase) --%>
-                    </Columns>
-                </asp:GridView>
             </div>
         </div>
+
+        <div id="Medicos">
+            <div class="row row col-4   " style="margin-left: 3rem">
+                <h3>Lista de Médicos</h3>
+
+                <div class="Busqueda">
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="mb-3">
+                                <asp:Label Text="Filtrar" runat="server" />
+                                <asp:TextBox runat="server" ID="TextBox2" CssClass="form-control" AutoPostBack="true"
+                                    OnTextChanged="filtro_TextChanged" />
+                            </div>
+                        </div>
+
+
+                        <asp:GridView ID="dgvMedicos" DataKeyNames="id2"
+                            CssClass="table" runat="server" AutoGenerateColumns="false"
+                            OnSelectedIndexChanged="dgvMedicos_SelectedIndexChanged"
+                            OnPageIndexChanging="dgvMedicos_PageIndexChanging"
+                            AllowPaging="true" PageSize="5">
+                            <Columns>
+                                <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                                <%--                <asp:BoundField HeaderText="Marca" DataField="Marca.Descripcion" />
+                <asp:BoundField HeaderText="Categoria" DataField="Categoria.Descripcion" />--%>
+                                <%--aca el DataField es diferente porque tengo en mi clase Articulo la propiedad Marca y Categoria(las cuales son otra clase) --%>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+                </div>
+            </div>
         </div>
+
+    </div>
+
 </asp:Content>
