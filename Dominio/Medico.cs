@@ -16,6 +16,7 @@ namespace dominio
 
         public Especialidad Especialidad { get; set; }
 
+        public Medico() { }
 
         public Medico(Horario horario, Especialidad especialidad)
         {//Constructor

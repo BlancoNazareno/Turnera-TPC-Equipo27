@@ -20,6 +20,7 @@ namespace dominio
         public string MotivoDeConsulta { get; set; }//podriamos cambiarlo despues, ej: Un paciente consulta con un diagnostico presuntivo, al irse, ya tiene un diagnostico definitivo
         public string Estado{ get; set; }
 
+        public Turno() { }
         public Turno(Medico medico, Paciente paciente, DateTime fechaTurno, Horario horarioTurno, Cobertura cobertura, string motivoDeConsulta, string estado)
         {//Constructor
             Medico = medico;
