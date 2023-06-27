@@ -21,5 +21,10 @@ namespace Turnera_TPC_Equipo27
         {
 
         }
+
+        protected void btnModificar_Click(object sender, EventArgs e)
+        {
+            // Realizar operaciones adicionales aquí si es necesario
+        }
     }
 }

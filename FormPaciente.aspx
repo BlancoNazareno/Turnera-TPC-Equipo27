@@ -1,9 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminSiteMaster.Master" AutoEventWireup="true" CodeBehind="FormMedicoPaciente.aspx.cs" Inherits="Turnera_TPC_Equipo27.FormMedicoPaciente" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminSiteMaster.Master" AutoEventWireup="true" CodeBehind="FormPaciente.aspx.cs" Inherits="Turnera_TPC_Equipo27.FormPaciente" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container">
+        <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-6 ">
                 <div class="mb-3">
@@ -31,7 +30,7 @@
                     <asp:TextBox ID="txtMail" CssClass="form-select" runat="server" />
                 </div>
                 <div class="mb-3">
-                    <label for="txtVar" class="form-label text-white">Especialidad o Cobertura</label>
+                    <label for="txtVar" class="form-label text-white">Cobertura</label>
                     <asp:TextBox ID="txtVar" CssClass="form-select" runat="server" />
                 </div>
                 <div class="mb-3 text-center">

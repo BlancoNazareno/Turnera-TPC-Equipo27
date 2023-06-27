@@ -6,10 +6,10 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-6 ">
-                <div class="mb-3">
+<%--                <div class="mb-3">
                     <label for="txtId" class="form-label text-white">Id</label>
                     <asp:TextBox runat="server" ID="txtId" CssClass="form-control" />
-                </div>
+                </div>--%>
                 <div class="mb-3">
                     <label for="txtEspecialidad" class="form-label text-white">Especialidad: </label>
                     <asp:TextBox runat="server" ID="txtEspecialidad" CssClass="form-control" />

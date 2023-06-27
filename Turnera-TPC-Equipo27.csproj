@@ -71,12 +71,14 @@
     <Content Include="Default.aspx" />
     <Content Include="Especialidades.aspx" />
     <Content Include="FormEspecialidad.aspx" />
-    <Content Include="FormMedicoPaciente.aspx" />
+    <Content Include="FormMedico.aspx" />
+    <Content Include="FormPaciente.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Medicos.aspx" />
     <Content Include="MisEstudios.aspx" />
     <Content Include="MisTurnos.aspx" />
     <Content Include="Pacientes.aspx" />
+    <Content Include="Turnos.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -115,12 +117,19 @@
     <Compile Include="FormEspecialidad.aspx.designer.cs">
       <DependentUpon>FormEspecialidad.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FormMedicoPaciente.aspx.cs">
-      <DependentUpon>FormMedicoPaciente.aspx</DependentUpon>
+    <Compile Include="FormMedico.aspx.cs">
+      <DependentUpon>FormMedico.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="FormMedicoPaciente.aspx.designer.cs">
-      <DependentUpon>FormMedicoPaciente.aspx</DependentUpon>
+    <Compile Include="FormMedico.aspx.designer.cs">
+      <DependentUpon>FormMedico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormPaciente.aspx.cs">
+      <DependentUpon>FormPaciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormPaciente.aspx.designer.cs">
+      <DependentUpon>FormPaciente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -161,6 +170,13 @@
       <DependentUpon>Pacientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Turnos.aspx.cs">
+      <DependentUpon>Turnos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Turnos.aspx.designer.cs">
+      <DependentUpon>Turnos.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="MasterPage.Master" />

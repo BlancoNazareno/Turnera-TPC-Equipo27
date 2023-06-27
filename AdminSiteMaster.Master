@@ -45,7 +45,7 @@
                                 <a class="nav-link" href="Especialidades.aspx" style="font-weight: bold; font-size: x-large;">Especialidades</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Ayuda.aspx" style="font-weight: bold; font-size: x-large;">Turnos</a>
+                                <a class="nav-link" href="Turnos.aspx" style="font-weight: bold; font-size: x-large;">Turnos</a>
                             </li>
                         </ul>
 
