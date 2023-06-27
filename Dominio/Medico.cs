@@ -7,14 +7,16 @@ using System.Threading.Tasks;
 namespace dominio
 {
 
-    public class Medico : Persona
+    public class Medico 
     {
-        public int IdMedico { get; set; }//Id solo no, xq Persona tiene Id. Entonces tiene el IdPersona(q hereda) y el IdMedico
-                                         //public DateTime HorarioAtencion { get; set; }//gestionar horarios por separado. Clase horarios, tiene dia, hora de entrada y salida por medico, asignar a cada medico una franja horaria
-
-        public Horario Horario { get; set; }
-
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public DateTime FechaNacimiento { get; set; }
+        public int Dni { get; set; }
+        public string Mail { get; set; }
         public Especialidad Especialidad { get; set; }
+        public Horario Horario { get; set; }
 
 
         public Medico(Horario horario, Especialidad especialidad)
