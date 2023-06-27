@@ -10,3 +10,9 @@ C:\Users\dieeg\OneDrive\Desktop\Clinica-TPC\Turnera-TPC-Equipo27\Dominio\obj\Deb
 C:\Users\dieeg\OneDrive\Desktop\Clinica-TPC\Turnera-TPC-Equipo27\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\dieeg\OneDrive\Desktop\Clinica-TPC\Turnera-TPC-Equipo27\Dominio\obj\Debug\dominio.dll
 C:\Users\dieeg\OneDrive\Desktop\Clinica-TPC\Turnera-TPC-Equipo27\Dominio\obj\Debug\dominio.pdb
+C:\Users\nazab\Desktop\New folder\Turnera-TPC-Equipo27\Dominio\bin\Debug\dominio.dll
+C:\Users\nazab\Desktop\New folder\Turnera-TPC-Equipo27\Dominio\bin\Debug\dominio.pdb
+C:\Users\nazab\Desktop\New folder\Turnera-TPC-Equipo27\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+C:\Users\nazab\Desktop\New folder\Turnera-TPC-Equipo27\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\nazab\Desktop\New folder\Turnera-TPC-Equipo27\Dominio\obj\Debug\dominio.dll
+C:\Users\nazab\Desktop\New folder\Turnera-TPC-Equipo27\Dominio\obj\Debug\dominio.pdb

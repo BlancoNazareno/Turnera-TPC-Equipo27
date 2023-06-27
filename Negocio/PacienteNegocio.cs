@@ -17,7 +17,7 @@ namespace negocio
 
                 try
                 {
-                    datos.setearConsulta("Select Nombre from Paciente");
+                    datos.setearConsulta("Select Nombre from Pacientes");
                     datos.ejecutarLectura();
 
                     while (datos.Lector.Read())

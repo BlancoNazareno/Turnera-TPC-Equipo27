@@ -9,15 +9,18 @@ namespace dominio
 {
     public class Horario
     {
-        public DateTime Hora { get; set; }
-        public DateTime Fecha { get; set; }
+        public int IdMedico { get; set; }
         public DateTime HoraInicio { get; set; }
         public DateTime HoraFin { get; set; }
 
-        public Horario(DateTime horaInicio, DateTime horaFin)//Constructor
+        public int DiaSemana { get; set; }
+
+        public Horario(int idMedico, DateTime horaInicio, DateTime horaFin, int diaSemana)//Constructor
         {
+            IdMedico = idMedico;
             HoraInicio = horaInicio;
             HoraFin = horaFin;
+            DiaSemana = diaSemana;
         }
 
         public Horario() { }
