@@ -70,6 +70,8 @@
     <Content Include="Ayuda.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Especialidades.aspx" />
+    <Content Include="FormEspecialidad.aspx" />
+    <Content Include="FormMedicoPaciente.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Medicos.aspx" />
     <Content Include="MisEstudios.aspx" />
@@ -105,6 +107,20 @@
     </Compile>
     <Compile Include="Especialidades.aspx.designer.cs">
       <DependentUpon>Especialidades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormEspecialidad.aspx.cs">
+      <DependentUpon>FormEspecialidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormEspecialidad.aspx.designer.cs">
+      <DependentUpon>FormEspecialidad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormMedicoPaciente.aspx.cs">
+      <DependentUpon>FormMedicoPaciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormMedicoPaciente.aspx.designer.cs">
+      <DependentUpon>FormMedicoPaciente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
