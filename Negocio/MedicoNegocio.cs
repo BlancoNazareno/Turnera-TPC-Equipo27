@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace negocio
 {
     public class MedicoNegocio
@@ -16,7 +15,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("Select Nombre from Medico");
+                datos.setearConsulta("Select Nombre from Medicos");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

@@ -11,6 +11,8 @@ namespace dominio
         public int IdPaciente{ get; set; }
 
         public Cobertura Cobertura { get; set; }
+
+        
     }
 
 }

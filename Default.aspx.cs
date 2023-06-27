@@ -46,8 +46,6 @@ namespace Turnera_TPC_Equipo27
             dgvEspecialidades.DataBind();
         }
 
-        --
-
                 protected void dgvMedicos_SelectedIndexChanged(object sender, EventArgs e)
         {
             string id = dgvMedicos.SelectedDataKey.Value.ToString();
@@ -66,5 +64,6 @@ namespace Turnera_TPC_Equipo27
             dgvEspecialidades.PageIndex = e.NewPageIndex;
             dgvEspecialidades.DataBind();
         }
+
     }
 }

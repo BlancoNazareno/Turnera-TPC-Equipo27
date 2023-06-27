@@ -51,7 +51,7 @@
                         </div>
 
 
-                        <asp:GridView ID="dgvEspecialidades" DataKeyNames="id1"
+                        <asp:GridView ID="dgvEspecialidades" DataKeyNames="Id"
                             CssClass="table" runat="server" AutoGenerateColumns="false"
                             OnSelectedIndexChanged="dgvEspecialidades_SelectedIndexChanged"
                             OnPageIndexChanging="dgvEspecialidades_PageIndexChanging"
@@ -78,7 +78,7 @@
                             <div class="mb-3">
                                 <asp:Label Text="Filtrar" runat="server" />
                                 <asp:TextBox runat="server" ID="TextBox2" CssClass="form-control" AutoPostBack="true"
-                                    OnTextChanged="filtro_TextChanged" />
+                                    OnTextChanged="filtroMedicos_TextChanged" />
                             </div>
                         </div>
 
