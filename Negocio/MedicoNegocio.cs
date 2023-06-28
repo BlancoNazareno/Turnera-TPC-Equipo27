@@ -30,14 +30,21 @@ namespace negocio
                     aux.Id = (int)datos.Lector["IDMedico"];
                     aux.Apellido = (string)datos.Lector["Apellido"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.Dni = (long)datos.Lector["DNI"];//como en la BD es bigint, aca es long
-                    aux.FechaNacimiento = ((DateTime)datos.Lector["FechaNacimiento"]).Date;//Clave poner DateTime, y no Datetime, sino no anda
+                    aux.Dni = (int)datos.Lector["DNI"];//como en la BD es bigint, aca es long
+                    aux.FechaNacimiento = ((DateTime)datos.Lector["FechaNacimiento"]);
+                    string fechaNacimiento = aux.FechaNacimiento.ToString("dd/MM/yyyy");
+                    
+                    //aux.FechaNacimiento = ((DateTime)datos.Lector["FechaNacimiento"]).;//Clave poner DateTime, y no Datetime, sino no anda
                     //con el .Date al final intento hacer q muestre solo la fecha, sin la hora, tambien con esta linea de abajo
                     //string fechaNacimiento = aux.FechaNacimiento.ToString("dd/MM/yyyy");
                     aux.Mail = (string)datos.Lector["Mail"];
-                    aux.Especialidad = new Especialidad();
+                    //aux.Especialidad.Nombre = (string)datos.Lector["Especialidad"];
+                    //aux.Especialidad = new Especialidad();
+                    //aux.Especialidad.Nombre = (string)datos.Lector["Especialidad"];
+
+                    aux.Especialidad = new Especialidad(); // Crear instancia de Especialidad
                     aux.Especialidad.Nombre = (string)datos.Lector["Especialidad"];
-                   
+
 
 
                     lista.Add(aux);

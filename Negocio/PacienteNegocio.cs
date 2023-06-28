@@ -26,13 +26,17 @@ namespace negocio
                         aux.Id = (int)datos.Lector["IDPaciente"];
                         aux.Apellido = (string)datos.Lector["Apellido"];
                         aux.Nombre = (string)datos.Lector["Nombre"];
-                        aux.Cobertura= (string)datos.Lector["Cobertura"];
-                        aux.Dni = (long)datos.Lector["DNI"];
-                        aux.FechaNacimiento = (DateTime)datos.Lector["FechaNacimiento"];
-                     aux.Mail = (string)datos.Lector["Mail"];
                         
+                        aux.Dni = (int)datos.Lector["DNI"];
+                        aux.FechaNacimiento = (DateTime)datos.Lector["FechaNacimiento"];
+                    
+                    string fechaNacimiento = aux.FechaNacimiento.ToString("dd/MM/yyyy");
 
-                        lista.Add(aux);
+                    aux.Mail = (string)datos.Lector["Mail"];
+                    aux.Cobertura = (string)datos.Lector["Cobertura"];
+
+
+                    lista.Add(aux);
                     }
 
                     return lista;

@@ -11,10 +11,16 @@
                 <asp:BoundField HeaderText="Id" DataField="Id" />
                 <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
                 <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                <asp:BoundField HeaderText="Cobertura" DataField="Cobertura" />
-                <asp:BoundField HeaderText="Dni" DataField="DNI" />
-                <asp:BoundField HeaderText="Fecha de Nacimiento" DataField="FechaNacimiento" />
+                
+                <asp:BoundField HeaderText="DNI" DataField="DNI" />
+                       <asp:TemplateField HeaderText="Fecha de Nacimiento">
+            <ItemTemplate>
+                <asp:Label ID="lblFechaNacimiento" runat="server" Text='<%# Eval("FechaNacimiento", "{0:dd/MM/yyyy}") %>'></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>
+
                 <asp:BoundField HeaderText="Mail" DataField="Mail" />
+                <asp:BoundField HeaderText="Cobertura" DataField="Cobertura" />
                 <asp:TemplateField>
                     <HeaderTemplate>
                         <div class="text-end mx-4">Acciones</div>

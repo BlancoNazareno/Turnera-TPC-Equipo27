@@ -17,7 +17,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("Select E.IDEspecialidad Id, E.Especialidad Nombre From Especialidades E");
+                datos.setearConsulta("Select E.IDEspecialidad Id, E.Especialidad Especialidad From Especialidades E");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -25,7 +25,7 @@ namespace negocio
                     Especialidad aux = new Especialidad();
 
                     aux.Id = (int)datos.Lector["Id"];
-                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Nombre = (string)datos.Lector["Especialidad"];
 
                     lista.Add(aux);
                 }

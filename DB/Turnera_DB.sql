@@ -7,7 +7,7 @@ create table Pacientes(
  Nombre varchar(50) not null, 
  Apellido varchar (50) not null,
  FechaNacimiento date not null,
- DNI bigint not null, 
+ DNI int not null, 
  Mail varchar(100) not null,
  Cobertura varchar(30) not null,
  Primary key (IDPaciente)
@@ -15,7 +15,7 @@ create table Pacientes(
 
 create table Especialidades(
 IDEspecialidad int identity (10,1) not null, 
-Especialidad varchar(50) not null,
+Nombre varchar(50) not null,
 Primary key (IDEspecialidad)
 )
 
@@ -24,7 +24,7 @@ create table Medicos(
  Nombre varchar(50) not null, 
  Apellido varchar (50) not null,
  FechaNacimiento date not null,
- DNI bigint not null, 
+ DNI int not null, 
  Mail varchar(100) not null,
  IDEspecialidad int not null,
  Primary key (IDMedico),
@@ -50,4 +50,3 @@ Primary key (IDTurno),
 Foreign key (IDMedico) references Medicos(IDMedico),
 Foreign key (IDEspecialidad) references Especialidades(IDEspecialidad)
 )
-
