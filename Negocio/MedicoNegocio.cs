@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace negocio
 {
     public class MedicoNegocio
@@ -59,6 +60,34 @@ namespace negocio
             finally
             {
                 datos.cerrarConexion();
+            }
+        }
+
+        public void agregar(Medico nuevoMedico)
+        {
+            AccesoDatos acceso = new AccesoDatos();
+            try
+            {
+                acceso.setearConsulta("insert into Medicos (Nombre, Apellido, FechaNacimiento, DNI, Mail, IDEspecialidad) values (@Nombre, @Apellido, @FechaNacimiento, @DNI, @Mail, @IdEspecialidad)");
+                acceso.setearParametro("@Nombre", nuevoMedico.Nombre);
+                acceso.setearParametro("@Apellido", nuevoMedico.Apellido);
+                acceso.setearParametro("@FechaNacimiento", nuevoMedico.FechaNacimiento);
+                acceso.setearParametro("@DNI", nuevoMedico.Dni);
+                acceso.setearParametro("@Mail", nuevoMedico.Mail);
+                acceso.setearParametro("@IdEspecialidad", nuevoMedico.Especialidad.Id);
+
+                acceso.ejecutarAccion();
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                acceso.cerrarConexion();
             }
         }
     }

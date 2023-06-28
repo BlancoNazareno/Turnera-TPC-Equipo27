@@ -19,9 +19,9 @@ namespace negocio
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server=localhost; database=Turnera_DB; integrated security=true");
+            //conexion = new SqlConnection("server=localhost; database=Turnera_DB; integrated security=true");
             //conexion = new SqlConnection("server=.\\SQLEXPRESS; database=Turnera_DB; integrated security=true");
-            //conexion = new SqlConnection("server=LAPTOP-MND4I3DD\\DIEGOSQLEXPRESS; database=Clinica_DB; integrated security=true");
+            conexion = new SqlConnection("server=LAPTOP-MND4I3DD\\DIEGOSQLEXPRESS; database=Turnera_DB; integrated security=true");
             comando = new SqlCommand();
         }
 
