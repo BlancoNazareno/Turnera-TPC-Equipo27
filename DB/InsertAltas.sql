@@ -11,3 +11,8 @@ insert into Medicos select 'René', 'Favaloro', '02-02-1990', 44111444, 'rfavalor
 go
 insert into Pacientes select 'Figueroa', 'Alcorta', '10-03-1980', 20222233, 'falcorta@gmail.com', 'OSDE'
 insert into Pacientes select 'Arturo', 'Illia', '04-04-1995', 55111155, 'aillia@gmail.com', 'Galeno'
+go
+
+
+Select * From Especialidades
+

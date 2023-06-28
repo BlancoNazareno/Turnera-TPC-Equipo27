@@ -17,15 +17,20 @@ namespace negocio
 
                 try
                 {
-                    datos.setearConsulta("Select Nombre from Pacientes");
+                    datos.setearConsulta("Select P.IDPaciente, P.Apellido, P.Nombre, P.Cobertura, P.DNI, P.FechaNacimiento, P.Mail From Pacientes P");
                     datos.ejecutarLectura();
 
                     while (datos.Lector.Read())
                     {
                         Paciente aux = new Paciente();
-                        //aux.Id = (int)datos.Lector["Id"];
+                        aux.Id = (int)datos.Lector["IDPaciente"];
+                        aux.Apellido = (string)datos.Lector["Apellido"];
                         aux.Nombre = (string)datos.Lector["Nombre"];
-                        //aux.Copago = (float)datos.Lector["Copago"];
+                        aux.Cobertura= (string)datos.Lector["Cobertura"];
+                        aux.Dni = (long)datos.Lector["DNI"];
+                        aux.FechaNacimiento = (DateTime)datos.Lector["FechaNacimiento"];
+                     aux.Mail = (string)datos.Lector["Mail"];
+                        
 
                         lista.Add(aux);
                     }

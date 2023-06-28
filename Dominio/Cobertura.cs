@@ -10,7 +10,8 @@ namespace dominio
     {
         public int Id{ get; set; }
         public string Nombre{ get; set; }
-        public Especialidad Especialidad{ get; set; }//q tenga un listado de especialidades es un plus, hacer lo basico primero(manejar los horarios de pacientes/medicos)
+        public Especialidad Especialidad{ get; set; }
+        //q tenga un listado de especialidades es un plus, hacer lo basico primero(manejar los horarios de pacientes/medicos)
         //Por ahora las Coberturas van a trabajar con TODAS las Especialidades
     }
 }

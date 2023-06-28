@@ -16,7 +16,6 @@ namespace dominio
         public DateTime FechaTurno { get; set; }
         public Horario HorarioTurno { get; set; }
         public Cobertura Cobertura { get; set; }
-
         public string MotivoDeConsulta { get; set; }//podriamos cambiarlo despues, ej: Un paciente consulta con un diagnostico presuntivo, al irse, ya tiene un diagnostico definitivo
         public string Estado{ get; set; }
 
@@ -30,8 +29,7 @@ namespace dominio
             MotivoDeConsulta = motivoDeConsulta;
             Estado = estado;
         }
-
-        public Turno() { }
+        public Turno() {}//Constructor vacio
     }
 }
 //Cargar un turno ej

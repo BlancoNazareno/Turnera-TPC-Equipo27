@@ -9,7 +9,12 @@
         <asp:GridView ID="dgvMedicos" runat="server" CssClass="table table-dark" AutoGenerateColumns="false">
             <Columns>
                 <asp:BoundField HeaderText="Id" DataField="Id" />
+                <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
                 <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                <asp:BoundField HeaderText="Dni" DataField="Dni" />
+                <asp:BoundField HeaderText="Fecha de Nacimiento" DataField="FechaNacimiento" />
+                <asp:BoundField HeaderText="Mail" DataField="Mail" />
+                <asp:BoundField HeaderText="Especialidad" DataField="Especialidad" />
                 <asp:TemplateField>
                     <HeaderTemplate>
                         <div class="text-end mx-4">Acciones</div>

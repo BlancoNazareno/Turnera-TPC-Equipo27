@@ -11,7 +11,7 @@
                     <asp:TextBox runat="server" ID="txtId" CssClass="form-control" />
                 </div>--%>
                 <div class="mb-3">
-                    <label for="txtEspecialidad" class="form-label text-white">Especialidad: </label>
+                    <label for="txtEspecialidad" class="form-label text-white">Especialidad/es: </label>
                     <asp:TextBox runat="server" ID="txtEspecialidad" CssClass="form-control" />
                 </div>
                 <div class="mb-3 text-center">

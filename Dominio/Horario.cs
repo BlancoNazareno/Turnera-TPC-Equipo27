@@ -23,7 +23,7 @@ namespace dominio
             DiaSemana = diaSemana;
         }
 
-        public Horario() { }
+        public Horario() {}//Constructor vacio
     }
 }
 // Crear horario, ejemplo aca atiende el medico de 8 a 12hs el 19/6/23

@@ -12,7 +12,13 @@ namespace dominio
 
         public string Nombre { get; set; }
 
-        public float Copago { get; set; }//solo si el paciente es Particular
+        public override string ToString()
+        {
+            return Nombre;
+        }
+
+        //public float Copago { get; set; }
+        //solo si el paciente es Particular, VER SI LO IMPLEMENTAMOS DESPUES
 
     }
 }
