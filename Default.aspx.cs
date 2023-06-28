@@ -21,7 +21,7 @@ namespace Turnera_TPC_Equipo27
                 dgvEspecialidades.DataBind();
 
                 MedicoNegocio medico = new MedicoNegocio();
-                Session.Add("listaEspecialidades", medico.listar());//capturo con Session para dps usar la Session en el filtro
+                Session.Add("listaMedicos", medico.listar());//capturo con Session para dps usar la Session en el filtro
                 dgvEspecialidades.DataSource = Session["listaMedicos"];
                 dgvEspecialidades.DataBind();
             }

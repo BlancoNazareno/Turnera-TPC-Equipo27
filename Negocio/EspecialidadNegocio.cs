@@ -42,6 +42,78 @@ namespace negocio
             }
         }
 
+        public void agregar(Especialidad nuevaEspecialidad)
+        {
+            AccesoDatos acceso = new AccesoDatos();
+
+            try
+            {
+                acceso.setearConsulta("insert into Especialidades (Especialidad) values (@Especialidad)");
+                acceso.setearParametro("@Especialidad", nuevaEspecialidad.Nombre);
+                acceso.ejecutarAccion();
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                acceso.cerrarConexion();
+            }
+        }
+
+        public Especialidad listarUltimaEspecialidad()
+        {
+            AccesoDatos acceso = new AccesoDatos();
+            Especialidad ultima = new Especialidad();
+            try
+            {
+                EspecialidadNegocio negocio = new EspecialidadNegocio();
+
+                acceso.setearConsulta("select top 1 * from Especialidades where order by Especialidad.ID desc");
+                acceso.ejecutarLectura();
+                acceso.Lector.Read();
+
+                ultima.Id = (int)acceso.Lector["ID"];
+                ultima.Nombre = (string)acceso.Lector["Especialidad"];
+
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                acceso.cerrarConexion();
+            }
+            return ultima;
+        }
+
+        public void modificarEspecialidad(Especialidad especialidad)
+        {
+            AccesoDatos acceso = new AccesoDatos();
+            try
+            {
+                acceso.setearConsulta("Update Especialidad set Especialidad = @Especialidad where ID=@Id");
+
+                acceso.setearParametro("@ID", especialidad.Id);
+                acceso.setearParametro("@Especialidad", especialidad.Nombre);
+                acceso.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                acceso.cerrarConexion();
+            }
+        }
 
 
     }
