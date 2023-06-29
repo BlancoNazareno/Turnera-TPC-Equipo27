@@ -7,13 +7,13 @@
         <div class="row d-flex justify-content-center">
             <div class="col-6">
                 <div class="mb-3">
-                    <label for="inputEspecialidad" class="form-label text-white">Especialidad/es:</label>
+                    <label for="inputEspecialidad" class="form-label text-white">Especialidad:</label>
                     <asp:TextBox runat="server" ID="Especialidad" CssClass="form-control" />
-                    
+
                 </div>
                 <div class="mb-3 text-center">
-                    <asp:Button Text="Aceptar" ID="btnAgregarEspecialidad" OnClick="btnAgregarEspecialidad_Click" CssClass="btn btn-primary mx-2" runat="server" />
-                    <asp:Button Text="Cancelar" ID="btnCancelar" CssClass="btn btn-danger mx-2" runat="server" />
+                    <asp:Button Text="Aceptar" ID="btnAgregarEspecialidad" OnClick="btnAgregarModificarEspecialidad_Click" CssClass="btn btn-primary mx-2" runat="server" />
+                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger mx-2" PostBackUrl="~/Especialidades.aspx" />
                 </div>
             </div>
         </div>

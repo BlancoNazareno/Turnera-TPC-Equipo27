@@ -6,7 +6,7 @@
         <div class="row d-flex justify-content-center">
             <div class="col-6 ">
                 <div class="mb-3">
-                    <label for="txtId" class="form-label text-white">Id</label>
+                    <label for="txtId" class="form-label text-white"></label>
                     <asp:TextBox runat="server" ID="txtId" CssClass="form-control" />
                 </div>
                 <div class="mb-3">
@@ -22,7 +22,7 @@
                     <asp:TextBox textmode="Date" ID="txtFechaNacimiento" CssClass="form-select" runat="server" />
                 </div>
                 <div class="mb-3">
-                    <label for="txtDni" class="form-label text-white">Dni:</label>
+                    <label for="txtDni" class="form-label text-white">DNI:</label>
                     <asp:TextBox ID="textDni" CssClass="form-select" runat="server" />
                 </div>
                 <div class="mb-3">

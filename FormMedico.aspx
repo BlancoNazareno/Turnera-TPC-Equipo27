@@ -23,7 +23,7 @@
                     <asp:TextBox textmode="Date" ID="txtFechaNacimiento" CssClass="form-select" runat="server" />
                 </div>
                 <div class="mb-3">
-                    <label for="txtDni" class="form-label text-white">Dni:</label>
+                    <label for="txtDni" class="form-label text-white">DNI:</label>
                     <asp:TextBox ID="txtDni" CssClass="form-select" runat="server" />
                 </div>
                 <div class="mb-3">

@@ -11,7 +11,8 @@ namespace Turnera_TPC_Equipo27
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            txtId.Enabled = false;
+            txtId.Visible = false;
         }
     }
 }
