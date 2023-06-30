@@ -44,6 +44,7 @@ namespace Turnera_TPC_Equipo27
         {
             dgvEspecialidades.PageIndex = e.NewPageIndex;
             dgvEspecialidades.DataBind();
+            
         }
 
                 protected void dgvMedicos_SelectedIndexChanged(object sender, EventArgs e)
@@ -53,7 +54,7 @@ namespace Turnera_TPC_Equipo27
         }
         protected void filtroMedicos_TextChanged(object sender, EventArgs e)
         {
-            List<Especialidad> lista = (List<Especialidad>)Session["listaEspecialidades"];
+            List<Especialidad> lista = (List<Especialidad>)Session["listaMedicos"];
             List<Especialidad> listaFiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(txtfiltro.Text.ToUpper()));
             dgvEspecialidades.DataSource = listaFiltrada;
             dgvEspecialidades.DataBind();

@@ -93,14 +93,14 @@ namespace negocio
             return ultima;
         }
 
-        public void modificarEspecialidad(Especialidad especialidad)
+        public void modificar(Especialidad especialidad)
         {
             AccesoDatos acceso = new AccesoDatos();
             try
             {
-                acceso.setearConsulta("Update Especialidad set Especialidad = @Especialidad where ID=@Id");
+                acceso.setearConsulta("Update Especialidades set Especialidad = @Especialidad where IDEspecialidad=@Id");
 
-                acceso.setearParametro("@ID", especialidad.Id);
+                acceso.setearParametro("@Id", especialidad.Id);
                 acceso.setearParametro("@Especialidad", especialidad.Nombre);
                 acceso.ejecutarAccion();
 
@@ -114,6 +114,63 @@ namespace negocio
                 acceso.cerrarConexion();
             }
         }
+
+        public void eliminar(int id)
+        {//Eliminado FISICO, el Logico no lo podemos hacer aca xq no tenemos en Especialidades un atributo como "Activo"
+            AccesoDatos acceso = new AccesoDatos();
+            try
+            {
+                acceso.setearConsulta("Delete from Especialidades where IDEspecialidad=@Id");
+                acceso.setearParametro("@Id", id);               
+                acceso.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                acceso.cerrarConexion();
+            }
+        }
+
+        public Especialidad ObtenerEspecialidadPorId(int id)
+        {
+            // Implementa tu lógica para obtener la especialidad por su ID desde la capa de datos
+            // Puedes utilizar una consulta SQL o cualquier otro mecanismo que utilices en tu capa de datos
+            // Retorna la especialidad encontrada o null si no se encuentra
+
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT IDEspecialidad AS Id, Especialidad FROM Especialidades WHERE IDEspecialidad = @Id");
+                datos.setearParametro("@Id", id);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    Especialidad especialidad = new Especialidad();
+                    especialidad.Id = (int)datos.Lector["Id"];
+                    especialidad.Nombre = (string)datos.Lector["Especialidad"];
+                    return especialidad;
+                }
+                else
+                {
+                    return null; // Especialidad no encontrada
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
 
 
     }

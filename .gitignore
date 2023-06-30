@@ -348,3 +348,4 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/.vs/Turnera-TPC-Equipo27/config/applicationhost.config

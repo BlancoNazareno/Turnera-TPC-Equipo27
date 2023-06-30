@@ -8,7 +8,7 @@
         </div>
 <asp:GridView ID="dgvMedicos" runat="server" CssClass="table table-dark" AutoGenerateColumns="false">
     <Columns>
-        <asp:BoundField HeaderText="Id" DataField="Id" />
+        <asp:BoundField HeaderText="ID" DataField="Id" />
         <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
         <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
         <asp:BoundField HeaderText="DNI" DataField="Dni" />
