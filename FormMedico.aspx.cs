@@ -26,8 +26,26 @@ namespace Turnera_TPC_Equipo27
                     ddlEspecialidad.DataTextField = "Nombre";
                     ddlEspecialidad.DataBind();
                 }
+                string id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
+                if(id != "" && !IsPostBack)
+                {
+                    MedicoNegocio negocio = new MedicoNegocio();
+                    List<Medico> listaMedicos = negocio.listar();
+                    Medico seleccionado = listaMedicos.Find(m => m.Id.ToString() == id);
+
+                    Session.Add("medicoSeleccionado", seleccionado);
+
+                    txtId.Text = id;
+                    txtNombre.Text = seleccionado.Nombre;
+                    txtApellido.Text = seleccionado.Apellido;
+                    txtFechaNacimiento.Text = seleccionado.FechaNacimiento.ToString("dd/MM/yyyy");
+                    txtDni.Text = seleccionado.Dni.ToString();
+                    txtMail.Text = seleccionado.Mail.ToString();
+
+                    ddlEspecialidad.SelectedValue = 2.ToString();
+                }
             }
-            catch (Exception)
+            catch (Exception )
             {
 
                 throw;
@@ -51,7 +69,14 @@ namespace Turnera_TPC_Equipo27
                 nuevo.Especialidad = new Especialidad();
                 nuevo.Especialidad.Id = int.Parse(ddlEspecialidad.SelectedValue);
 
-                negocio.agregar(nuevo);
+                if (Request.QueryString["Id"] != null)
+                {
+                    nuevo.Id = int.Parse(txtId.Text);
+                    negocio.modificar(nuevo);
+                }
+                else
+                    negocio.agregar(nuevo);
+                Response.Redirect("Medicos.aspx", false);
             }
             catch (Exception)
             {

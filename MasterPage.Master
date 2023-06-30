@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.Master.cs" Inherits="Turnera_TPC_Equipo27.Master" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.Master.cs" Inherits="Turnera_TPC_Equipo27.Master"  %>
 
 <!DOCTYPE html>
 <html>

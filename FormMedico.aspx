@@ -32,7 +32,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="ddlEspecialidad" class="form-label text-white">Especialidad: </label>
-                    <asp:DropDownList ID="ddlEspecialidad" runat="server">
+                    <asp:DropDownList ID="ddlEspecialidad" CssClass="form-select" runat="server">
                     </asp:DropDownList>
                 </div>
                 <div class="mb-3 text-center">

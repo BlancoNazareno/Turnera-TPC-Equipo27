@@ -32,6 +32,8 @@ namespace Turnera_TPC_Equipo27
                     lblFechaNacimiento.Text = fechaNacimiento.ToString("dd/MM/yyyy");
                 }
             }
+
+            
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
@@ -42,6 +44,21 @@ namespace Turnera_TPC_Equipo27
         protected void btnModificar_Click(object sender, EventArgs e)
         {
             // Realizar operaciones adicionales aquí si es necesario
+
+            if (sender is Button)
+            {
+                Button btnModificar = (Button)sender;
+
+                // Obtener la fila que contiene el botón
+                GridViewRow row = (GridViewRow)btnModificar.NamingContainer;
+
+                // Obtener el ID de la fila
+                string id = row.Cells[0].Text;
+
+                // Redirigir a otra página pasando el ID como parámetro en la URL
+                Response.Redirect("~/FormMedico.aspx?id=" + id);
+            }
+
         }
 
     }
