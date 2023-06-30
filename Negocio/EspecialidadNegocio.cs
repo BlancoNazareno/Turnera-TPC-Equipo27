@@ -116,15 +116,13 @@ namespace negocio
         }
 
         public void eliminar(int id)
-        {
+        {//Eliminado FISICO, el Logico no lo podemos hacer aca xq no tenemos en Especialidades un atributo como "Activo"
             AccesoDatos acceso = new AccesoDatos();
             try
             {
-                acceso.setearConsulta("Delete Especialidades where IDEspecialidad=@Id");
-
+                acceso.setearConsulta("Delete from Especialidades where IDEspecialidad=@Id");
                 acceso.setearParametro("@Id", id);               
                 acceso.ejecutarAccion();
-
             }
             catch (Exception ex)
             {

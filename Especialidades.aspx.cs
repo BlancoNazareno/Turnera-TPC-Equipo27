@@ -1,4 +1,5 @@
-﻿using negocio;
+﻿using dominio;
+using negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,13 @@ namespace Turnera_TPC_Equipo27
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            EspecialidadNegocio negocio = new EspecialidadNegocio();
-            dgvEspecialidades.DataSource = negocio.listar();
-            dgvEspecialidades.DataBind();
-            RegisterPostBackControls();
+            if (!IsPostBack)
+            {
+             EspecialidadNegocio negocio = new EspecialidadNegocio();
+             dgvEspecialidades.DataSource = negocio.listar();
+             dgvEspecialidades.DataBind();
+             RegisterPostBackControls();
+            }
 
         }
 
@@ -42,11 +46,25 @@ namespace Turnera_TPC_Equipo27
             Button btnEliminar = (Button)sender;
             string id = btnEliminar.CommandArgument;
             int a = int.Parse(id);
-            EspecialidadNegocio negocio = new EspecialidadNegocio();
-            negocio.eliminar(a);
-            Response.Redirect("Especialidades.aspx");
-        }
 
+            MedicoNegocio negocio = new MedicoNegocio();
+            bool existe = negocio.existeEspecialidadEnListaMedicos(a);
+
+            if (existe)
+            {
+                EspecialidadNegocio eNegocio = new EspecialidadNegocio();
+                eNegocio.eliminar(a);
+                Response.Redirect("Especialidades.aspx");
+            }
+            else
+            {
+                string mensaje = "No se puede eliminar, esa Especialidad esta siendo usada por un Medico";
+                string script = "alert('" + mensaje + "');";
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "ShowMessage", script, true);
+            }
+        }
+     
         protected void dgvEspecialidades_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Modificar")

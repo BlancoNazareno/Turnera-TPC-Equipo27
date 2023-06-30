@@ -90,5 +90,19 @@ namespace negocio
                 acceso.cerrarConexion();
             }
         }
+
+
+        public bool existeEspecialidadEnListaMedicos(int idE)
+        {
+            List<Medico> lista = listar();
+            Medico medicoConEseId = lista.Find(m => m.Especialidad.Id == idE);
+
+            if (medicoConEseId != null && medicoConEseId.Id == idE)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
