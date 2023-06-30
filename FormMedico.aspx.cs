@@ -69,14 +69,14 @@ namespace Turnera_TPC_Equipo27
                 nuevo.Especialidad = new Especialidad();
                 nuevo.Especialidad.Id = int.Parse(ddlEspecialidad.SelectedValue);
 
-                if (Request.QueryString["Id"] != null)
-                {
-                    nuevo.Id = int.Parse(txtId.Text);
-                    negocio.modificar(nuevo);
-                }
-                else
-                    negocio.agregar(nuevo);
-                Response.Redirect("Medicos.aspx", false);
+                //if (Request.QueryString["Id"] != null)
+                //{
+                //    nuevo.Id = int.Parse(txtId.Text);
+                //    negocio.modificar(nuevo);
+                //}
+                //else
+                //    negocio.agregar(nuevo);
+                //Response.Redirect("Medicos.aspx", false);
             }
             catch (Exception)
             {

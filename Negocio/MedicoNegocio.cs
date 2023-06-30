@@ -91,8 +91,7 @@ namespace negocio
             }
         }
 
-
-        public bool existeEspecialidadEnListaMedicos(int idE)
+        public bool existeEspecialidadEnListaMedicos(int idE)//Para cuando se elimina una Especialidad, se fije si no esta vinculada a un Medico
         {
             List<Medico> lista = listar();
             Medico medicoConEseId = lista.Find(m => m.Especialidad.Id == idE);
@@ -104,5 +103,26 @@ namespace negocio
 
             return false;
         }
+
+        public void eliminar(int id)
+        {
+            AccesoDatos acceso = new AccesoDatos();
+            try
+            {
+                acceso.setearConsulta("Delete From Medicos Where IDMedico = @Id");
+                acceso.setearParametro("@Id", id);
+                acceso.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                acceso.cerrarConexion();
+            }
+        }
+
+
     }
 }

@@ -28,7 +28,8 @@
                     <ItemTemplate>
                         <div class="d-flex justify-content-end m-1">
                             <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn btn-primary mx-2" OnClick="btnModificar_Click" PostBackUrl="~/FormPaciente.aspx"/>
-                            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger mx-2" />
+                            
+                            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger mx-2" Onclick="btnEliminar_Click" />
                         </div>
                     </ItemTemplate>
                 </asp:TemplateField>

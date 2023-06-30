@@ -51,5 +51,25 @@ namespace negocio
                 }
             }
 
+        public void eliminar(int id)
+        {
+            AccesoDatos acceso = new AccesoDatos();
+            try
+            {
+                acceso.setearConsulta("Delete From Pacientes Where IDPaciente = @Id");
+                acceso.setearParametro("@Id", id);
+                acceso.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                acceso.cerrarConexion();
+            }
+        }
+
+
     }
 }
