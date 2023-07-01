@@ -10,7 +10,7 @@ namespace negocio
 {
     public class EspecialidadNegocio
     {
-        public List<Especialidad> listar()
+        public List<Especialidad> listar(string id = "")
         {
             List<Especialidad> lista = new List<Especialidad>();
             AccesoDatos datos = new AccesoDatos();

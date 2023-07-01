@@ -104,5 +104,32 @@ namespace negocio
 
             return false;
         }
+
+        public void modificar(Medico nuevoMedico)
+        {
+            AccesoDatos acceso = new AccesoDatos();
+            try
+            {
+                acceso.setearConsulta("update Medicos set Nombre = @Nombre, Apellido = @Apellido, FechaNacimiento = @FechaNacimiento, DNI = @DNI, Mail = @Mail, IDEspecialidad = @IdEspecialidad Where IdMedico = @id");
+                acceso.setearParametro("@Nombre", nuevoMedico.Nombre);
+                acceso.setearParametro("@Apellido", nuevoMedico.Apellido);
+                acceso.setearParametro("@FechaNacimiento", nuevoMedico.FechaNacimiento);
+                acceso.setearParametro("@DNI", nuevoMedico.Dni);
+                acceso.setearParametro("@Mail", nuevoMedico.Mail);
+                acceso.setearParametro("@IdEspecialidad", nuevoMedico.Especialidad.Id);
+                acceso.setearParametro("@id", nuevoMedico.Id);
+
+                acceso.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                acceso.cerrarConexion();
+            }
+        }
     }
 }

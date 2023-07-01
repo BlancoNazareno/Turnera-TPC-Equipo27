@@ -42,7 +42,7 @@ namespace Turnera_TPC_Equipo27
                     txtDni.Text = seleccionado.Dni.ToString();
                     txtMail.Text = seleccionado.Mail.ToString();
 
-                    ddlEspecialidad.SelectedValue = 2.ToString();
+                    ddlEspecialidad.SelectedValue = seleccionado.Especialidad.Id.ToString();
                 }
             }
             catch (Exception )
