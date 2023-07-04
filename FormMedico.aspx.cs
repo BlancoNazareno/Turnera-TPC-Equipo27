@@ -75,7 +75,7 @@ namespace Turnera_TPC_Equipo27
                     negocio.modificar(nuevo);
                 }
                 else
-                    negocio.agregar(nuevo);
+                   negocio.agregar(nuevo);
                 Response.Redirect("Medicos.aspx", false);
             }
             catch (Exception)

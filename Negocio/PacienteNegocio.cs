@@ -51,5 +51,80 @@ namespace negocio
                 }
             }
 
+        public void eliminar(int id)
+        {
+            AccesoDatos acceso = new AccesoDatos();
+            try
+            {
+                acceso.setearConsulta("Delete From Pacientes Where IDPaciente = @Id");
+                acceso.setearParametro("@Id", id);
+                acceso.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                acceso.cerrarConexion();
+            }
+        }
+
+        public void agregar(Paciente nuevoPaciente)
+        {
+            AccesoDatos acceso = new AccesoDatos();
+            try
+            {
+                acceso.setearConsulta("insert into Pacientes (Nombre, Apellido, FechaNacimiento, DNI, Mail, Cobertura) values (@Nombre, @Apellido, @FechaNacimiento, @DNI, @Mail, @Cobertura)");
+                acceso.setearParametro("@Nombre", nuevoPaciente.Nombre);
+                acceso.setearParametro("@Apellido", nuevoPaciente.Apellido);
+                acceso.setearParametro("@FechaNacimiento", nuevoPaciente.FechaNacimiento);
+                acceso.setearParametro("@DNI", nuevoPaciente.Dni);
+                acceso.setearParametro("@Mail", nuevoPaciente.Mail);
+                acceso.setearParametro("@Cobertura", nuevoPaciente.Cobertura);
+
+                acceso.ejecutarAccion();
+
+            }
+
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                acceso.cerrarConexion();
+            }
+        }
+
+        public void modificar(Paciente nuevoPaciente)
+        {
+            AccesoDatos acceso = new AccesoDatos();
+            try
+            {
+                acceso.setearConsulta("update Pacientes set Nombre = @Nombre, Apellido = @Apellido, FechaNacimiento = @FechaNacimiento, DNI = @DNI, Mail = @Mail, Cobertura = @Cobertura Where IDPaciente = @id");
+                acceso.setearParametro("@Nombre", nuevoPaciente.Nombre);
+                acceso.setearParametro("@Apellido", nuevoPaciente.Apellido);
+                acceso.setearParametro("@FechaNacimiento", nuevoPaciente.FechaNacimiento);
+                acceso.setearParametro("@DNI", nuevoPaciente.Dni);
+                acceso.setearParametro("@Mail", nuevoPaciente.Mail);
+                acceso.setearParametro("@Cobertura", nuevoPaciente.Cobertura);
+                acceso.setearParametro("@id", nuevoPaciente.Id);
+
+                acceso.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                acceso.cerrarConexion();
+            }
+        }
+
+
     }
 }

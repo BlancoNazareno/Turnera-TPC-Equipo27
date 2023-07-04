@@ -23,7 +23,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="txtDni" class="form-label text-white">DNI:</label>
-                    <asp:TextBox ID="textDni" CssClass="form-select" runat="server" />
+                    <asp:TextBox ID="txtDni" CssClass="form-select" runat="server" />
                 </div>
                 <div class="mb-3">
                     <label for="txtMail" class="form-label text-white">Email: </label>
@@ -34,7 +34,7 @@
                     <asp:TextBox ID="txtVar" CssClass="form-select" runat="server" />
                 </div>
                 <div class="mb-3 text-center">
-                    <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary mx-2" runat="server" />
+                    <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary mx-2" runat="server" OnClick="btnAceptar_Click"/>
                     <asp:Button Text="Cancelar" ID="btnCancelar" CssClass="btn btn-danger mx-2" runat="server" />
                 </div>
             </div>

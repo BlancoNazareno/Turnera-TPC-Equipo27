@@ -61,5 +61,19 @@ namespace Turnera_TPC_Equipo27
 
         }
 
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+            Button btnEliminar = (Button)sender;//Obtengo el botón 
+            GridViewRow fila = (GridViewRow)btnEliminar.NamingContainer;//Obtengo la fila de ese boton
+            int idMedico = Convert.ToInt32(fila.Cells[0].Text);//Obtengo el valor de la celda 0
+
+            MedicoNegocio negocio = new MedicoNegocio();
+            negocio.eliminar(idMedico);
+            Response.Redirect("Medicos.aspx");
+
+
+
+        }
     }
 }
