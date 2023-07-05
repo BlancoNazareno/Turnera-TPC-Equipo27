@@ -19,8 +19,8 @@
             <!-- NavBar    -->
             <nav class="navbar navbar-expand-lg navbar-dark p3" style="background-color: black">
                 <div class="container">
-                    <a class="navbar-brand" href="Default.aspx">
-                        <img src="multimedia\head.png" href="Default.aspx" alt="" height="100" class="d-inline-block align-text-center"
+                    <a class="navbar-brand" href="HomePacientes.aspx">
+                        <img src="multimedia\head.png" href="HomePacientes.aspx" alt="" height="100" class="d-inline-block align-text-center"
                             style="margin-right: 1rem; border-width: 0.3rem; border-style: solid; border-color: black;">
                         <strong>Space Medicine</strong>
                     </a>
@@ -35,7 +35,7 @@
 
                         <ul class="navbar-nav ml-auto mb-2 mb-lg-0" style="text-align: right;">
                             <li class="nav-item">
-                                <a class="nav-link" href="Default.aspx" style="font-weight: bold; font-size: x-large;">Turnos</a>
+                                <a class="nav-link" href="SacarTurno.aspx" style="font-weight: bold; font-size: x-large;">Sacar turno</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="MisTurnos.aspx" style="font-weight: bold; font-size: x-large;">Mis turnos</a>

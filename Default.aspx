@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <style>
+    <%--    <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
         .card-title,
@@ -60,8 +60,8 @@
                                 <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                                 <%--                <asp:BoundField HeaderText="Marca" DataField="Marca.Descripcion" />
                 <asp:BoundField HeaderText="Categoria" DataField="Categoria.Descripcion" />--%>
-                                <%--aca el DataField es diferente porque tengo en mi clase Articulo la propiedad Marca y Categoria(las cuales son otra clase) --%>
-                            </Columns>
+    <%--aca el DataField es diferente porque tengo en mi clase Articulo la propiedad Marca y Categoria(las cuales son otra clase) --%>
+    <%--                            </Columns>
                         </asp:GridView>
                     </div>
                 </div>
@@ -89,17 +89,54 @@
                             OnPageIndexChanging="dgvMedicos_PageIndexChanging"
                             AllowPaging="true" PageSize="5">
                             <Columns>
-                                <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                                <%--                <asp:BoundField HeaderText="Marca" DataField="Marca.Descripcion" />
+                                <asp:BoundField HeaderText="Nombre" DataField="Nombre" />--%>
+    <%--                <asp:BoundField HeaderText="Marca" DataField="Marca.Descripcion" />
                 <asp:BoundField HeaderText="Categoria" DataField="Categoria.Descripcion" />--%>
-                                <%--aca el DataField es diferente porque tengo en mi clase Articulo la propiedad Marca y Categoria(las cuales son otra clase) --%>
-                            </Columns>
+    <%--aca el DataField es diferente porque tengo en mi clase Articulo la propiedad Marca y Categoria(las cuales son otra clase) --%>
+    <%--                            </Columns>
                         </asp:GridView>
                     </div>
                 </div>
             </div>
         </div>
 
+    </div>--%>
+
+
+
+
+    <div class="container" style="background-color: rgb(65, 65, 65);">
+        <div class="text-light p-3 text-center" style="margin-top: 3rem; margin-bottom: 2rem">
+            <h4><strong>Login</strong></h4>
+            <br />
+            <p>Bienvenido a Space Medicine, tu sitio de gestión de turnos</p>
+            <br />
+            <p>Debes loguearte para acceder al sitio</p>
+        </div>
+
     </div>
 
+       <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-6 ">
+                <div class="mb-3">
+                    <label for="txtDNI" class="form-label text-white">DNI: </label>
+                    <asp:TextBox runat="server" ID="txtDNI" CssClass="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label for="txtContrasenia" class="form-label text-white">Contraseña: </label>
+                    <asp:TextBox runat="server" ID="txtContrasenia" CssClass="form-control" />
+                </div>
+       
+                <div class="mb-3 text-center">
+                    <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary mx-2" runat="server" OnClick="btnAceptar_Click" />
+                    <asp:Button Text="Cancelar" ID="btnCancelar" CssClass="btn btn-danger mx-2" runat="server" OnClick="btnCancelar_Click"/>
+                    <br />>
+                    <p class="form-label text-white">¿No estás registrado? <br /> Podés hacerlo acá</p>
+                    
+                    <asp:Button Text="Registrarse" ID="btnRegistrarse" CssClass="btn btn-info mx-2" runat="server" OnClick="btnRegistrarse_Click"  />
+                </div>
+            </div>
+        </div>
+    </div>
 </asp:Content>

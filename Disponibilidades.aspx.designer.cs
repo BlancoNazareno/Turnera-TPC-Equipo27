@@ -11,7 +11,7 @@ namespace Turnera_TPC_Equipo27
 {
 
 
-    public partial class TurnosAdmin
+    public partial class Disponibilidades
     {
 
         /// <summary>
@@ -24,12 +24,12 @@ namespace Turnera_TPC_Equipo27
         protected global::System.Web.UI.WebControls.Button btnAgregar;
 
         /// <summary>
-        /// dgvTurnosAdmin control.
+        /// dgvMedicos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvTurnosAdmin;
+        protected global::System.Web.UI.WebControls.GridView dgvMedicos;
     }
 }
