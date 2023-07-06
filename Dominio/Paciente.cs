@@ -15,6 +15,7 @@ namespace dominio
         public long Dni { get; set; }
         public string Mail { get; set; }
         public string Cobertura { get; set; }
+        public bool Estado { get; set; }
 
 
     }
