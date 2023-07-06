@@ -16,59 +16,61 @@ namespace negocio
         public List<Turno> listar(string id = "")
         {
             List<Turno> lista = new List<Turno>();
-            SqlConnection conexion = new SqlConnection();
-            SqlCommand comando = new SqlCommand();
-            SqlDataReader lector;
+            return lista; //no implementada, ni siquiera sabemos si hubiese andado XD
 
-            try
-            {
-                //conexion.ConnectionString = ConfigurationManager.AppSettings["cadenaConexion"];
-                comando.CommandType = System.Data.CommandType.Text;
-                //comando.CommandText = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id, P.Activo From POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo And D.Id = P.IdDebilidad ";
-                //if (id != "")
-                //    comando.CommandText += " and P.Id = " + id;
+            //SqlConnection conexion = new SqlConnection();
+            //SqlCommand comando = new SqlCommand();
+            //SqlDataReader lector;
 
-                comando.Connection = conexion;
+            //try
+            //{
+            //    //conexion.ConnectionString = ConfigurationManager.AppSettings["cadenaConexion"];
+            //    comando.CommandType = System.Data.CommandType.Text;
+            //    //comando.CommandText = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id, P.Activo From POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo And D.Id = P.IdDebilidad ";
+            //    //if (id != "")
+            //    //    comando.CommandText += " and P.Id = " + id;
 
-                conexion.Open();
-                lector = comando.ExecuteReader();
+            //    comando.Connection = conexion;
 
-                while (lector.Read())
-                {
-                    Turno aux = new Turno();
+            //    conexion.Open();
+            //    lector = comando.ExecuteReader();
 
-                    aux.Id = (int)lector["Id"];
+            //    while (lector.Read())
+            //    {
+            //        Turno aux = new Turno();
+
+            //        aux.Id = (int)lector["Id"];
                   
-                    aux.Medico = new Medico();
-                    aux.Medico.Apellido= (string)lector["ApellidoMedico"];
-                    aux.Medico.Nombre= (string)lector["NombreMedico"];
+            //        aux.Medico = new Medico();
+            //        aux.Medico.Apellido= (string)lector["ApellidoMedico"];
+            //        aux.Medico.Nombre= (string)lector["NombreMedico"];
 
-                    aux.Paciente = new Paciente();
-                    aux.Paciente.Apellido = (string)lector["ApellidoPaciente"];
-                    aux.Paciente.Nombre = (string)lector["NombrePaciente"];
+            //        aux.Paciente = new Paciente();
+            //        aux.Paciente.Apellido = (string)lector["ApellidoPaciente"];
+            //        aux.Paciente.Nombre = (string)lector["NombrePaciente"];
 
-                    aux.FechaTurno = (DateTime)lector["FechaTurno"];
+            //        aux.FechaTurno = (DateTime)lector["FechaTurno"];
 
-                    aux.HorarioTurno = new Horario();
-                    aux.HorarioTurno.HoraInicio = (DateTime)lector["HoraInicioTurno"];
-                    aux.HorarioTurno.HoraFin = (DateTime)lector["HoraFinTurno"];
+            //        aux.HorarioTurno = new Horario();
+            //        aux.HorarioTurno.HoraInicio = (DateTime)lector["HoraInicioTurno"];
+            //        aux.HorarioTurno.HoraFin = (DateTime)lector["HoraFinTurno"];
 
-                    aux.Cobertura = new Cobertura();
-                    aux.Cobertura.Nombre = (string)lector["CoberturaPaciente"];
+            //        aux.Cobertura = new Cobertura();
+            //        aux.Cobertura.Nombre = (string)lector["CoberturaPaciente"];
 
-                    aux.MotivoDeConsulta = (string)lector["MotivoDeConsulta"];
-                    aux.Estado = (string)lector["Estado"];
+            //        aux.MotivoDeConsulta = (string)lector["MotivoDeConsulta"];
+            //        aux.Estado = (string)lector["Estado"];
 
-                    lista.Add(aux);
-                }
+            //        lista.Add(aux);
+            //    }
 
-                conexion.Close();
-                return lista;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            //    conexion.Close();
+            //    return lista;
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw ex;
+            //}
 
         }
 
