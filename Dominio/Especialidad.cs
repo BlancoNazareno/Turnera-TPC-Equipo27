@@ -16,9 +16,7 @@ namespace dominio
         {
             return Nombre;
         }
-
-        //public float Copago { get; set; }
-        //solo si el paciente es Particular, VER SI LO IMPLEMENTAMOS DESPUES
+        public bool Estado { get; set; }
 
     }
 }
