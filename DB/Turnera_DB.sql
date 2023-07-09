@@ -1,3 +1,5 @@
+use master 
+go
 drop database Turnera_DB
 
 create database Turnera_DB
@@ -11,8 +13,10 @@ create table Pacientes(
  FechaNacimiento date not null,
  DNI int not null, 
  Mail varchar(100) not null,
+ Contrasenia varchar (100) not null,
  Cobertura varchar(30) not null,
  Estado bit not null,
+ TipoUsuario int not null, 
  Primary key (IDPaciente)
 )
 

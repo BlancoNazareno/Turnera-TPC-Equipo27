@@ -48,8 +48,9 @@ namespace negocio
 
             try
             {
-                acceso.setearConsulta("insert into Especialidades (Especialidad) values (@Especialidad)");
+                acceso.setearConsulta("insert into Especialidades (Especialidad, Estado) values (@Especialidad, @Estado)");
                 acceso.setearParametro("@Especialidad", nuevaEspecialidad.Nombre);
+                acceso.setearParametro("@Estado", "1");
                 acceso.ejecutarAccion();
 
             }
