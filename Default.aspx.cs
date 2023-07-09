@@ -10,66 +10,59 @@ using dominio;
 namespace Turnera_TPC_Equipo27
 {
     public partial class Default : System.Web.UI.Page
-    {
+    {   //falta implementar un botón para desloguearse
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!IsPostBack)
-            //{
-            //    EspecialidadNegocio especialidad = new EspecialidadNegocio();
-            //    Session.Add("listaEspecialidades", especialidad.listar());//capturo con Session para dps usar la Session en el filtro
-            //    dgvEspecialidades.DataSource = Session["listaEspecialidades"];
-            //    dgvEspecialidades.DataBind();
+            if (Session["error"] != null)
+            {
+                lblErrorLogin.Text = Session["error"].ToString();
+            }
 
-            //    MedicoNegocio medico = new MedicoNegocio();
-            //    Session.Add("listaMedicos", medico.listar());//capturo con Session para dps usar la Session en el filtro
-            //    dgvEspecialidades.DataSource = Session["listaMedicos"];
-            //    dgvEspecialidades.DataBind();
-            //}
+
+            if ((Session["usuario"] != null) && (((Paciente)Session["usuario"]).TipoUsuario == TipoUsuario.PACIENTE))
+            {
+                //ya está logueado como paciente, por lo que redirige a su área correspondiente
+                Response.Redirect("HomePacientes.aspx");
+            }
+            if ((Session["usuario"] != null) && ((Paciente)Session["usuario"]).TipoUsuario == TipoUsuario.SUBADMIN)
+            {
+                //ya está logueado como ADMIN o SUBADMIN, por lo que redirige a su área correspondiente
+                Response.Redirect("HomeAdmin.aspx");
+            }
+
+
         }
-
-        //protected void dgvEspecialidades_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    string id = dgvEspecialidades.SelectedDataKey.Value.ToString();
-        //    Response.Redirect("Default.aspx?id=" + id);
-        //}
-        //protected void filtroEspecialidades_TextChanged(object sender, EventArgs e)
-        //{
-        //    List<Especialidad> lista = (List<Especialidad>)Session["listaEspecialidades"];
-        //    List<Especialidad> listaFiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(txtfiltro.Text.ToUpper()));
-        //    dgvEspecialidades.DataSource = listaFiltrada;
-        //    dgvEspecialidades.DataBind();
-        //}
-
-        //protected void dgvEspecialidades_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        //{
-        //    dgvEspecialidades.PageIndex = e.NewPageIndex;
-        //    dgvEspecialidades.DataBind();
-
-        //}
-
-        //        protected void dgvMedicos_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    string id = dgvMedicos.SelectedDataKey.Value.ToString();
-        //    Response.Redirect("Default.aspx?id=" + id);
-        //}
-        //protected void filtroMedicos_TextChanged(object sender, EventArgs e)
-        //{
-        //    List<Especialidad> lista = (List<Especialidad>)Session["listaMedicos"];
-        //    List<Especialidad> listaFiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(txtfiltro.Text.ToUpper()));
-        //    dgvEspecialidades.DataSource = listaFiltrada;
-        //    dgvEspecialidades.DataBind();
-        //}
-
-        //protected void dgvMedicos_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        //{
-        //    dgvEspecialidades.PageIndex = e.NewPageIndex;
-        //    dgvEspecialidades.DataBind();
-        //}
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+            Paciente paciente;
+            PacienteNegocio negocio = new PacienteNegocio();
 
+            try
+            {
+                paciente = new Paciente(int.Parse(txtDNI.Text), txtContrasenia.Text);
+                if (negocio.loguear(paciente) && paciente.TipoUsuario == TipoUsuario.PACIENTE)
+                {
+                    Session.Add("usuario", paciente);
+                    Response.Redirect("HomePacientes.aspx");
+                }
+                else if (negocio.loguear(paciente) && (paciente.TipoUsuario == TipoUsuario.ADMIN || paciente.TipoUsuario == TipoUsuario.SUBADMIN))
+                {
+                    Session.Add("usuario", paciente);
+                    Response.Redirect("HomeAdmin.aspx");
+                }
+                else
+                {
+                    lblErrorLogin.Text = "DNI o contraseña incorrectos";
+                }
+            }
+            catch (Exception ex)
+            {
+                lblErrorLogin.Text = "Error al iniciar sesión: " + ex.Message;
+            }
         }
+
+
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("Default.aspx");

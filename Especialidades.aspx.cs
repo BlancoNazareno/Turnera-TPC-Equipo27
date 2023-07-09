@@ -13,6 +13,18 @@ namespace Turnera_TPC_Equipo27
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usuario"] == null)
+            {
+                Session.Add("error", "No es posible acceder sin estar logueado");
+                Response.Redirect("Default.aspx");
+            }
+
+            if ((Session["usuario"] != null) && (((Paciente)Session["usuario"]).TipoUsuario == TipoUsuario.PACIENTE))
+            {
+                Session.Add("error", "No cuenta con los permisos para acceder a este sector");  //no muestra el mensaje, directamente redirecciona
+                Response.Redirect("HomePacientes.aspx");
+            }
+
             if (!IsPostBack)
             {
              EspecialidadNegocio negocio = new EspecialidadNegocio();
