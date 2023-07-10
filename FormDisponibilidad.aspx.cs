@@ -1,6 +1,8 @@
 ﻿using dominio;
+using negocio;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -29,10 +31,114 @@ namespace Turnera_TPC_Equipo27
                 Session.Add("error", "No cuenta con los permisos para acceder a este sector");  //no muestra el mensaje, directamente redirecciona
                 Response.Redirect("HomePacientes.aspx");
             }
+
+            else
+            {
+                lblDgvDisponibilidad.Visible = false;
+                lblDgvMedico.Visible = false;
+                dgvDisponibilidad.Visible = false;
+                ddlMedico.Visible = false;
+
+                try
+                {
+                    if (!IsPostBack)
+                    {
+                        EspecialidadNegocio negocioE = new EspecialidadNegocio();
+                        List<Especialidad> listaE = negocioE.listar();
+                        ddlEspecialidad.DataSource = listaE;
+                        ddlEspecialidad.DataValueField = "Id";
+                        ddlEspecialidad.DataTextField = "Nombre";
+                        ddlEspecialidad.DataBind();
+
+                        MedicoNegocio negocio = new MedicoNegocio();
+                        List<Medico> lista = negocio.listar();
+                        ddlMedico.DataSource = lista;
+                        ddlMedico.DataValueField = "Id";
+                        ddlMedico.DataTextField = "NombreCompleto";
+                        ddlMedico.DataBind();
+
+
+
+                        HorarioNegocio negocioH = new HorarioNegocio();
+                        Session.Add("listaHorarios", negocioH.listar());
+                        dgvDisponibilidad.DataSource = Session["listaHorarios"];
+                        dgvDisponibilidad.DataBind();
+
+
+
+
+                    }
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+            }
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Disponibilidad nueva = new Disponibilidad();
+                DisponibilidadNegocio negocio = new DisponibilidadNegocio();
+
+                foreach (GridViewRow row in dgvDisponibilidad.Rows)
+                {
+                    for (int i = 1; i < row.Cells.Count - 1; i++)
+                    //Debug.WriteLine(i);
+                    {
+
+                        CheckBox chkDia = (CheckBox)row.FindControl("chk" + dgvDisponibilidad.HeaderRow.Cells[i].Text);
+
+
+                        if (chkDia != null && chkDia.Checked)
+                        {
+                            Debug.WriteLine("*********", chkDia.Checked);
+                            nueva.Medico = new Medico();
+                            nueva.Medico.Id = int.Parse(ddlMedico.SelectedValue);
+                            nueva.Dia = int.Parse(dgvDisponibilidad.HeaderRow.Cells[i].Text);
+                            nueva.Hora = row.Cells[0].Text;
+                            negocio.agregar(nueva);
+
+                        }
+                        else
+                        {
+                            Debug.WriteLine("***********No entro**************", i);
+                        }
+
+                    }
+                }
+                Response.Redirect("Disponibilidades.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+    
+
+        protected void ddlEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            lblDgvMedico.Visible = true;
+            ddlMedico.Visible = true;
+            dgvDisponibilidad.Visible = true;
+
+            int idEspecialidadSeleccionada = Convert.ToInt32(ddlEspecialidad.SelectedValue);
+
+            MedicoNegocio negocio = new MedicoNegocio();
+            List<Medico> listaFiltrada = negocio.listaFiltrada(idEspecialidadSeleccionada);
+            ddlMedico.DataSource = listaFiltrada;
+            ddlMedico.DataValueField = "Id";
+            ddlMedico.DataTextField = "NombreCompleto";
+            ddlMedico.DataBind();
+
+
+
         }
     }
 }

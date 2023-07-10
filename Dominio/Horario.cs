@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace dominio
 {
-    public class Disponibilidad
+    public class Horario
     {
-
         public int Id { get; set; }
-        public Medico Medico { get; set; }
-        public int Dia { get; set; }
+
         public string Hora { get; set; }
-
-
     }
 }

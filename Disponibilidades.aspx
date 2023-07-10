@@ -14,7 +14,7 @@
 
         <div class="container">
         <div class="text-end">
-            <asp:Button ID="btnAgregar" runat="server" Text="Agregar" CssClass="btn btn-success m-2" OnClick="btnAgregar_Click" PostBackUrl="~/FormMedico.aspx"/>
+            <asp:Button ID="btnAgregar" runat="server" Text="Agregar" CssClass="btn btn-success m-2" OnClick="btnAgregar_Click" PostBackUrl="~/FormDisponibilidad.aspx"/>
         </div>
 <asp:GridView ID="dgvMedicos" runat="server" CssClass="table table-dark" AutoGenerateColumns="false">
     <Columns>
@@ -45,3 +45,4 @@
 
     </div>
 </asp:Content>
+

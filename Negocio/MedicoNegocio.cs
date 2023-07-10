@@ -68,7 +68,7 @@ namespace negocio
             AccesoDatos acceso = new AccesoDatos();
             try
             {
-                acceso.setearConsulta("insert into Medicos (Nombre, Apellido, FechaNacimiento, DNI, Mail, IDEspecialidad) values (@Nombre, @Apellido, @FechaNacimiento, @DNI, @Mail, @IdEspecialidad)");
+                acceso.setearConsulta("insert into Medicos (Nombre, Apellido, FechaNacimiento, DNI, Mail, IDEspecialidad, Estado) values (@Nombre, @Apellido, @FechaNacimiento, @DNI, @Mail, @IdEspecialidad, 1)");
                 acceso.setearParametro("@Nombre", nuevoMedico.Nombre);
                 acceso.setearParametro("@Apellido", nuevoMedico.Apellido);
                 acceso.setearParametro("@FechaNacimiento", nuevoMedico.FechaNacimiento);
@@ -147,6 +147,39 @@ namespace negocio
             finally
             {
                 acceso.cerrarConexion();
+            }
+        }
+
+        public List<Medico> listaFiltrada(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<Medico> lista = new List<Medico>();
+            try
+            {
+                datos.setearConsulta("SELECT M.IDMedico, M.Apellido, M.Nombre, M.DNI, M.FechaNacimiento, M.Mail, E.Especialidad FROM Medicos M INNER JOIN Especialidades E ON M.IDEspecialidad = E.IDEspecialidad WHERE E.IDEspecialidad = @Id");
+                datos.setearParametro("@Id", id);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Medico aux = new Medico();
+                    aux.Id = (int)datos.Lector["IDMedico"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Apellido = (string)datos.Lector["Apellido"];
+
+                    lista.Add(aux);
+                }
+                return lista;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
     }

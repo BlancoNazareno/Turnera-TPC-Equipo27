@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dominio
 {
-    public class Medico 
+    public class Medico
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
@@ -15,6 +15,10 @@ namespace dominio
         public long Dni { get; set; }//cambie a long, xq en la BD es bigint
         public string Mail { get; set; }
         public Especialidad Especialidad { get; set; }
+        public string NombreCompleto
+        {
+            get { return Nombre + " " + Apellido; }
+        }
         public bool Estado { get; set; }
 
     }
