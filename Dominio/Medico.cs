@@ -12,7 +12,7 @@ namespace dominio
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public DateTime FechaNacimiento { get; set; }
-        public long Dni { get; set; }//cambie a long, xq en la BD es bigint
+        public int Dni { get; set; }
         public string Mail { get; set; }
         public Especialidad Especialidad { get; set; }
         public string NombreCompleto

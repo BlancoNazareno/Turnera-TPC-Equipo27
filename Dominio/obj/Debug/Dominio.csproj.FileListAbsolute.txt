@@ -28,3 +28,9 @@ C:\Users\dieeg\OneDrive\Desktop\TPC-Final-PRUEBA\Turnera-TPC-Equipo27\Dominio\ob
 C:\Users\dieeg\OneDrive\Desktop\TPC-Final-PRUEBA\Turnera-TPC-Equipo27\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\dieeg\OneDrive\Desktop\TPC-Final-PRUEBA\Turnera-TPC-Equipo27\Dominio\obj\Debug\dominio.dll
 C:\Users\dieeg\OneDrive\Desktop\TPC-Final-PRUEBA\Turnera-TPC-Equipo27\Dominio\obj\Debug\dominio.pdb
+C:\Users\Matias\Desktop\turnera 11julio\Dominio\bin\Debug\dominio.dll
+C:\Users\Matias\Desktop\turnera 11julio\Dominio\bin\Debug\dominio.pdb
+C:\Users\Matias\Desktop\turnera 11julio\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+C:\Users\Matias\Desktop\turnera 11julio\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\Matias\Desktop\turnera 11julio\Dominio\obj\Debug\dominio.dll
+C:\Users\Matias\Desktop\turnera 11julio\Dominio\obj\Debug\dominio.pdb

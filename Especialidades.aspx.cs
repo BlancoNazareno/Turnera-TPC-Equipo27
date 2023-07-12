@@ -53,30 +53,28 @@ namespace Turnera_TPC_Equipo27
             Response.Redirect("FormEspecialidad.aspx?ID=" + id);
         }
 
-        protected void  btnEliminar_Click(object sender, EventArgs e)
+        protected void btnEliminar_Click(object sender, EventArgs e)
         {
             Button btnEliminar = (Button)sender;
             string id = btnEliminar.CommandArgument;
             int a = int.Parse(id);
 
             MedicoNegocio negocio = new MedicoNegocio();
-            bool existe = negocio.existeEspecialidadEnListaMedicos(a);
+            bool existeMedico = negocio.existeMedicoConEsaEspecialidad(a);//Si existe un Medico que este trabajando con esa Especialidad devuelve true
 
-            if (existe)
+            //Ver esto! Esta alreves, no se xq, tengo q invertir la funcion (!existeMedico) <- DEBERIA ESTAR SIN EL SIGNO DE EXCLAMACION, sino me ELIMINA AUNQUE EXISTA EL MEDICO CON ESA ESPECIALIDAD
+            if (!existeMedico)
+            {
+                Response.Redirect("Error.aspx?parametro=Especialidades");
+            }
+            else
             {
                 EspecialidadNegocio eNegocio = new EspecialidadNegocio();
                 eNegocio.eliminar(a);
                 Response.Redirect("Especialidades.aspx");
             }
-            else
-            {
-                string mensaje = "No se puede eliminar, esa Especialidad esta siendo usada por un Medico";
-                string script = "alert('" + mensaje + "');";
-
-                ScriptManager.RegisterStartupScript(this, GetType(), "ShowMessage", script, true);
-            }
         }
-     
+
         protected void dgvEspecialidades_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Modificar")

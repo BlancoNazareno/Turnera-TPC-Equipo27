@@ -1,10 +1,11 @@
-﻿using dominio;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using dominio;
+using negocio;
 
 namespace Turnera_TPC_Equipo27
 {
@@ -12,17 +13,40 @@ namespace Turnera_TPC_Equipo27
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
+            if (!IsPostBack)
             {
-                Session.Add("error", "No es posible acceder sin estar logueado");
-                Response.Redirect("Default.aspx");
-            }
+                EspecialidadNegocio especialidadNegocio = new EspecialidadNegocio();
+                List<Especialidad> listaEspecialidades = especialidadNegocio.listar();
+                ddlEspecialidades.DataSource = listaEspecialidades;
+                ddlEspecialidades.DataTextField = "Nombre";
+                ddlEspecialidades.DataValueField = "Id";
+                ddlEspecialidades.DataBind();
 
-            if ((Session["usuario"] != null) && (((Paciente)Session["usuario"]).TipoUsuario == TipoUsuario.SUBADMIN))
-            {
-                Session.Add("error", "No cuenta con los permisos para acceder a este sector");  //no muestra el mensaje, directamente redirecciona
-                Response.Redirect("HomeAdmin.aspx");
+                MedicoNegocio negocio = new MedicoNegocio();
+                List<Medico> listaMedicos = negocio.listar();
+                dgvMedicos.DataSource = listaMedicos;
+                dgvMedicos.DataBind();
+
             }
         }
+        protected void btnActualizar_Click(object sender, EventArgs e)
+        {
+            // Obtener la lista de médicos correspondientes a la especialidad seleccionada
+            MedicoNegocio negocio = new MedicoNegocio();
+            List<Medico> listaMedicos = negocio.listarMedicosPorEspecialidad(int.Parse(ddlEspecialidades.SelectedValue));
+            dgvMedicos.DataSource = listaMedicos;
+            dgvMedicos.DataBind();
+        }
+
+        protected void ddlEspecialidades_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+
+
     }
 }
