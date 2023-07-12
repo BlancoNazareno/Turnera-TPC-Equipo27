@@ -40,11 +40,11 @@ create table Medicos(
  Foreign key (IDEspecialidad) references Especialidades (IDEspecialidad)
 )
 
-Create table Disponibilidades(
+create table Disponibilidades(
 IDDisponibilidad int identity (1,1) not null,
 IDMedico int not null, 
-Dia datetime not null, 
-Hora datetime not null, 
+Dia int not null, 
+Hora varchar(50) not null, 
 Primary key (IDDisponibilidad), 
 Foreign key (IDMedico) references Medicos(IDMedico)
 )
@@ -60,4 +60,17 @@ Primary key (IDTurno),
 Foreign key (IDEspecialidad) references Especialidades(IDEspecialidad),
 Foreign key (IDMedico) references Medicos(IDMedico),
 Foreign key (IDPaciente) references Pacientes(IDPaciente)
+)
+
+create table Horario (
+IDHorario int identity(1,1) not null,
+Hora varchar(50) not null,
+Primary Key (IDHorario)
+)
+
+Create table Dia (
+IDDia int identity(1,1) not null ,
+Dia int not null,
+NombreDia varchar(20) not null,
+Primary Key(IDDia)
 )
