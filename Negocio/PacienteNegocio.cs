@@ -75,7 +75,7 @@ namespace negocio
             AccesoDatos acceso = new AccesoDatos();
             try
             {
-                acceso.setearConsulta("insert into Pacientes (Nombre, Apellido, FechaNacimiento, DNI, Mail, Cobertura, Estado) values (@Nombre, @Apellido, @FechaNacimiento, @DNI, @Mail, @Cobertura, 1)");
+                acceso.setearConsulta("insert into Pacientes (Nombre, Apellido, FechaNacimiento, DNI, Mail, Cobertura, Estado, TipoUsuario) values (@Nombre, @Apellido, @FechaNacimiento, @DNI, @Mail, @Cobertura, 1, 3)");
                 acceso.setearParametro("@Nombre", nuevoPaciente.Nombre);
                 acceso.setearParametro("@Apellido", nuevoPaciente.Apellido);
                 acceso.setearParametro("@FechaNacimiento", nuevoPaciente.FechaNacimiento);

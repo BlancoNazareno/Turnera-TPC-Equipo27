@@ -14,5 +14,8 @@ insert into Pacientes select 'Arturo', 'Illia', '04-04-1995', 55111155, 'aillia@
 go
 
 
-Select * From Especialidades
+Insert into Pacientes (Nombre, Apellido, FechaNacimiento, DNI, Mail, Contrasenia, Cobertura, Estado, TipoUsuario)
+values  ('Admin','Apellido', '2000-10-10', 10000000, 'admin@admin', 1234,'admin',1,1),
+('Subadmin','Apellido', '2000-10-10', 20000000, 'subadmin@subadmin', 1234,'subadmin',1,2).
+('Paciente','Apellido', '2000-10-10', 30000000, 'paciente@paciente', 1234,'paciente',1,3)
 
