@@ -70,6 +70,7 @@
     <Content Include="Ayuda.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Disponibilidades.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="Especialidades.aspx" />
     <Content Include="FormDisponibilidad.aspx" />
     <Content Include="FormEspecialidad.aspx" />
@@ -116,6 +117,13 @@
     </Compile>
     <Compile Include="Disponibilidades.aspx.designer.cs">
       <DependentUpon>Disponibilidades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Especialidades.aspx.cs">
       <DependentUpon>Especialidades.aspx</DependentUpon>

@@ -43,7 +43,7 @@ namespace Turnera_TPC_Equipo27
                     txtId.Text = id;
                     txtNombre.Text = seleccionado.Nombre;
                     txtApellido.Text = seleccionado.Apellido;
-                    txtFechaNacimiento.Text = seleccionado.FechaNacimiento.ToString("dd/MM/yyyy");
+                    txtFechaNacimiento.Text = seleccionado.FechaNacimiento.ToString("yyyy-MM-dd");
                     txtDni.Text = seleccionado.Dni.ToString();
                     txtMail.Text = seleccionado.Mail.ToString();
                     txtVar.Text = seleccionado.Cobertura.ToString();

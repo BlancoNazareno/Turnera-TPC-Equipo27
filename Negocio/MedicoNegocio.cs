@@ -91,19 +91,6 @@ namespace negocio
             }
         }
 
-        public bool existeEspecialidadEnListaMedicos(int idE)//Para cuando se elimina una Especialidad, se fije si no esta vinculada a un Medico
-        {
-            List<Medico> lista = listar();
-            Medico medicoConEseId = lista.Find(m => m.Especialidad.Id == idE);
-
-            if (medicoConEseId != null && medicoConEseId.Id == idE)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
         public void modificar(Medico nuevoMedico)
         {
             AccesoDatos acceso = new AccesoDatos();
@@ -181,6 +168,39 @@ namespace negocio
             {
                 datos.cerrarConexion();
             }
+        }
+        public bool existeMedicoConEsaEspecialidad(int idEspecialidad)//Para cuando se elimina una Especialidad, se fije si no esta vinculada a un Medico
+        {
+            List<Medico> lista = listar();
+            return lista.Exists(m => m.Especialidad.Id == idEspecialidad);//devuelve true si se cumple lo q esta en parentesis
+        }
+
+        public List<Medico> listarMedicosPorEspecialidad(int especialidadId)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<Medico> listaMedicos = new List<Medico>();
+
+            string consulta = "Select M.Apellido, M.Nombre From Medicos M Where M.IDEspecialidad = ";
+            consulta += especialidadId;
+
+            //datos.setearParametro("@especialidadId", especialidadId);
+            //datos.setearConsulta("Select M.Apellido, M.Nombre From Medicos M Where M.IDEspecialidad = @especialidaId");
+            datos.setearConsulta(consulta);
+            datos.ejecutarLectura();
+
+            while (datos.Lector.Read())
+            {
+                Medico aux = new Medico();
+
+                aux.Apellido = (string)datos.Lector["Apellido"];
+                aux.Nombre = (string)datos.Lector["Nombre"];
+
+                listaMedicos.Add(aux);
+            }
+
+            datos.cerrarConexion();
+
+            return listaMedicos;
         }
     }
 
