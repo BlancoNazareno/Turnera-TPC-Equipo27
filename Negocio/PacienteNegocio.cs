@@ -17,7 +17,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("Select P.IDPaciente, P.Apellido, P.Nombre, P.Cobertura, P.DNI, P.FechaNacimiento, P.Mail From Pacientes P");
+                datos.setearConsulta("Select P.IDPaciente, P.Apellido, P.Nombre, P.DNI, P.FechaNacimiento, P.Cobertura, P.Mail, P.Contrasenia From Pacientes P");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -34,7 +34,7 @@ namespace negocio
 
                     aux.Mail = (string)datos.Lector["Mail"];
                     aux.Cobertura = (string)datos.Lector["Cobertura"];
-
+                    aux.Contrasenia = (string)datos.Lector["Contrasenia"];
 
                     lista.Add(aux);
                 }
@@ -75,13 +75,14 @@ namespace negocio
             AccesoDatos acceso = new AccesoDatos();
             try
             {
-                acceso.setearConsulta("insert into Pacientes (Nombre, Apellido, FechaNacimiento, DNI, Mail, Cobertura, Estado, TipoUsuario) values (@Nombre, @Apellido, @FechaNacimiento, @DNI, @Mail, @Cobertura, 1, 3)");
+                acceso.setearConsulta("insert into Pacientes (Nombre, Apellido, FechaNacimiento, DNI, Cobertura, Mail, Contrasenia, Estado, TipoUsuario) values (@Nombre, @Apellido, @FechaNacimiento, @DNI, @Cobertura, @Mail, @Contrasenia, 1, 3)");
                 acceso.setearParametro("@Nombre", nuevoPaciente.Nombre);
                 acceso.setearParametro("@Apellido", nuevoPaciente.Apellido);
                 acceso.setearParametro("@FechaNacimiento", nuevoPaciente.FechaNacimiento);
                 acceso.setearParametro("@DNI", nuevoPaciente.Dni);
                 acceso.setearParametro("@Mail", nuevoPaciente.Mail);
                 acceso.setearParametro("@Cobertura", nuevoPaciente.Cobertura);
+                acceso.setearParametro("@Contrasenia", nuevoPaciente.Contrasenia);
 
                 acceso.ejecutarAccion();
 
@@ -98,7 +99,7 @@ namespace negocio
             }
         }
 
-        public void modificar(Paciente nuevoPaciente)
+        public void modificarAdmin(Paciente nuevoPaciente)
         {
             AccesoDatos acceso = new AccesoDatos();
             try
@@ -124,6 +125,35 @@ namespace negocio
                 acceso.cerrarConexion();
             }
         }
+
+        public void modificar(Paciente nuevoPaciente)
+        {
+            AccesoDatos acceso = new AccesoDatos();
+            try
+            {
+                acceso.setearConsulta("update Pacientes set Nombre = @Nombre, Apellido = @Apellido, FechaNacimiento = @FechaNacimiento, DNI = @DNI, Cobertura = @Cobertura, Mail = @Mail, Contrasenia = @Contrasenia Where IDPaciente = @id");
+                acceso.setearParametro("@Nombre", nuevoPaciente.Nombre);
+                acceso.setearParametro("@Apellido", nuevoPaciente.Apellido);
+                acceso.setearParametro("@FechaNacimiento", nuevoPaciente.FechaNacimiento);
+                acceso.setearParametro("@DNI", nuevoPaciente.Dni);
+                acceso.setearParametro("@Cobertura", nuevoPaciente.Cobertura);
+                acceso.setearParametro("@Mail", nuevoPaciente.Mail);
+                acceso.setearParametro("@Contrasenia", nuevoPaciente.Contrasenia);
+                acceso.setearParametro("@id", nuevoPaciente.Id);
+
+                acceso.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                acceso.cerrarConexion();
+            }
+        }
+
 
         public bool loguear(Paciente paciente)
         {
@@ -169,6 +199,33 @@ namespace negocio
             }
         }
 
+        //no usado de momento
+        public bool ExisteDni(int dni)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT COUNT(*) FROM Pacientes WHERE DNI = @Dni");
+                datos.setearParametro("@Dni", dni);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    int count = datos.Lector.GetInt32(0);
+                    return count > 0;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
     }
 }
