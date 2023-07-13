@@ -45,6 +45,11 @@ namespace dominio
             Contrasenia = contrasenia;
         }
 
+        public string NombreCompleto
+        {
+            get { return Nombre + " " + Apellido; }
+        }
+
         public Paciente() { }
     }
 

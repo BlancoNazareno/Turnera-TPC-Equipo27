@@ -4,14 +4,26 @@
 
 <html>
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 
     <title>Space Medicine</title>
     <link rel="shorcut icon" href="multimedia\favicon.ico" type="image/ico">
+
+    <style>
+        .custom-link-button {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 1rem;
+            text-align: center;
+            color: black;
+            background-color: whitesmoke;
+        }
+    </style>
 </head>
 <body style="background-color: black; width: 100vw;">
     <form id="form1" runat="server">
@@ -35,13 +47,13 @@
                     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 
                         <ul class="navbar-nav ml-auto mb-2 mb-lg-0" style="text-align: right;">
-                                                        <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="Especialidades.aspx" style="font-weight: bold; font-size: x-large;">Especialidades</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="Medicos.aspx" style="font-weight: bold; font-size: x-large;">Médicos</a>
                             </li>
-                                                        <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="Disponibilidades.aspx" style="font-weight: bold; font-size: x-large;">Disponibilidades</a>
                             </li>
                             <li class="nav-item">
@@ -50,6 +62,19 @@
 
                             <li class="nav-item">
                                 <a class="nav-link" href="Turnos.aspx" style="font-weight: bold; font-size: x-large;">Turnos</a>
+                            </li>
+                            <li class="nav-item">
+                                <% if (Session["usuario"] != null)
+                                    { %>
+                                <div class="dropdown">
+                                    <a class="nav-link btn-cerrar-sesion dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class='fa fa-user-circle-o fa-2x'></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                                        <asp:LinkButton ID="btnCerrarSesion" runat="server" Text="Cerrar sesión" CssClass="nav-link custom-link-button" OnClick="btnCerrarSesion_Click"></asp:LinkButton>
+                                    </ul>
+                                </div>
+                                <% } %>
                             </li>
                         </ul>
 
