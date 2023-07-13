@@ -24,8 +24,119 @@ namespace Turnera_TPC_Equipo27
                 Session.Add("error", "No cuenta con los permisos para acceder a este sector");  //no muestra el mensaje, directamente redirecciona
                 Response.Redirect("HomePacientes.aspx");
             }
+
+            else
+            {
+                ddlMedico.Visible = false;
+                lblMedico.Visible = false;
+                cldTurno.Visible = false;
+                lblCldTurno.Visible = false;
+                lblHorarios.Visible = false;
+                ddlHorarios.Visible = false;
+                try
+                {
+                    if(!IsPostBack)
+                    {
+                        
+
+                        PacienteNegocio negocioPaciente = new PacienteNegocio();
+                        List<Paciente> listaPacientes = negocioPaciente.listar();
+                        ddlPaciente.DataSource = listaPacientes;
+                        ddlPaciente.DataValueField = "Id";
+                        ddlPaciente.DataTextField = "NombreCompleto";
+                        ddlPaciente.DataBind();
+
+                        EspecialidadNegocio negocioEspecialidad = new EspecialidadNegocio();
+                        List<Especialidad> listaEspecialidad = negocioEspecialidad.listar();
+                        ddlEspecialidad.DataSource = listaEspecialidad;
+                        ddlEspecialidad.DataValueField = "Id";
+                        ddlEspecialidad.DataTextField = "Nombre";
+                        ddlEspecialidad.DataBind();
+                    }
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+        }
+
+        protected void ddlMedico_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblCldTurno.Visible = true;
+            cldTurno.Visible= true;
+            lblMedico.Visible = true;
+            ddlMedico.Visible = true;
+
+        }
+
+        protected void ddlEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblMedico.Visible = true;
+            ddlMedico.Visible = true;
+
+
+            int idEspecialidadSeleccionada = Convert.ToInt32(ddlEspecialidad.SelectedValue);
+            Medico medicoSeleccionar = new Medico { Id = 0, Nombre = "Selecciona un médico", Apellido = string.Empty };
+
+            MedicoNegocio negocio = new MedicoNegocio();
+            List<Medico> listaFiltrada = negocio.listaFiltrada(idEspecialidadSeleccionada);
+
+            listaFiltrada.Insert(0, medicoSeleccionar);
+
+            ddlMedico.DataSource = listaFiltrada;
+            ddlMedico.DataValueField = "Id";
+            ddlMedico.DataTextField = "NombreCompleto";
+            ddlMedico.DataBind();
         }
 
 
+
+        protected void cldTurno_SelectionChanged(object sender, EventArgs e)
+        {
+            lblCldTurno.Visible = true;
+            cldTurno.Visible = true;
+            lblMedico.Visible = true;
+            ddlMedico.Visible = true;
+            ddlHorarios.Visible = true;
+            lblHorarios.Visible = true;
+
+            Horario disponibilidadSeleccionar = new Horario { Id = 0, Hora = "Selecciona un horario"};
+            HorarioNegocio negocio = new HorarioNegocio();
+            List<Horario> listaHorarios = negocio.listar();
+            listaHorarios.Insert(0, disponibilidadSeleccionar);
+            ddlHorarios.DataSource = listaHorarios;
+            ddlHorarios.DataValueField= "Id";
+            ddlHorarios.DataTextField = "Hora";
+            ddlHorarios.DataBind();
+
+        }
+
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddlHorarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblCldTurno.Visible = true;
+            cldTurno.Visible = true;
+            lblMedico.Visible = true;
+            ddlMedico.Visible = true;
+            ddlHorarios.Visible = true;
+            lblHorarios.Visible = true;
+        }
+
+        protected void cldTurno_VisibleMonthChanged(object sender, MonthChangedEventArgs e)
+        {
+            lblCldTurno.Visible = true;
+            cldTurno.Visible = true;
+            lblMedico.Visible = true;
+            ddlMedico.Visible = true;
+            ddlHorarios.Visible = true;
+            lblHorarios.Visible = true;
+        }
     }
 }

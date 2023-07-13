@@ -88,7 +88,7 @@ namespace Turnera_TPC_Equipo27
 
                 foreach (GridViewRow row in dgvDisponibilidad.Rows)
                 {
-                    for (int i = 1; i < row.Cells.Count - 1; i++)
+                    for (int i = 1; i < row.Cells.Count ; i++)
                     //Debug.WriteLine(i);
                     {
 
