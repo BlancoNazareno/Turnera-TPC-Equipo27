@@ -18,9 +18,11 @@ namespace Turnera_TPC_Equipo27
                 Response.Redirect("Default.aspx");
             }
 
-            if ((Session["usuario"] != null) && (((Paciente)Session["usuario"]).TipoUsuario == TipoUsuario.SUBADMIN))
+            if ((Session["usuario"] != null) &&
+                (((Paciente)Session["usuario"]).TipoUsuario == TipoUsuario.SUBADMIN ||
+                ((Paciente)Session["usuario"]).TipoUsuario == TipoUsuario.ADMIN))
             {
-                Session.Add("error", "No cuenta con los permisos para acceder a este sector");  //no muestra el mensaje, directamente redirecciona
+                //ya está logueado como ADMIN o SUBADMIN, por lo que redirige a su área correspondiente
                 Response.Redirect("HomeAdmin.aspx");
             }
         }

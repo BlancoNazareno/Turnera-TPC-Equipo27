@@ -15,6 +15,15 @@ namespace Turnera_TPC_Equipo27
     {
 
         /// <summary>
+        /// txtId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtId;
+
+        /// <summary>
         /// txtNombre control.
         /// </summary>
         /// <remarks>
@@ -51,13 +60,13 @@ namespace Turnera_TPC_Equipo27
         protected global::System.Web.UI.WebControls.TextBox txtDni;
 
         /// <summary>
-        /// txtVar control.
+        /// txtCobertura control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtVar;
+        protected global::System.Web.UI.WebControls.TextBox txtCobertura;
 
         /// <summary>
         /// txtMail control.
@@ -69,13 +78,13 @@ namespace Turnera_TPC_Equipo27
         protected global::System.Web.UI.WebControls.TextBox txtMail;
 
         /// <summary>
-        /// TextBox1 control.
+        /// txtContrasenia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtContrasenia;
 
         /// <summary>
         /// btnAceptar control.

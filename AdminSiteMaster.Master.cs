@@ -13,5 +13,11 @@ namespace Turnera_TPC_Equipo27
         {
 
         }
+
+        protected void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session.Remove("usuario");
+            Response.Redirect("Default.aspx");
+        }
     }
 }

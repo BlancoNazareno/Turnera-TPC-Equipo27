@@ -30,7 +30,7 @@ namespace Turnera_TPC_Equipo27
 
             try
             {
-                
+
                 string id = Request.QueryString["Id"] != null ? Request.QueryString["Id"].ToString() : "";
                 if (id != "" && !IsPostBack)
                 {
@@ -38,7 +38,7 @@ namespace Turnera_TPC_Equipo27
                     List<Paciente> listaPacientes = negocio.listar();
                     Paciente seleccionado = listaPacientes.Find(m => m.Id.ToString() == id);
 
-                    Session.Add("medicoSeleccionado", seleccionado);
+                    Session.Add("pacienteSeleccionado", seleccionado);
 
                     txtId.Text = id;
                     txtNombre.Text = seleccionado.Nombre;
@@ -46,8 +46,8 @@ namespace Turnera_TPC_Equipo27
                     txtFechaNacimiento.Text = seleccionado.FechaNacimiento.ToString("yyyy-MM-dd");
                     txtDni.Text = seleccionado.Dni.ToString();
                     txtMail.Text = seleccionado.Mail.ToString();
-                    txtVar.Text = seleccionado.Cobertura.ToString();
-                   
+                    txtCobertura.Text = seleccionado.Cobertura.ToString();
+
                 }
             }
             catch (Exception)
@@ -60,34 +60,44 @@ namespace Turnera_TPC_Equipo27
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            
-                try
+
+            try
+            {
+                Paciente nuevo = new Paciente();
+                PacienteNegocio negocio = new PacienteNegocio();
+
+                nuevo.Nombre = txtNombre.Text;
+                nuevo.Apellido = txtApellido.Text;
+                nuevo.FechaNacimiento = DateTime.Parse(txtFechaNacimiento.Text);
+                nuevo.Dni = int.Parse(txtDni.Text);                
+                nuevo.Cobertura = txtCobertura.Text;
+                nuevo.Mail = txtMail.Text;
+
+
+                if (Request.QueryString["Id"] != null)
                 {
-                    Paciente nuevo = new Paciente();
-                    PacienteNegocio negocio = new PacienteNegocio();
-
-                    nuevo.Nombre = txtNombre.Text;
-                    nuevo.Apellido = txtApellido.Text;
-                    nuevo.FechaNacimiento = DateTime.Parse(txtFechaNacimiento.Text);
-                    nuevo.Dni = int.Parse(txtDni.Text);
-                    nuevo.Mail = txtMail.Text;
-                    nuevo.Cobertura = txtVar.Text;
-
-                    if (Request.QueryString["Id"] != null)
-                    {
-                        nuevo.Id = int.Parse(txtId.Text);
-                        negocio.modificar(nuevo);
-                    }
-                    else
-                        negocio.agregar(nuevo);
-                        Response.Redirect("Pacientes.aspx", false);
+                    nuevo.Id = int.Parse(txtId.Text);
+                    negocio.modificarAdmin(nuevo); //no incluye la contraseña, ya que sólo el paciente la puede cambiar
+                    Response.Redirect("Pacientes.aspx", false);
                 }
-                catch (Exception)
+                else
                 {
-
-                    throw;
+                    nuevo.Contrasenia = txtDni.Text;    //sólo si el paciente está siendo dado de alta por el admin, settea el DNI como contraseña default, si es una modificación 
+                    negocio.agregar(nuevo);             //de los datos del paciente, la contraseña sólo puede modificarse estando logueado como el paciente en cuestión.
+                    Response.Redirect("Pacientes.aspx", false);
                 }
             }
-        
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Pacientes.aspx", false);
+        }
+
+
     }
 }
