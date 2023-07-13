@@ -27,17 +27,22 @@
                 </asp:TemplateField>
 
                 <asp:TemplateField>
-                <headertemplate>
+                    <HeaderTemplate>
+                        <% if (((dominio.Paciente)Session["usuario"]).TipoUsuario == dominio.TipoUsuario.ADMIN)
+                            { %>
+                        <div class="text-end mx-4">Acciones</div>
+                        <%} %>
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <% if (((dominio.Paciente)Session["usuario"]).TipoUsuario == dominio.TipoUsuario.ADMIN)
+                            { %>
+                        <div class="d-flex justify-content-end m-1">
+                            <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn btn-primary mx-2" OnClick="btnModificar_Click" />
 
-                    <div class="text-end mx-4">Acciones</div>
-                </headertemplate>
-                <itemtemplate>
-                    <div class="d-flex justify-content-end m-1">
-                        <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn btn-primary mx-2" OnClick="btnModificar_Click" />
-
-                        <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger mx-2" OnClick="btnEliminar_Click" />
-                    </div>
-                </itemtemplate>
+                            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger mx-2" OnClick="btnEliminar_Click" />
+                        </div>
+                        <%} %>
+                    </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>

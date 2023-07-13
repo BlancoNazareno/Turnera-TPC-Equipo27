@@ -24,7 +24,10 @@ namespace Turnera_TPC_Equipo27
                 //ya está logueado como paciente, por lo que redirige a su área correspondiente
                 Response.Redirect("HomePacientes.aspx");
             }
-            if ((Session["usuario"] != null) && ((Paciente)Session["usuario"]).TipoUsuario == TipoUsuario.SUBADMIN)
+
+            else if ((Session["usuario"] != null) &&
+                (((Paciente)Session["usuario"]).TipoUsuario == TipoUsuario.SUBADMIN ||
+                ((Paciente)Session["usuario"]).TipoUsuario == TipoUsuario.ADMIN))
             {
                 //ya está logueado como ADMIN o SUBADMIN, por lo que redirige a su área correspondiente
                 Response.Redirect("HomeAdmin.aspx");

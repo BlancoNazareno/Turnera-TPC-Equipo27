@@ -17,7 +17,7 @@ namespace Turnera_TPC_Equipo27
 
                 if (parametro == "Especialidades")
                 {
-                    lblError.Text = "No se puede eliminar, en nuestro staff hay un Medico con esa Especialidad";
+                    lblError.Text = "No se puede eliminar, en nuestro staff hay un Médico con esa Especialidad";
                 }
             }
         }
