@@ -74,6 +74,32 @@ namespace negocio
 
         }
 
+
+        public void agregar( Turno nuevoTurno )
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("insert into Turnos (IDEspecialidad, IDMedico, IDPaciente, Fecha, Estado) values (@IDEspecialidad, @IDMedico, @IDPaciente, @Fecha, 1)");
+                datos.setearParametro("@IDEspecialidad", nuevoTurno.Especialidad.Id);
+                datos.setearParametro("@IDMedico", nuevoTurno.Medico.Id);
+                datos.setearParametro("@IDPaciente", nuevoTurno.Paciente.Id);
+                datos.setearParametro("@Fecha", nuevoTurno.Fecha);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     //    public void agregar(Pokemon nuevo)
     //    {
     //        AccesoDatos datos = new AccesoDatos();

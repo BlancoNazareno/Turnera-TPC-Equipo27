@@ -2,6 +2,8 @@
 using negocio;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -108,7 +110,7 @@ namespace Turnera_TPC_Equipo27
             List<Horario> listaHorarios = negocio.listar();
             listaHorarios.Insert(0, disponibilidadSeleccionar);
             ddlHorarios.DataSource = listaHorarios;
-            ddlHorarios.DataValueField= "Id";
+            ddlHorarios.DataValueField= "Hora";
             ddlHorarios.DataTextField = "Hora";
             ddlHorarios.DataBind();
 
@@ -116,6 +118,44 @@ namespace Turnera_TPC_Equipo27
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+
+            try
+            {
+
+                Turno nuevo = new Turno();
+                TurnoNegocio negocio = new TurnoNegocio();
+                string horarioSeleccionado = ddlHorarios.SelectedValue;
+                DateTime fechaSeleccionada = cldTurno.SelectedDate;
+               
+
+                nuevo.Paciente = new Paciente();
+                nuevo.Paciente.Id=int.Parse(ddlPaciente.SelectedValue);
+
+
+                nuevo.Especialidad = new Especialidad();
+                nuevo.Especialidad.Id = int.Parse(ddlEspecialidad.SelectedValue);
+
+                nuevo.Medico = new Medico();
+                nuevo.Medico.Id = int.Parse(ddlMedico.SelectedValue);
+
+                DateTime fechaYHorario = fechaSeleccionada.Date;
+                DateTime horario = DateTime.ParseExact(horarioSeleccionado, "HH:mm", CultureInfo.InvariantCulture);
+                
+                fechaYHorario = fechaYHorario.Add(horario.TimeOfDay);
+                Debug.WriteLine(fechaYHorario);
+
+                nuevo.Fecha = fechaYHorario;
+
+                negocio.agregar(nuevo);
+
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
         }
 
