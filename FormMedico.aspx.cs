@@ -81,9 +81,33 @@ namespace Turnera_TPC_Equipo27
                 nuevo.Nombre = txtNombre.Text;
                 nuevo.Apellido = txtApellido.Text;
                 nuevo.FechaNacimiento = DateTime.Parse(txtFechaNacimiento.Text);
+                if (nuevo.FechaNacimiento > DateTime.Today)
+                {
+                    lblFechaNacimientoError.Visible = true; // Muestra el de error si la fecha de nacimiento es mayor a la fecha actual
+                    return;
+                }
+                else
+                {
+                    lblFechaNacimientoError.Visible = false;
+                }
                 nuevo.Dni = int.Parse(txtDni.Text);
+                if (nuevo.Dni < 0 || nuevo.Dni > 99999999){
+                    lblDniError.Visible = true;//Muestra error si el dni es invalido
+                    return;
+                }
+                else{
+                    lblDniError.Visible = false;
+                }
                 nuevo.Mail = txtMail.Text;
-
+                if (!nuevo.Mail.Contains("@") || !nuevo.Mail.Contains("."))
+                {
+                    lblEmailError.Visible = true; // Muestraerror si el email no contiene @ ni .
+                    return;
+                }
+                else
+                {
+                    lblEmailError.Visible = false;
+                }
                 nuevo.Especialidad = new Especialidad();
                 nuevo.Especialidad.Id = int.Parse(ddlEspecialidad.SelectedValue);
 

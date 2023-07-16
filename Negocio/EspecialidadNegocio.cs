@@ -17,15 +17,15 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("Select E.IDEspecialidad Id, E.Especialidad Especialidad From Especialidades E");
+                datos.setearConsulta("Select E.IDEspecialidad Id, E.Especialidad, E.Estado Especialidad From Especialidades E Where E.Estado = 1");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     Especialidad aux = new Especialidad();
-
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Nombre = (string)datos.Lector["Especialidad"];
+                    //aux.Estado = (bool)datos.Lector["Estado"];
 
                     lista.Add(aux);
                 }
@@ -103,6 +103,7 @@ namespace negocio
 
                 acceso.setearParametro("@Id", especialidad.Id);
                 acceso.setearParametro("@Especialidad", especialidad.Nombre);
+                //acceso.setearParametro("@Estado", especialidad.Estado);//ver si modifica
                 acceso.ejecutarAccion();
 
             }
@@ -117,12 +118,31 @@ namespace negocio
         }
 
         public void eliminar(int id)
-        {//Eliminado FISICO, el Logico no lo podemos hacer aca xq no tenemos en Especialidades un atributo como "Activo"
+        {
             AccesoDatos acceso = new AccesoDatos();
             try
             {
                 acceso.setearConsulta("Delete from Especialidades where IDEspecialidad=@Id");
                 acceso.setearParametro("@Id", id);               
+                acceso.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                acceso.cerrarConexion();
+            }
+        }
+
+        public void eliminarLogico(int id)
+        {
+            AccesoDatos acceso = new AccesoDatos();
+            try
+            {
+                acceso.setearConsulta("Update Especialidades set Estado = 0 where IDEspecialidad=@Id");
+                acceso.setearParametro("@Id", id);
                 acceso.ejecutarAccion();
             }
             catch (Exception ex)

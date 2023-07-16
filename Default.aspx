@@ -48,6 +48,14 @@
                             Podés hacerlo acá
                         </p>
                         <asp:Button Text="Registrarse" ID="btnRegistrarse" CssClass="btn btn-info mx-2" runat="server" OnClick="btnRegistrarse_Click" />
+                        <br />
+                        <br />
+                        <p class="form-label text-white">
+                            Consulte gratis que Obra Social/Prepaga posee actualmente 
+                            <a href="https://servicioswww.anses.gob.ar/ooss2/" style="text-decoration: underline; 
+                            font-style: italic; " target="_blank">aquí</a>
+                        </p>
+                        
                     </div>
                 </div>
             </div>

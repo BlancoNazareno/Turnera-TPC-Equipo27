@@ -51,6 +51,15 @@ namespace Turnera_TPC_Equipo27
         protected global::System.Web.UI.WebControls.TextBox txtFechaNacimiento;
 
         /// <summary>
+        /// lblFechaNacimientoError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFechaNacimientoError;
+
+        /// <summary>
         /// txtDni control.
         /// </summary>
         /// <remarks>
@@ -60,6 +69,15 @@ namespace Turnera_TPC_Equipo27
         protected global::System.Web.UI.WebControls.TextBox txtDni;
 
         /// <summary>
+        /// lblDniError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDniError;
+
+        /// <summary>
         /// txtMail control.
         /// </summary>
         /// <remarks>
@@ -67,6 +85,15 @@ namespace Turnera_TPC_Equipo27
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMail;
+
+        /// <summary>
+        /// lblEmailError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmailError;
 
         /// <summary>
         /// ddlEspecialidad control.
