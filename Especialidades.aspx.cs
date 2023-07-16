@@ -62,15 +62,15 @@ namespace Turnera_TPC_Equipo27
             MedicoNegocio negocio = new MedicoNegocio();
             bool existeMedico = negocio.existeMedicoConEsaEspecialidad(a);//Si existe un Medico que este trabajando con esa Especialidad devuelve true
 
-            //Ver esto! Esta alreves, no se xq, tengo q invertir la funcion (!existeMedico) <- DEBERIA ESTAR SIN EL SIGNO DE EXCLAMACION, sino me ELIMINA AUNQUE EXISTA EL MEDICO CON ESA ESPECIALIDAD
-            if (!existeMedico)
+            //16/7 CREO Q ESTA CORREGIDO ,Ver esto! Esta alreves, no se xq, tengo q invertir la funcion (!existeMedico) <- DEBERIA ESTAR SIN EL SIGNO DE EXCLAMACION, sino me ELIMINA AUNQUE EXISTA EL MEDICO CON ESA ESPECIALIDAD
+            if (existeMedico)//Ve si un Medico esta usando esa Especialidad
             {
                 Response.Redirect("Error.aspx?parametro=Especialidades");
             }
             else
             {
                 EspecialidadNegocio eNegocio = new EspecialidadNegocio();
-                eNegocio.eliminar(a);
+                eNegocio.eliminarLogico(a);
                 Response.Redirect("Especialidades.aspx");
             }
         }

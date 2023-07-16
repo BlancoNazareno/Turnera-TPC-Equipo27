@@ -17,7 +17,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("Select P.IDPaciente, P.Apellido, P.Nombre, P.DNI, P.FechaNacimiento, P.Cobertura, P.Mail, P.Contrasenia From Pacientes P");
+                datos.setearConsulta("Select P.IDPaciente, P.Apellido, P.Nombre, P.DNI, P.FechaNacimiento, P.Cobertura, P.Mail, P.Contrasenia From Pacientes P Where P.Estado = 1");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -70,6 +70,24 @@ namespace negocio
             }
         }
 
+        public void eliminarLogico(int id)
+        {
+            AccesoDatos acceso = new AccesoDatos();
+            try
+            {
+                acceso.setearConsulta("Update Pacientes set Estado = 0 where IDPaciente=@Id");
+                acceso.setearParametro("@Id", id);
+                acceso.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                acceso.cerrarConexion();
+            }
+        }
         public void agregar(Paciente nuevoPaciente)
         {
             AccesoDatos acceso = new AccesoDatos();
