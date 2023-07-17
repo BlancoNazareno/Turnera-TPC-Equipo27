@@ -17,6 +17,7 @@ namespace dominio
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
+        public string Celular { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public long Dni { get; set; }
         public string Mail { get; set; }
@@ -25,11 +26,12 @@ namespace dominio
         public TipoUsuario TipoUsuario { get; set; }
         public bool Estado { get; set; }
 
-        public Paciente(int id, string nombre, string apellido, DateTime fechaNacimiento, long dni, string mail, string cobertura, string contrasenia, TipoUsuario tipoUsuario, bool estado)
+        public Paciente(int id, string nombre, string apellido, string celular, DateTime fechaNacimiento, long dni, string mail, string cobertura, string contrasenia, TipoUsuario tipoUsuario, bool estado)
         {
             Id = id;
             Nombre = nombre;
             Apellido = apellido;
+            Celular = celular;
             FechaNacimiento = fechaNacimiento;
             Dni = dni;
             Mail = mail;

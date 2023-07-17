@@ -17,10 +17,10 @@ namespace negocio
         public EmailService()
         {
             server = new SmtpClient();
-            server.Credentials = new NetworkCredential("api", "********598e");
+            server.Credentials = new NetworkCredential("spacemedicine78@gmail.com", "vloguwuknkphgydw");
             server.EnableSsl = true;
             server.Port = 587;
-            server.Host = "live.smtp.mailtrap.io";
+            server.Host = "smtp.gmail.com";
             //modificar para q funcione
         }
 
@@ -47,8 +47,5 @@ namespace negocio
                 throw ex;
             }
         }
-
-
-
     }
 }

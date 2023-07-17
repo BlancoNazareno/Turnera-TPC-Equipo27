@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Ayuda.aspx" />
+    <Content Include="BonoConsulta.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Disponibilidades.aspx" />
     <Content Include="Error.aspx" />
@@ -88,6 +89,7 @@
     <Content Include="SacarTurno.aspx" />
     <Content Include="Turnos.aspx" />
     <Content Include="Web.config" />
+    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminSiteMaster.Master.cs">
@@ -103,6 +105,13 @@
     </Compile>
     <Compile Include="Ayuda.aspx.designer.cs">
       <DependentUpon>Ayuda.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BonoConsulta.aspx.cs">
+      <DependentUpon>BonoConsulta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BonoConsulta.aspx.designer.cs">
+      <DependentUpon>BonoConsulta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -240,6 +249,13 @@
     </Compile>
     <Compile Include="Turnos.aspx.designer.cs">
       <DependentUpon>Turnos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

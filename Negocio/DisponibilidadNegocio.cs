@@ -19,14 +19,14 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("insert into Disponibilidades (IDMedico, Dia, Hora) values (@IDMedico, @Dia, @Hora)");
+                //Consulta para que no se repitan disponibilidades en la DB
 
+                datos.setearConsulta("INSERT INTO Disponibilidades (IDMedico, Dia, Hora) SELECT @IDMedico, @Dia, @Hora WHERE NOT EXISTS (SELECT 1 FROM Disponibilidades WHERE IDMedico = @IDMedico AND Dia = @Dia AND Hora = @Hora)");
                 datos.setearParametro("@IDMedico", nuevaDisponibilidad.Medico.Id);
                 datos.setearParametro("@Dia", nuevaDisponibilidad.Dia);
                 datos.setearParametro("@Hora", nuevaDisponibilidad.Hora);
-
-
                 datos.ejecutarAccion();
+                
             }
             catch (Exception ex)
             {
@@ -37,6 +37,40 @@ namespace negocio
             {
                 datos.cerrarConexion();
             }
+        }
+
+        public bool checkearDisponibilidad(int id, int dia, string hora)
+        {
+            bool existeRegistro = false;
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("select count(*) from Disponibilidades where IDMedico = @Id and Dia = @Dia and Hora = @Hora");
+                datos.setearParametro("@Id", id);
+                datos.setearParametro("@Dia", dia);
+                datos.setearParametro("@Hora", hora);
+
+                int count = datos.ejecutarAccionScalar();
+
+                if (count > 0)
+                {
+                    existeRegistro = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+            return existeRegistro;
+
+
         }
     }
 }

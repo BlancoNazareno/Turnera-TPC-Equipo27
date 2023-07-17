@@ -43,6 +43,8 @@ namespace Turnera_TPC_Equipo27
 
                         PacienteNegocio negocioPaciente = new PacienteNegocio();
                         List<Paciente> listaPacientes = negocioPaciente.listar();
+                        Paciente pacienteSeleccionar = new Paciente { Id = 0, Nombre = "Selecciona un paciente", Apellido = string.Empty };
+                        listaPacientes.Insert(0, pacienteSeleccionar);
                         ddlPaciente.DataSource = listaPacientes;
                         ddlPaciente.DataValueField = "Id";
                         ddlPaciente.DataTextField = "NombreCompleto";
@@ -50,10 +52,13 @@ namespace Turnera_TPC_Equipo27
 
                         EspecialidadNegocio negocioEspecialidad = new EspecialidadNegocio();
                         List<Especialidad> listaEspecialidad = negocioEspecialidad.listar();
+                        Especialidad especialidadSeleccionar = new Especialidad { Id = 0, Nombre = "Selecciona una disponibilidad" };
+                        listaEspecialidad.Insert(0, especialidadSeleccionar);
                         ddlEspecialidad.DataSource = listaEspecialidad;
                         ddlEspecialidad.DataValueField = "Id";
                         ddlEspecialidad.DataTextField = "Nombre";
                         ddlEspecialidad.DataBind();
+                        
                     }
 
                 }
@@ -118,19 +123,22 @@ namespace Turnera_TPC_Equipo27
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+            Turno nuevo = new Turno();
+            TurnoNegocio negocio = new TurnoNegocio();
+            Paciente nuevoPaciente = new Paciente();
+            PacienteNegocio negocioPaciente = new PacienteNegocio();
 
+            string horarioSeleccionado = ddlHorarios.SelectedValue;
+            DateTime fechaSeleccionada = cldTurno.SelectedDate;
+
+
+            nuevo.Paciente = new Paciente();
+            nuevo.Paciente.Id = int.Parse(ddlPaciente.SelectedValue);
+            string emailDestino = negocioPaciente.obtenerEmail(int.Parse(ddlPaciente.SelectedValue));
+            EmailService emailService = new EmailService();
+            emailService.armarCorreo(emailDestino, "Turno Correcto", "Cuerpo");
             try
             {
-
-                Turno nuevo = new Turno();
-                TurnoNegocio negocio = new TurnoNegocio();
-                string horarioSeleccionado = ddlHorarios.SelectedValue;
-                DateTime fechaSeleccionada = cldTurno.SelectedDate;
-               
-
-                nuevo.Paciente = new Paciente();
-                nuevo.Paciente.Id=int.Parse(ddlPaciente.SelectedValue);
-
 
                 nuevo.Especialidad = new Especialidad();
                 nuevo.Especialidad.Id = int.Parse(ddlEspecialidad.SelectedValue);
@@ -147,8 +155,8 @@ namespace Turnera_TPC_Equipo27
                 nuevo.Fecha = fechaYHorario;
 
                 negocio.agregar(nuevo);
-
-
+                emailService.enviarEmail();
+                
 
             }
             catch (Exception)
