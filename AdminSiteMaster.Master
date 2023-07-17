@@ -54,7 +54,7 @@
                                 <a class="nav-link" href="Medicos.aspx" style="font-weight: bold; font-size: x-large;">Médicos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Disponibilidades.aspx" style="font-weight: bold; font-size: x-large;">Disponibilidades</a>
+                                <a class="nav-link" href="FormDisponibilidad.aspx" style="font-weight: bold; font-size: x-large;">Disponibilidades</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="Pacientes.aspx" style="font-weight: bold; font-size: x-large;">Pacientes</a>

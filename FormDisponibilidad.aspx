@@ -12,7 +12,7 @@
             </div>
             <div class="mb-3">
                 <label ID="lblDgvMedico" for="ddlMedico" class="form-label text-white" runat="server" >Nombre y Apellido: </label>
-                <asp:DropDownList ID="ddlMedico" runat="server" CssClass="form-select" AutoPostBack="false" ></asp:DropDownList>
+                <asp:DropDownList ID="ddlMedico" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlMedico_SelectedIndexChanged"></asp:DropDownList>
             </div>
             <div class="mb-3">
                 <label ID="lblDgvDisponibilidad" for="dgvDisponibilidad" class="form-label text-white" runat="server">Disponibilidad:</label>
@@ -52,7 +52,9 @@
 
             <div class="mb-3 text-center">
                 <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary mx-2" runat="server" OnClick="btnAceptar_Click" AutoPostBack="true"/>
+                <asp:Button Text="Modificar" ID="btnModificar" CssClass="btn btn-success mx-2" runat="server" OnClick="btnModificar_Click" AutoPostBack="true"/>
                 <asp:Button Text="Cancelar" ID="btnCancelar" CssClass="btn btn-danger mx-2" runat="server" />
+
             </div>
         </div>
     </div>
