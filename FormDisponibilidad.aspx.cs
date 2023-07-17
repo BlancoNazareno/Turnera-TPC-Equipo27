@@ -174,6 +174,7 @@ namespace Turnera_TPC_Equipo27
             ddlMedico.Visible = true;
             dgvDisponibilidad.Visible = true;
             lblDgvDisponibilidad.Visible = true;
+            
 
             CargarDisponibilidades();
 
@@ -182,7 +183,7 @@ namespace Turnera_TPC_Equipo27
         private void CargarDisponibilidades()
         {
             DisponibilidadNegocio negocio = new DisponibilidadNegocio();
-            int id = int.Parse(ddlMedico.SelectedValue);
+            int id = int.Parse(ddlMedico.SelectedItem.Value);
 
             foreach (GridViewRow row in dgvDisponibilidad.Rows)
             {
@@ -216,6 +217,7 @@ namespace Turnera_TPC_Equipo27
 
                         }
                     }
+                    chkDia.Checked = false;
                     if (negocio.checkearDisponibilidad(id, dia, row.Cells[0].Text))
                     {
                         chkDia.Checked = true;

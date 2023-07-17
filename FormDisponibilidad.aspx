@@ -12,7 +12,7 @@
             </div>
             <div class="mb-3">
                 <label ID="lblDgvMedico" for="ddlMedico" class="form-label text-white" runat="server" >Nombre y Apellido: </label>
-                <asp:DropDownList ID="ddlMedico" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlMedico_SelectedIndexChanged"></asp:DropDownList>
+                <asp:DropDownList ID="ddlMedico" runat="server" CssClass="form-select" OnSelectedIndexChanged="ddlMedico_SelectedIndexChanged" AutoPostBack="true" EnableViewState="true"></asp:DropDownList>
             </div>
             <div class="mb-3">
                 <label ID="lblDgvDisponibilidad" for="dgvDisponibilidad" class="form-label text-white" runat="server">Disponibilidad:</label>
