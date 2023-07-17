@@ -64,9 +64,6 @@ namespace Turnera_TPC_Equipo27
                         dgvDisponibilidad.DataSource = Session["listaHorarios"];
                         dgvDisponibilidad.DataBind();
 
-
-
-
                     }
 
                 }
@@ -100,7 +97,30 @@ namespace Turnera_TPC_Equipo27
                             Debug.WriteLine("*********", chkDia.Checked);
                             nueva.Medico = new Medico();
                             nueva.Medico.Id = int.Parse(ddlMedico.SelectedValue);
-                            nueva.Dia = int.Parse(dgvDisponibilidad.HeaderRow.Cells[i].Text);
+                            string diaSemana = dgvDisponibilidad.HeaderRow.Cells[i].Text;
+
+                            if (diaSemana != null)
+                            {
+                                switch (diaSemana)
+                                {
+                                    case "Lunes":
+                                        nueva.Dia = 1;
+                                        break;
+                                    case "Martes":
+                                        nueva.Dia = 2;
+                                        break;
+                                    case "Miércoles":
+                                        nueva.Dia = 3;
+                                        break;
+                                    case "Jueves":
+                                        nueva.Dia = 4;
+                                        break;
+                                    case "Viernes":
+                                        nueva.Dia = 5;
+                                        break;
+                                    
+                                }
+                            }
                             nueva.Hora = row.Cells[0].Text;
                             negocio.agregar(nueva);
 
@@ -136,9 +156,6 @@ namespace Turnera_TPC_Equipo27
             ddlMedico.DataValueField = "Id";
             ddlMedico.DataTextField = "NombreCompleto";
             ddlMedico.DataBind();
-
-
-
         }
     }
 }

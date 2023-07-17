@@ -21,29 +21,29 @@
                         <asp:BoundField HeaderText="Horarios" DataField="Hora"/>
                         
 
-                        <asp:TemplateField HeaderText="1" runat="server">
+                        <asp:TemplateField  HeaderText="Lunes" runat="server">
                             <ItemTemplate>
-                               <asp:CheckBox ID="chk1" runat="server"/>
+                               <asp:CheckBox ID="chkLunes" runat="server"/>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="2" runat="server">
+                        <asp:TemplateField  HeaderText="Martes" runat="server">
                             <ItemTemplate>
-                                <asp:CheckBox ID="chk2" runat="server"/>
+                                <asp:CheckBox ID="chkMartes" runat="server"/>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="3" runat="server">
+                        <asp:TemplateField  HeaderText="Miercoles" runat="server">
                             <ItemTemplate>
-                                <asp:CheckBox ID="chk3" runat="server"/>
+                                <asp:CheckBox ID="chkMiercoles" runat="server"/>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="4" runat="server">
+                        <asp:TemplateField  HeaderText="Jueves" runat="server">
                             <ItemTemplate>
-                                <asp:CheckBox ID="chk4" runat="server"/>
+                                <asp:CheckBox ID="chkJueves" runat="server"/>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="5" runat="server">
+                        <asp:TemplateField  HeaderText="Viernes" runat="server">
                             <ItemTemplate>
-                                <asp:CheckBox ID="chk5" runat="server"/>
+                                <asp:CheckBox ID="chkViernes" runat="server"/>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
