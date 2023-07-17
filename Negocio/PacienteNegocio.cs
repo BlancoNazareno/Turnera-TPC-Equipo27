@@ -245,5 +245,32 @@ namespace negocio
             }
         }
 
+        public string obtenerEmail(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            string email = string.Empty;
+            try
+            {
+                datos.setearConsulta("select P.Mail from Pacientes P where IDPaciente = @id  ");
+                datos.setearParametro("@id", id);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                   email = datos.Lector["Mail"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            return email;
+        }
+
     }
 }
