@@ -19,14 +19,14 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("insert into Disponibilidades (IDMedico, Dia, Hora) values (@IDMedico, @Dia, @Hora)");
+                //Consulta para que no se repitan disponibilidades en la DB
 
+                datos.setearConsulta("INSERT INTO Disponibilidades (IDMedico, Dia, Hora) SELECT @IDMedico, @Dia, @Hora WHERE NOT EXISTS (SELECT 1 FROM Disponibilidades WHERE IDMedico = @IDMedico AND Dia = @Dia AND Hora = @Hora)");
                 datos.setearParametro("@IDMedico", nuevaDisponibilidad.Medico.Id);
                 datos.setearParametro("@Dia", nuevaDisponibilidad.Dia);
                 datos.setearParametro("@Hora", nuevaDisponibilidad.Hora);
-
-
                 datos.ejecutarAccion();
+                
             }
             catch (Exception ex)
             {

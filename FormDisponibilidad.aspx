@@ -52,7 +52,6 @@
 
             <div class="mb-3 text-center">
                 <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary mx-2" runat="server" OnClick="btnAceptar_Click" AutoPostBack="true"/>
-                <asp:Button Text="Modificar" ID="btnModificar" CssClass="btn btn-success mx-2" runat="server" OnClick="btnModificar_Click" AutoPostBack="true"/>
                 <asp:Button Text="Cancelar" ID="btnCancelar" CssClass="btn btn-danger mx-2" runat="server" />
 
             </div>

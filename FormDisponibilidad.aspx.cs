@@ -45,10 +45,14 @@ namespace Turnera_TPC_Equipo27
                     {
                         EspecialidadNegocio negocioE = new EspecialidadNegocio();
                         List<Especialidad> listaE = negocioE.listar();
+                        
+                        Especialidad especialidadSeleccionar = new Especialidad { Id = 0, Nombre = "Selecciona una especialidad"};
+                        listaE.Insert(0, especialidadSeleccionar);
                         ddlEspecialidad.DataSource = listaE;
                         ddlEspecialidad.DataValueField = "Id";
                         ddlEspecialidad.DataTextField = "Nombre";
                         ddlEspecialidad.DataBind();
+
 
                         MedicoNegocio negocio = new MedicoNegocio();
                         List<Medico> lista = negocio.listar();
@@ -134,7 +138,7 @@ namespace Turnera_TPC_Equipo27
 
                     }
                 }
-                Response.Redirect("Disponibilidades.aspx", false);
+                Response.Redirect("FormDisponibilidad.aspx", false);
             }
             catch (Exception ex)
             {
