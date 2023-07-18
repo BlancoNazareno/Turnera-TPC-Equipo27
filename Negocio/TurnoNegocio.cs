@@ -12,67 +12,55 @@ namespace negocio
 {
     public class TurnoNegocio
     {
-
-        public List<Turno> listar(string id = "")
+        //IDEspecialidad, IDMedico, IDPaciente, Fecha, Estado
+        public List<Turno> listar()
         {
             List<Turno> lista = new List<Turno>();
-            return lista; //no implementada, ni siquiera sabemos si hubiese andado XD
+            AccesoDatos datos = new AccesoDatos();
 
-            //SqlConnection conexion = new SqlConnection();
-            //SqlCommand comando = new SqlCommand();
-            //SqlDataReader lector;
+            try
+            {
+                datos.setearConsulta("SELECT T.IDTurno, T.Fecha, E.Especialidad AS NombreEspecialidad, M.Nombre AS NombreMedico, M.Apellido AS ApellidoMedico, P.Nombre AS NombrePaciente, P.Apellido AS ApellidoPaciente,  T.Estado FROM Turnos T INNER JOIN Especialidades E ON T.IDEspecialidad = E.IDEspecialidad INNER JOIN Medicos M ON T.IDMedico = M.IDMedico INNER JOIN Pacientes P ON T.IDPaciente = P.IDPaciente");
+                datos.ejecutarLectura();
 
-            //try
-            //{
-            //    //conexion.ConnectionString = ConfigurationManager.AppSettings["cadenaConexion"];
-            //    comando.CommandType = System.Data.CommandType.Text;
-            //    //comando.CommandText = "Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id, P.Activo From POKEMONS P, ELEMENTOS E, ELEMENTOS D Where E.Id = P.IdTipo And D.Id = P.IdDebilidad ";
-            //    //if (id != "")
-            //    //    comando.CommandText += " and P.Id = " + id;
+                while (datos.Lector.Read())
+                {
+                    Turno turno = new Turno();
+                    turno.Id = (int)datos.Lector["IDTurno"];
+                    turno.Fecha = (DateTime)datos.Lector["Fecha"];
 
-            //    comando.Connection = conexion;
+                    Especialidad especialidad = new Especialidad();
+                    especialidad.Nombre = (string)datos.Lector["NombreEspecialidad"];
+                    turno.Especialidad = especialidad;
 
-            //    conexion.Open();
-            //    lector = comando.ExecuteReader();
+                    Medico medico = new Medico();
+                    medico.Nombre = (string)datos.Lector["NombreMedico"];
+                    medico.Apellido = (string)datos.Lector["ApellidoMedico"];
+                    turno.Medico = medico;
 
-            //    while (lector.Read())
-            //    {
-            //        Turno aux = new Turno();
+                    Paciente paciente = new Paciente();
+                    paciente.Nombre = (string)datos.Lector["NombrePaciente"];
+                    paciente.Apellido = (string)datos.Lector["ApellidoPaciente"];
+                    turno.Paciente = paciente;
 
-            //        aux.Id = (int)lector["Id"];
-                  
-            //        aux.Medico = new Medico();
-            //        aux.Medico.Apellido= (string)lector["ApellidoMedico"];
-            //        aux.Medico.Nombre= (string)lector["NombreMedico"];
+                    
+                    turno.Estado = (bool)datos.Lector["Estado"];
 
-            //        aux.Paciente = new Paciente();
-            //        aux.Paciente.Apellido = (string)lector["ApellidoPaciente"];
-            //        aux.Paciente.Nombre = (string)lector["NombrePaciente"];
+                    lista.Add(turno);
+                }
 
-            //        aux.FechaTurno = (DateTime)lector["FechaTurno"];
-
-            //        aux.HorarioTurno = new Horario();
-            //        aux.HorarioTurno.HoraInicio = (DateTime)lector["HoraInicioTurno"];
-            //        aux.HorarioTurno.HoraFin = (DateTime)lector["HoraFinTurno"];
-
-            //        aux.Cobertura = new Cobertura();
-            //        aux.Cobertura.Nombre = (string)lector["CoberturaPaciente"];
-
-            //        aux.MotivoDeConsulta = (string)lector["MotivoDeConsulta"];
-            //        aux.Estado = (string)lector["Estado"];
-
-            //        lista.Add(aux);
-            //    }
-
-            //    conexion.Close();
-            //    return lista;
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //}
-
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
+
 
 
         public void agregar( Turno nuevoTurno )

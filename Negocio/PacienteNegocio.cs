@@ -17,7 +17,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("Select P.IDPaciente, P.Apellido, P.Nombre, P.DNI, P.FechaNacimiento, P.Cobertura, P.Mail, P.Contrasenia, P.Celular From Pacientes P Where P.Estado = 1");
+                datos.setearConsulta("Select P.IDPaciente, P.Apellido, P.Nombre, P.DNI, P.FechaNacimiento, P.Cobertura, P.Mail, P.Contrasenia, P.Celular From Pacientes P Where P.Estado = 1 and P.TipoUsuario not in (1,2)");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

@@ -2,7 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <div class="container">
         <div class="text-end">
             <asp:Button ID="btnAgregar" runat="server" Text="Agregar" CssClass="btn btn-success m-2" OnClick="btnAgregar_Click" PostBackUrl="~/FormTurno.aspx" />
@@ -10,31 +12,25 @@
         <asp:GridView ID="dgvTurnosAdmin" runat="server" CssClass="table table-dark" AutoGenerateColumns="false">
             <Columns>
                 <asp:BoundField HeaderText="ID" DataField="Id" />
-                <asp:BoundField HeaderText="DNI" DataField="DNIPaciente" />
-                <asp:BoundField HeaderText="Paciente" DataField="NombrePaciente" />
-                <asp:BoundField HeaderText="Médico" DataField="NombreMédico" />
-
-                <asp:TemplateField HeaderText="Fecha del turno">
+                <asp:BoundField HeaderText="Fecha y hora" DataField="Fecha" DataFormatString="{0:dd/MM/yyyy HH:mm}" />
+                <asp:BoundField HeaderText="Especialidad" DataField="Especialidad.Nombre" />
+                <asp:BoundField HeaderText="Médico" DataField="Medico.NombreCompleto" />
+                <asp:BoundField HeaderText="Paciente" DataField="Paciente.NombreCompleto" />
+                <asp:TemplateField HeaderText="Estado">
                     <ItemTemplate>
-                        <asp:Label ID="lblFechaTurno" runat="server" Text='<%# Eval("FechaTurno", "{0:dd/MM/yyyy}") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-
-                <asp:TemplateField HeaderText="Hora del turno">
-                    <ItemTemplate>
-                        <asp:Label ID="lblHoraTurno" runat="server" Text='<%# Eval("HoraTurno", "{0:hh:mm}") %>'></asp:Label>
+                        <asp:Label ID="lblEstado" runat="server" Text='<%# Eval("Estado") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
 
                 <asp:TemplateField>
                     <HeaderTemplate>
-                        <% if (((dominio.Paciente)Session["usuario"]).TipoUsuario == dominio.TipoUsuario.ADMIN)
+                        <% if (Session["usuario"] != null && (((dominio.Paciente)Session["usuario"]).TipoUsuario == dominio.TipoUsuario.ADMIN))
                             { %>
                         <div class="text-end mx-4">Acciones</div>
                         <%} %>
                     </HeaderTemplate>
                     <ItemTemplate>
-                        <% if (((dominio.Paciente)Session["usuario"]).TipoUsuario == dominio.TipoUsuario.ADMIN)
+                        <% if (Session["usuario"] != null && (((dominio.Paciente)Session["usuario"]).TipoUsuario == dominio.TipoUsuario.ADMIN))
                             { %>
                         <div class="d-flex justify-content-end m-1">
                             <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn btn-primary mx-2" OnClick="btnModificar_Click" />
@@ -45,6 +41,8 @@
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
+
+
         </asp:GridView>
     </div>
 </asp:Content>
