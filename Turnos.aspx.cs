@@ -25,7 +25,30 @@ namespace Turnera_TPC_Equipo27
                 Response.Redirect("HomePacientes.aspx");
             }
 
+            TurnoNegocio negocio = new TurnoNegocio();
+            dgvTurnosAdmin.DataSource = negocio.listar();
+            dgvTurnosAdmin.RowDataBound += dgvTurnosAdmin_RowDataBound;     //Empleado por el cambio en el muestro del dato Estado (si es True [SQL] muestra Activo [HTML])
+            dgvTurnosAdmin.DataBind();
         }
+
+        protected void dgvTurnosAdmin_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label lblEstado = (Label)e.Row.FindControl("lblEstado");
+                if (lblEstado != null)
+                {
+                    bool estado = (bool)DataBinder.Eval(e.Row.DataItem, "Estado");
+                    lblEstado.Text = estado ? "Activo" : "Inactivo";
+                }
+            }
+        }
+
+
+
+
+
+
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
 
