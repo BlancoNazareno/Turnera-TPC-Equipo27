@@ -11,6 +11,7 @@
             <Columns>
                 <asp:BoundField HeaderText="ID" DataField="Id" />
                 <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
+                <asp:BoundField HeaderText="Celular" DataField="Celular" />
                 <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
 
                 <asp:BoundField HeaderText="DNI" DataField="DNI" />
@@ -36,6 +37,14 @@
                             <asp:Button ID="btnModificar" runat="server" Text="Modificar" CssClass="btn btn-primary mx-2" OnClick="btnModificar_Click" />
 
                             <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CssClass="btn btn-danger mx-2" OnClick="btnEliminar_Click" />
+
+                            <%--ESTE BOTON ESTA ACA PARA HACER PRUEBAS, DPS SE MUEVE AL LISTADO DE TURNOS--%>
+                            <asp:Button ID="btnComunicarse" runat="server" Text="Enviar Wpp."
+                                Style="background-color: #88CC88; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;"
+                                CssClass="btn btn-primary mx-2" OnClick="btnComunicarse_Click" />
+                           <%--ESTE BOTON ESTA ACA PARA HACER PRUEBAS, DPS SE MUEVE AL LISTADO DE TURNOS--%>
+                            <asp:Button ID="btnBono" runat="server" Text="Imp. Bono" CssClass="btn btn-primary mx-2" OnClick="btnBono_Click" />
+
                         </div>
                         <%} %>
                     </ItemTemplate>

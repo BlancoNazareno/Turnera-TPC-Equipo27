@@ -1,37 +1,55 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="SacarTurno.aspx.cs" Inherits="Turnera_TPC_Equipo27.Turnos" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div id="Ayuda">
+       
         <div class="container" style="background-color: rgb(65, 65, 65);">
             <div class="text-light p-3 text-center" style="margin-top: 3rem; margin-bottom: 2rem">
-                <h4><strong>Seleccione una Especialidad para filtrar, luego actualice la lista: </strong></h4>
-                <div class="col">
-                    <asp:DropDownList runat="server" ID="ddlEspecialidades" CssClass="btn btn-outline-dark dropdown-toggle"
-                        AppendDataBoundItems="true" OnSelectedIndexChanged="ddlEspecialidades_SelectedIndexChanged"
-                        DataValueField="Id">
-                    </asp:DropDownList>
-                </div>
-                <h4><strong>Seleccione un Medico</strong></h4>
-                <div class="col">
-                    <asp:Button ID="btnActualizar" runat="server" Text="Actualizar"
-                        CssClass="btn btn-primary mx-2" OnClick="btnActualizar_Click" />
-                    <asp:GridView ID="dgvMedicos" runat="server" CssClass="table table-dark" AutoGenerateColumns="false">
-                        <Columns>
-                            <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
-                            <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                            <asp:BoundField HeaderText="Dias de atencion" />
-                        </Columns>
-                    </asp:GridView>
-                </div>
-            </div>
-            <div style="text-align: center;">
-                <td>
-                    <a href="Default.aspx" class="btn btn-secondary btn active" role="button"
-                        style="margin-bottom: 3rem; margin-top: 3rem">Volver al inicio</a>
-                </td>
+                <h4><strong>Solicita tu turno</strong></h4>
+                <br />
             </div>
         </div>
-    </div>
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-6 mb-3 text-center">
+                    <label for="ddlPaciente" class="form-label text-white"><strong>Paciente</strong></label>
+                    <asp:DropDownList ID="ddlPaciente" CssClass="form-select" runat="server"></asp:DropDownList>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-6 mb-3 text-center">
+                    <label for="ddlEspecialidad" class="form-label text-white"><strong>Especialidad</strong></label>
+                    <asp:DropDownList ID="ddlEspecialidad" CssClass="form-select" runat="server" OnSelectedIndexChanged="ddlEspecialidad_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center ">
+                <div class="col-6 mb-3 text-center">
+                    <label for="ddlMedico" class="form-label text-white" id="lblMedico" runat="server"><strong>Medico</strong></label>
+                    <asp:DropDownList ID="ddlMedico" CssClass="form-select " runat="server" OnSelectedIndexChanged="ddlMedico_SelectedIndexChanged" AutoPostBack="true">
+                    </asp:DropDownList>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center pt-3">
+                <div runat="server" id="lblCldTurno" class="col-6 mb-3 text-center bg-secondary rounded-1 py-4">
+                    <label for="cldTurno" class="form-label text-black"  runat="server"><strong>Calendario de turnos</strong></label>
+                    <asp:Calendar class="form-label text-white" ID="cldTurno" runat="server" style="margin: 0 auto;" OnVisibleMonthChanged="cldTurno_VisibleMonthChanged" OnSelectionChanged="cldTurno_SelectionChanged">
+                    </asp:Calendar>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center ">
+                <div class="col-6 mb-3 text-center">
+                    <label for="ddlHorarios" class="form-label text-white" id="lblHorarios" runat="server"><strong>Horarios Disponibles</strong></label>
+                    <asp:DropDownList ID="ddlHorarios" CssClass="form-select " runat="server" OnSelectedIndexChanged="ddlHorarios_SelectedIndexChanged" AutoPostBack="true">
+                    </asp:DropDownList>
+                </div>
+            </div>
+
+            <div class="mb-3 text-center">
+                <asp:Button Text="Sacar Turno" ID="btnAceptar" CssClass="btn btn-primary mx-2" runat="server" OnClick="btnAceptar_Click" AutoPostBack="false"/>
+                <asp:Button Text="Cancelar" ID="btnCancelar" CssClass="btn btn-danger mx-2" runat="server" />
+            </div>
+
+        </div>
+
+        
 </asp:Content>

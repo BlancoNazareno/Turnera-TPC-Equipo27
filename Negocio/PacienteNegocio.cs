@@ -17,7 +17,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("Select P.IDPaciente, P.Apellido, P.Nombre, P.DNI, P.FechaNacimiento, P.Cobertura, P.Mail, P.Contrasenia From Pacientes P Where P.Estado = 1");
+                datos.setearConsulta("Select P.IDPaciente, P.Apellido, P.Nombre, P.DNI, P.FechaNacimiento, P.Cobertura, P.Mail, P.Contrasenia, P.Celular From Pacientes P Where P.Estado = 1");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -26,6 +26,7 @@ namespace negocio
                     aux.Id = (int)datos.Lector["IDPaciente"];
                     aux.Apellido = (string)datos.Lector["Apellido"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Celular = (string)datos.Lector["Celular"];
 
                     aux.Dni = (int)datos.Lector["DNI"];
                     aux.FechaNacimiento = (DateTime)datos.Lector["FechaNacimiento"];
@@ -93,9 +94,10 @@ namespace negocio
             AccesoDatos acceso = new AccesoDatos();
             try
             {
-                acceso.setearConsulta("insert into Pacientes (Nombre, Apellido, FechaNacimiento, DNI, Cobertura, Mail, Contrasenia, Estado, TipoUsuario) values (@Nombre, @Apellido, @FechaNacimiento, @DNI, @Cobertura, @Mail, @Contrasenia, 1, 3)");
+                acceso.setearConsulta("insert into Pacientes (Nombre, Apellido, Celular, FechaNacimiento, DNI, Cobertura, Mail, Contrasenia, Estado, TipoUsuario) values (@Nombre, @Apellido, @Celular, @FechaNacimiento, @DNI, @Cobertura, @Mail, @Contrasenia, 1, 3)");
                 acceso.setearParametro("@Nombre", nuevoPaciente.Nombre);
                 acceso.setearParametro("@Apellido", nuevoPaciente.Apellido);
+                acceso.setearParametro("@Celular", nuevoPaciente.Celular);
                 acceso.setearParametro("@FechaNacimiento", nuevoPaciente.FechaNacimiento);
                 acceso.setearParametro("@DNI", nuevoPaciente.Dni);
                 acceso.setearParametro("@Mail", nuevoPaciente.Mail);
@@ -122,9 +124,10 @@ namespace negocio
             AccesoDatos acceso = new AccesoDatos();
             try
             {
-                acceso.setearConsulta("update Pacientes set Nombre = @Nombre, Apellido = @Apellido, FechaNacimiento = @FechaNacimiento, DNI = @DNI, Mail = @Mail, Cobertura = @Cobertura Where IDPaciente = @id");
+                acceso.setearConsulta("update Pacientes set Nombre = @Nombre, Apellido = @Apellido, Celular = @Celular, FechaNacimiento = @FechaNacimiento, DNI = @DNI, Mail = @Mail, Cobertura = @Cobertura Where IDPaciente = @id");
                 acceso.setearParametro("@Nombre", nuevoPaciente.Nombre);
                 acceso.setearParametro("@Apellido", nuevoPaciente.Apellido);
+                acceso.setearParametro("@Celular", nuevoPaciente.Celular);
                 acceso.setearParametro("@FechaNacimiento", nuevoPaciente.FechaNacimiento);
                 acceso.setearParametro("@DNI", nuevoPaciente.Dni);
                 acceso.setearParametro("@Mail", nuevoPaciente.Mail);
@@ -149,9 +152,10 @@ namespace negocio
             AccesoDatos acceso = new AccesoDatos();
             try
             {
-                acceso.setearConsulta("update Pacientes set Nombre = @Nombre, Apellido = @Apellido, FechaNacimiento = @FechaNacimiento, DNI = @DNI, Cobertura = @Cobertura, Mail = @Mail, Contrasenia = @Contrasenia Where IDPaciente = @id");
+                acceso.setearConsulta("update Pacientes set Nombre = @Nombre, Apellido = @Apellido, Celular = @Celular, FechaNacimiento = @FechaNacimiento, DNI = @DNI, Cobertura = @Cobertura, Mail = @Mail, Contrasenia = @Contrasenia Where IDPaciente = @id");
                 acceso.setearParametro("@Nombre", nuevoPaciente.Nombre);
                 acceso.setearParametro("@Apellido", nuevoPaciente.Apellido);
+                acceso.setearParametro("@Celular", nuevoPaciente.Celular);
                 acceso.setearParametro("@FechaNacimiento", nuevoPaciente.FechaNacimiento);
                 acceso.setearParametro("@DNI", nuevoPaciente.Dni);
                 acceso.setearParametro("@Cobertura", nuevoPaciente.Cobertura);

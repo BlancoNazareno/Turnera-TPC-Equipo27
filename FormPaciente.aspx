@@ -19,6 +19,12 @@
                     <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control" />
                 </div>
                 <div class="mb-3">
+                    <label for="txtCelular" class="form-label text-white">Celular: </label>
+                    <asp:TextBox runat="server" ID="txtCelular" CssClass="form-control" />
+                    <asp:Label runat="server" ID="lblCelularError" CssClass="text-danger" Visible="false">
+                        El número de celular debe estar entre 1000000000 y 9999999999</asp:Label>
+                </div>
+                <div class="mb-3">
                     <label for="txtFechaNacimiento" class="form-label text-white">Fecha de nacimiento: </label>
                     <asp:TextBox TextMode="Date" ID="txtFechaNacimiento" CssClass="form-select" runat="server" />
                     <asp:Label ID="lblFechaNacimientoError" runat="server" CssClass="text-danger" Visible="false">
