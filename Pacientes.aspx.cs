@@ -84,5 +84,35 @@ namespace Turnera_TPC_Equipo27
 
             
         }
+
+        protected void btnComunicarse_Click(object sender, EventArgs e)
+        {
+            string numeroCelularPaciente = "123456789";//AGREGAR CELULAR DE USUARIO
+            string mensajePredeterminado = "Hola! Nos comunicamos desde Space Medicine";
+
+            //Codifica el mensaje para que sea válido en la URL
+            string mensajeCodificado = Uri.EscapeDataString(mensajePredeterminado);
+
+            // Generar la URL de WhatsApp
+            string enlaceWhatsapp = $"https://api.whatsapp.com/send?phone={numeroCelularPaciente}&text={mensajeCodificado}";
+
+            //Abre WhatsApp en una nueva pestaña
+            ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", $"window.open('{enlaceWhatsapp}', '_blank');", true);
+        }
+
+        protected void btnBono_Click(object sender, EventArgs e)
+        {
+
+            Button btnBono = (Button)sender;
+
+            // Obtener la fila que contiene el botón
+            GridViewRow row = (GridViewRow)btnBono.NamingContainer;
+
+            // Obtener el ID de la fila
+            string id = row.Cells[0].Text;
+
+            // Redirigir a otra página pasando el ID como parámetro en la URL
+            Response.Redirect("BonoConsulta.aspx?id=" + id);
+        }
     }
 }

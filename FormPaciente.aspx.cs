@@ -43,6 +43,7 @@ namespace Turnera_TPC_Equipo27
                     txtId.Text = id;
                     txtNombre.Text = seleccionado.Nombre;
                     txtApellido.Text = seleccionado.Apellido;
+                    txtCelular.Text = seleccionado.Celular;
                     txtFechaNacimiento.Text = seleccionado.FechaNacimiento.ToString("yyyy-MM-dd");
                     txtDni.Text = seleccionado.Dni.ToString();
                     txtMail.Text = seleccionado.Mail.ToString();
@@ -68,6 +69,17 @@ namespace Turnera_TPC_Equipo27
 
                 nuevo.Nombre = txtNombre.Text;
                 nuevo.Apellido = txtApellido.Text;
+                nuevo.Celular = txtCelular.Text;
+                if (!int.TryParse(txtCelular.Text, out int celular) || celular < 1000000000 || celular > 9999999999)
+                {
+                    // El número de celular no es un valor numérico válido o está fuera del rango permitido
+                    lblCelularError.Visible = true;
+                    return;
+                }
+                else
+                {
+                    lblCelularError.Visible = false;
+                }
                 nuevo.FechaNacimiento = DateTime.Parse(txtFechaNacimiento.Text);
                 if (nuevo.FechaNacimiento > DateTime.Today)
                 {

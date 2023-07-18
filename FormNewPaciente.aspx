@@ -19,6 +19,10 @@
                     <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control" />
                 </div>
                 <div class="mb-3">
+                    <label for="txtCelular" class="form-label text-white">Celular: </label>
+                    <asp:TextBox runat="server" ID="txtCelular" CssClass="form-control" />
+                </div>
+                <div class="mb-3">
                     <label for="txtFechaNacimiento" class="form-label text-white">Fecha de nacimiento: </label>
                     <asp:TextBox TextMode="Date" ID="txtFechaNacimiento" CssClass="form-select" runat="server" />
                 </div>
@@ -41,7 +45,7 @@
 
                 <div class="mb-3 text-center">
                     <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary mx-2" runat="server" OnClick="btnAceptar_Click" />
-                    <asp:Button Text="Cancelar" ID="btnCancelar" CssClass="btn btn-danger mx-2" runat="server" OnClick="btnCancelar_Click"/>
+                    <asp:Button Text="Cancelar" ID="btnCancelar" CssClass="btn btn-danger mx-2" runat="server" OnClick="btnCancelar_Click" />
                 </div>
             </div>
         </div>

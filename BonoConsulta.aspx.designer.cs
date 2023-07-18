@@ -11,106 +11,88 @@ namespace Turnera_TPC_Equipo27
 {
 
 
-    public partial class FormNewPaciente
+    public partial class BonoConsulta
     {
 
         /// <summary>
-        /// txtId control.
+        /// lblFechaTurno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtId;
+        protected global::System.Web.UI.WebControls.Label lblFechaTurno;
 
         /// <summary>
-        /// txtNombre control.
+        /// lblApellidoMedico control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombre;
+        protected global::System.Web.UI.WebControls.Label lblApellidoMedico;
 
         /// <summary>
-        /// txtApellido control.
+        /// lblEspecialidad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtApellido;
+        protected global::System.Web.UI.WebControls.Label lblEspecialidad;
 
         /// <summary>
-        /// txtCelular control.
+        /// lblNombreCompleto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCelular;
+        protected global::System.Web.UI.WebControls.Label lblNombreCompleto;
 
         /// <summary>
-        /// txtFechaNacimiento control.
+        /// lblDNI control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaNacimiento;
+        protected global::System.Web.UI.WebControls.Label lblDNI;
 
         /// <summary>
-        /// txtDni control.
+        /// lblFechaNacimiento control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDni;
+        protected global::System.Web.UI.WebControls.Label lblFechaNacimiento;
 
         /// <summary>
-        /// txtCobertura control.
+        /// lblCelular control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCobertura;
+        protected global::System.Web.UI.WebControls.Label lblCelular;
 
         /// <summary>
-        /// txtMail control.
+        /// lblCobertura control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMail;
+        protected global::System.Web.UI.WebControls.Label lblCobertura;
 
         /// <summary>
-        /// txtContrasenia control.
+        /// btnImprimir control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContrasenia;
-
-        /// <summary>
-        /// btnAceptar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAceptar;
-
-        /// <summary>
-        /// btnCancelar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelar;
+        protected global::System.Web.UI.WebControls.Button btnImprimir;
     }
 }

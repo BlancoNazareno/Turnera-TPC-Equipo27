@@ -82,6 +82,7 @@ namespace Turnera_TPC_Equipo27
                     txtId.Text = id;
                     txtNombre.Text = seleccionado.Nombre;
                     txtApellido.Text = seleccionado.Apellido;
+                    txtCelular.Text = seleccionado.Celular;
                     txtFechaNacimiento.Text = seleccionado.FechaNacimiento.ToString("yyyy-MM-dd");
                     txtDni.Text = seleccionado.Dni.ToString();
                     txtCobertura.Text = seleccionado.Cobertura.ToString();
@@ -108,6 +109,7 @@ namespace Turnera_TPC_Equipo27
 
                 nuevo.Nombre = txtNombre.Text;
                 nuevo.Apellido = txtApellido.Text;
+                nuevo.Celular = txtCelular.Text;
                 nuevo.FechaNacimiento = DateTime.Parse(txtFechaNacimiento.Text);
                 nuevo.Dni = int.Parse(txtDni.Text);
                 nuevo.Cobertura = txtCobertura.Text;
