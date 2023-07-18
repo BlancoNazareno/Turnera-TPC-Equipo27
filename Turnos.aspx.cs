@@ -39,29 +39,40 @@ namespace Turnera_TPC_Equipo27
                 if (lblEstado != null)
                 {
                     bool estado = (bool)DataBinder.Eval(e.Row.DataItem, "Estado");
-                    lblEstado.Text = estado ? "Activo" : "Inactivo";
+                    lblEstado.Text = estado ? "Activo" : "Cancelado";
                 }
             }
         }
 
-
-
-
-
-
         protected void btnAgregar_Click(object sender, EventArgs e)
-        {
-
+        {            
         }
+
+
+
+
+
 
         protected void btnModificar_Click(object sender, EventArgs e)
         {
-       
+            if (sender is Button)
+            {
+                Button btnModificar = (Button)sender;
+                GridViewRow row = (GridViewRow)btnModificar.NamingContainer;
+                string id = row.Cells[0].Text;
+                Response.Redirect("~/FormTurno.aspx?id=" + id);
+            }
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-         
+            Button btnEliminar = (Button)sender;//Obtengo el botón 
+            GridViewRow fila = (GridViewRow)btnEliminar.NamingContainer;//Obtengo la fila de ese boton
+            int idTurno = Convert.ToInt32(fila.Cells[0].Text);//Obtengo el valor de la celda 0
+
+            TurnoNegocio negocio = new TurnoNegocio();
+            negocio.eliminarLogico(idTurno);
+            Response.Redirect("Turnos.aspx");
         }
     }
 }

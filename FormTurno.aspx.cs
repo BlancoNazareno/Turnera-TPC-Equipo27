@@ -23,10 +23,9 @@ namespace Turnera_TPC_Equipo27
 
             if ((Session["usuario"] != null) && (((Paciente)Session["usuario"]).TipoUsuario == TipoUsuario.PACIENTE))
             {
-                Session.Add("error", "No cuenta con los permisos para acceder a este sector");  //no muestra el mensaje, directamente redirecciona
+                Session.Add("error", "No cuenta con los permisos para acceder a este sector");
                 Response.Redirect("HomePacientes.aspx");
             }
-
             else
             {
                 ddlMedico.Visible = false;
@@ -35,36 +34,55 @@ namespace Turnera_TPC_Equipo27
                 lblCldTurno.Visible = false;
                 lblHorarios.Visible = false;
                 ddlHorarios.Visible = false;
+                txtId.Enabled = false;
+                txtId.Visible = false;
+
                 try
                 {
-                    if(!IsPostBack)
+                    PacienteNegocio negocioPaciente = new PacienteNegocio();
+                    List<Paciente> listaPacientes = negocioPaciente.listar();
+                    Paciente pacienteSeleccionar = new Paciente { Id = 0, Nombre = "Selecciona un paciente", Apellido = string.Empty };
+                    listaPacientes.Insert(0, pacienteSeleccionar);
+                    ddlPaciente.DataSource = listaPacientes;
+                    ddlPaciente.DataValueField = "Id";
+                    ddlPaciente.DataTextField = "NombreCompleto";
+                    ddlPaciente.DataBind();
+
+                    EspecialidadNegocio negocioEspecialidad = new EspecialidadNegocio();
+                    List<Especialidad> listaEspecialidad = negocioEspecialidad.listar();
+                    Especialidad especialidadSeleccionar = new Especialidad { Id = 0, Nombre = "Selecciona una disponibilidad" };
+                    listaEspecialidad.Insert(0, especialidadSeleccionar);
+                    ddlEspecialidad.DataSource = listaEspecialidad;
+                    ddlEspecialidad.DataValueField = "Id";
+                    ddlEspecialidad.DataTextField = "Nombre";
+                    ddlEspecialidad.DataBind();
+
+                    if (!IsPostBack)
                     {
-                        
+                        string id = Request.QueryString.Get("id"); // Obtener el ID del turno correctamente
+                        if (!string.IsNullOrEmpty(id))
+                        {
+                            TurnoNegocio negocioTurno = new TurnoNegocio();
+                            Turno turno = negocioTurno.obtenerPorId(Convert.ToInt32(id));
 
-                        PacienteNegocio negocioPaciente = new PacienteNegocio();
-                        List<Paciente> listaPacientes = negocioPaciente.listar();
-                        Paciente pacienteSeleccionar = new Paciente { Id = 0, Nombre = "Selecciona un paciente", Apellido = string.Empty };
-                        listaPacientes.Insert(0, pacienteSeleccionar);
-                        ddlPaciente.DataSource = listaPacientes;
-                        ddlPaciente.DataValueField = "Id";
-                        ddlPaciente.DataTextField = "NombreCompleto";
-                        ddlPaciente.DataBind();
+                            if (turno != null)
+                            {
+                                Session["turnoSeleccionado"] = turno;
 
-                        EspecialidadNegocio negocioEspecialidad = new EspecialidadNegocio();
-                        List<Especialidad> listaEspecialidad = negocioEspecialidad.listar();
-                        Especialidad especialidadSeleccionar = new Especialidad { Id = 0, Nombre = "Selecciona una disponibilidad" };
-                        listaEspecialidad.Insert(0, especialidadSeleccionar);
-                        ddlEspecialidad.DataSource = listaEspecialidad;
-                        ddlEspecialidad.DataValueField = "Id";
-                        ddlEspecialidad.DataTextField = "Nombre";
-                        ddlEspecialidad.DataBind();
-                        
+                                txtId.Text = turno.Id.ToString();
+                                ddlPaciente.SelectedValue = turno.Paciente.NombreCompleto.ToString();
+                                ddlEspecialidad.SelectedValue = turno.Especialidad.Nombre.ToString();
+                                ddlEspecialidad_SelectedIndexChanged(null, null); // Actualizar los médicos en función de la especialidad seleccionada
+                                ddlMedico.SelectedValue = turno.Medico.Nombre.ToString();
+                                cldTurno.SelectedDate = turno.Fecha.Date;
+                                cldTurno_SelectionChanged(null, null); // Actualizar los horarios disponibles en función de la fecha seleccionada
+                                ddlHorarios.SelectedValue = turno.Fecha.ToString("HH:mm");
+                            }
+                        }
                     }
-
                 }
                 catch (Exception)
                 {
-
                     throw;
                 }
             }
@@ -122,7 +140,8 @@ namespace Turnera_TPC_Equipo27
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
-        {
+        {           
+            
             Turno nuevo = new Turno();
             TurnoNegocio negocio = new TurnoNegocio();
             Paciente nuevoPaciente = new Paciente();
@@ -154,9 +173,16 @@ namespace Turnera_TPC_Equipo27
 
                 nuevo.Fecha = fechaYHorario;
 
-                negocio.agregar(nuevo);
-                emailService.enviarEmail();
-                
+                if (Request.QueryString["Id"] != null)
+                {
+                    nuevo.Id = int.Parse(txtId.Text);
+                    negocio.modificar(nuevo);
+                }
+                else
+                {
+                    negocio.agregar(nuevo);
+                    emailService.enviarEmail();
+                }
 
             }
             catch (Exception)
@@ -185,6 +211,11 @@ namespace Turnera_TPC_Equipo27
             ddlMedico.Visible = true;
             ddlHorarios.Visible = true;
             lblHorarios.Visible = true;
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Turnos.aspx");
         }
     }
 }
