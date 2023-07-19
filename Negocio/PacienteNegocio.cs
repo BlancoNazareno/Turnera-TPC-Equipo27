@@ -26,7 +26,7 @@ namespace negocio
                     aux.Id = (int)datos.Lector["IDPaciente"];
                     aux.Apellido = (string)datos.Lector["Apellido"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.Celular = (string)datos.Lector["Celular"];
+                    //aux.Celular = (string)datos.Lector["Celular"];
 
                     aux.Dni = (int)datos.Lector["DNI"];
                     aux.FechaNacimiento = (DateTime)datos.Lector["FechaNacimiento"];

@@ -39,7 +39,9 @@ namespace Turnera_TPC_Equipo27
 
                 try
                 {
-                    PacienteNegocio negocioPaciente = new PacienteNegocio();
+                    if (!IsPostBack)
+                    {
+                        PacienteNegocio negocioPaciente = new PacienteNegocio();
                     List<Paciente> listaPacientes = negocioPaciente.listar();
                     Paciente pacienteSeleccionar = new Paciente { Id = 0, Nombre = "Selecciona un paciente", Apellido = string.Empty };
                     listaPacientes.Insert(0, pacienteSeleccionar);
@@ -57,8 +59,7 @@ namespace Turnera_TPC_Equipo27
                     ddlEspecialidad.DataTextField = "Nombre";
                     ddlEspecialidad.DataBind();
 
-                    if (!IsPostBack)
-                    {
+                    
                         string id = Request.QueryString.Get("id"); // Obtener el ID del turno correctamente
                         if (!string.IsNullOrEmpty(id))
                         {
