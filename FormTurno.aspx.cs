@@ -41,7 +41,7 @@ namespace Turnera_TPC_Equipo27
                 {
                     if (!IsPostBack)
                     {
-                        PacienteNegocio negocioPaciente = new PacienteNegocio();
+                    PacienteNegocio negocioPaciente = new PacienteNegocio();
                     List<Paciente> listaPacientes = negocioPaciente.listar();
                     Paciente pacienteSeleccionar = new Paciente { Id = 0, Nombre = "Selecciona un paciente", Apellido = string.Empty };
                     listaPacientes.Insert(0, pacienteSeleccionar);

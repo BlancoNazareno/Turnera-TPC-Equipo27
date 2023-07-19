@@ -112,12 +112,19 @@ namespace Turnera_TPC_Equipo27
         protected void btnAceptar_Click(object sender, EventArgs e)//Saca el turno
         {
 
+            
+
             try
             {
                 Turno nuevo = new Turno();
                 TurnoNegocio negocio = new TurnoNegocio();
+                Paciente nuevoPaciente = new Paciente();
+                PacienteNegocio negocioPaciente = new PacienteNegocio();
                 string horarioSeleccionado = ddlHorarios.SelectedValue;
                 DateTime fechaSeleccionada = cldTurno.SelectedDate;
+                string emailDestino = negocioPaciente.obtenerEmail(int.Parse(ddlPaciente.SelectedValue));
+                EmailService emailService = new EmailService();
+                emailService.armarCorreo(emailDestino, "Turno Correcto", "Cuerpo");
 
                 nuevo.Paciente = new Paciente();
                 nuevo.Paciente.Id = int.Parse(ddlPaciente.SelectedValue);
@@ -137,6 +144,8 @@ namespace Turnera_TPC_Equipo27
                 nuevo.Fecha = fechaYHorario;
 
                 negocio.agregar(nuevo);
+                negocio.agregar(nuevo);
+                emailService.enviarEmail();
 
             }
             catch (Exception)
