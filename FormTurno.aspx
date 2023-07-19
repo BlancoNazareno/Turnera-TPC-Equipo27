@@ -37,7 +37,7 @@
     <div class="row d-flex justify-content-center pt-3">
         <div runat="server" id="lblCldTurno" class="col-6 mb-3 text-center bg-secondary rounded-1 py-4">
             <label for="cldTurno" class="form-label text-black" runat="server"><strong>Calendario de turnos</strong></label>
-            <asp:Calendar class="form-label text-white" ID="cldTurno" runat="server" Style="margin: 0 auto;" OnVisibleMonthChanged="cldTurno_VisibleMonthChanged" OnSelectionChanged="cldTurno_SelectionChanged"></asp:Calendar>
+            <asp:Calendar class="form-label text-white" ID="cldTurno" runat="server" Style="margin: 0 auto;" OnVisibleMonthChanged="cldTurno_VisibleMonthChanged" OnDayRender="cldTurno_DayRender" OnSelectionChanged="cldTurno_SelectionChanged" ></asp:Calendar>
         </div>
     </div>
     <div class="row d-flex justify-content-center ">

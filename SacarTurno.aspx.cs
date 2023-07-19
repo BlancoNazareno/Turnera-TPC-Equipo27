@@ -124,7 +124,7 @@ namespace Turnera_TPC_Equipo27
                 DateTime fechaSeleccionada = cldTurno.SelectedDate;
                 string emailDestino = negocioPaciente.obtenerEmail(int.Parse(ddlPaciente.SelectedValue));
                 EmailService emailService = new EmailService();
-                emailService.armarCorreo(emailDestino, "Turno Correcto", "Cuerpo");
+                emailService.armarCorreo(emailDestino, "Confirmación de turno realizado con exito.", "Cuerpo");
 
                 nuevo.Paciente = new Paciente();
                 nuevo.Paciente.Id = int.Parse(ddlPaciente.SelectedValue);

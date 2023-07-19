@@ -41,25 +41,25 @@ namespace Turnera_TPC_Equipo27
                 {
                     if (!IsPostBack)
                     {
-                    PacienteNegocio negocioPaciente = new PacienteNegocio();
-                    List<Paciente> listaPacientes = negocioPaciente.listar();
-                    Paciente pacienteSeleccionar = new Paciente { Id = 0, Nombre = "Selecciona un paciente", Apellido = string.Empty };
-                    listaPacientes.Insert(0, pacienteSeleccionar);
-                    ddlPaciente.DataSource = listaPacientes;
-                    ddlPaciente.DataValueField = "Id";
-                    ddlPaciente.DataTextField = "NombreCompleto";
-                    ddlPaciente.DataBind();
+                        PacienteNegocio negocioPaciente = new PacienteNegocio();
+                        List<Paciente> listaPacientes = negocioPaciente.listar();
+                        Paciente pacienteSeleccionar = new Paciente { Id = 0, Nombre = "Selecciona un paciente", Apellido = string.Empty };
+                        listaPacientes.Insert(0, pacienteSeleccionar);
+                        ddlPaciente.DataSource = listaPacientes;
+                        ddlPaciente.DataValueField = "Id";
+                        ddlPaciente.DataTextField = "NombreCompleto";
+                        ddlPaciente.DataBind();
 
-                    EspecialidadNegocio negocioEspecialidad = new EspecialidadNegocio();
-                    List<Especialidad> listaEspecialidad = negocioEspecialidad.listar();
-                    Especialidad especialidadSeleccionar = new Especialidad { Id = 0, Nombre = "Selecciona una disponibilidad" };
-                    listaEspecialidad.Insert(0, especialidadSeleccionar);
-                    ddlEspecialidad.DataSource = listaEspecialidad;
-                    ddlEspecialidad.DataValueField = "Id";
-                    ddlEspecialidad.DataTextField = "Nombre";
-                    ddlEspecialidad.DataBind();
+                        EspecialidadNegocio negocioEspecialidad = new EspecialidadNegocio();
+                        List<Especialidad> listaEspecialidad = negocioEspecialidad.listar();
+                        Especialidad especialidadSeleccionar = new Especialidad { Id = 0, Nombre = "Selecciona una disponibilidad" };
+                        listaEspecialidad.Insert(0, especialidadSeleccionar);
+                        ddlEspecialidad.DataSource = listaEspecialidad;
+                        ddlEspecialidad.DataValueField = "Id";
+                        ddlEspecialidad.DataTextField = "Nombre";
+                        ddlEspecialidad.DataBind();
 
-                    
+
                         string id = Request.QueryString.Get("id"); // Obtener el ID del turno correctamente
                         if (!string.IsNullOrEmpty(id))
                         {
@@ -92,7 +92,7 @@ namespace Turnera_TPC_Equipo27
         protected void ddlMedico_SelectedIndexChanged(object sender, EventArgs e)
         {
             lblCldTurno.Visible = true;
-            cldTurno.Visible= true;
+            cldTurno.Visible = true;
             lblMedico.Visible = true;
             ddlMedico.Visible = true;
 
@@ -129,20 +129,31 @@ namespace Turnera_TPC_Equipo27
             ddlHorarios.Visible = true;
             lblHorarios.Visible = true;
 
-            Horario disponibilidadSeleccionar = new Horario { Id = 0, Hora = "Selecciona un horario"};
-            HorarioNegocio negocio = new HorarioNegocio();
-            List<Horario> listaHorarios = negocio.listar();
-            listaHorarios.Insert(0, disponibilidadSeleccionar);
-            ddlHorarios.DataSource = listaHorarios;
-            ddlHorarios.DataValueField= "Hora";
-            ddlHorarios.DataTextField = "Hora";
-            ddlHorarios.DataBind();
+            
+            //HorarioNegocio negocio = new HorarioNegocio();
+            //List<Horario> listaHorarios = negocio.listar();
+            DisponibilidadNegocio negocio = new DisponibilidadNegocio();
+            DateTime fechaSeleccionada = cldTurno.SelectedDate;
+            int dia = (int)fechaSeleccionada.DayOfWeek;
+            int idMedico;
+            if (int.TryParse(ddlMedico.SelectedValue, out idMedico))
+            {
+                Debug.WriteLine("******", dia);
+                List<Disponibilidad> listaHorarios = negocio.listarDisponibilidad(idMedico, dia);
 
+                Disponibilidad disponibilidadSeleccionar = new Disponibilidad { Id = 0, Hora = "Selecciona un horario" };
+                listaHorarios.Insert(0, disponibilidadSeleccionar);
+
+                ddlHorarios.DataSource = listaHorarios;
+                ddlHorarios.DataValueField = "Hora";
+                ddlHorarios.DataTextField = "Hora";
+                ddlHorarios.DataBind();
+            }
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
-        {           
-            
+        {
+
             Turno nuevo = new Turno();
             TurnoNegocio negocio = new TurnoNegocio();
             Paciente nuevoPaciente = new Paciente();
@@ -168,7 +179,7 @@ namespace Turnera_TPC_Equipo27
 
                 DateTime fechaYHorario = fechaSeleccionada.Date;
                 DateTime horario = DateTime.ParseExact(horarioSeleccionado, "HH:mm", CultureInfo.InvariantCulture);
-                
+
                 fechaYHorario = fechaYHorario.Add(horario.TimeOfDay);
                 Debug.WriteLine(fechaYHorario);
 
@@ -217,6 +228,39 @@ namespace Turnera_TPC_Equipo27
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("Turnos.aspx");
+        }
+
+        protected void cldTurno_DayRender(object sender, DayRenderEventArgs e)
+        {
+            e.Day.IsSelectable = false;
+
+            if (e.Day.Date < DateTime.Today)
+            {
+                e.Day.IsSelectable = false;
+                e.Cell.ForeColor = System.Drawing.Color.Gray;
+            }
+            if (e.Day.Date.DayOfWeek == DayOfWeek.Saturday || e.Day.Date.DayOfWeek == DayOfWeek.Sunday)
+            {
+                e.Day.IsSelectable = false; // Deshabilita la selección del día
+                e.Cell.ForeColor = System.Drawing.Color.Gray;
+            }
+            int idMedico;
+            if (int.TryParse(ddlMedico.SelectedValue, out idMedico))
+            {
+                DisponibilidadNegocio negocio = new DisponibilidadNegocio();
+                List<Disponibilidad> listaDisponibilidad = negocio.listarDisponibilidad(idMedico);
+                foreach (Disponibilidad disponibilidad in listaDisponibilidad)
+                {
+                    int dia = disponibilidad.Dia;
+
+                    if (e.Day.Date.DayOfWeek == (DayOfWeek)dia && e.Day.Date > DateTime.Today)
+                    {
+                        e.Cell.BackColor = System.Drawing.Color.Yellow;
+                        e.Day.IsSelectable = true;
+
+                    }
+                }
+            }
         }
     }
 }
