@@ -15,25 +15,32 @@ namespace Turnera_TPC_Equipo27
         {
             if (!IsPostBack)
             {
-                string id = Request.QueryString["Id"];
-                
-                PacienteNegocio negocio = new PacienteNegocio();
-                List<Paciente> listaPacientes = negocio.listar();
-                Paciente seleccionado = listaPacientes.Find(m => m.Id.ToString() == id);
+                int idTurnoRecibido = Convert.ToInt32(Request.QueryString["id"]);
 
-                if (seleccionado != null)
-                {
-                    lblNombreCompleto.Text = seleccionado.Nombre + " " + seleccionado.Apellido; 
-                    lblFechaNacimiento.Text = seleccionado.FechaNacimiento.ToString("dd/MM/yyyy");
-                    lblCelular.Text = seleccionado.Celular;
-                    lblDNI.Text = seleccionado.Dni.ToString();
-                    //lblEspecialidad.Text = seleccionado.Especialidad; agregar cuando linkee el turno
-                    lblCobertura.Text = seleccionado.Cobertura;
+                TurnoNegocio negocioTurno = new TurnoNegocio();
+                List<Turno> listaTurnos = negocioTurno.listar();
+                Turno turnoSeleccionado = listaTurnos.Find(turnos => turnos.Id == idTurnoRecibido);
+                int cantidadTurnos = listaTurnos.Count;
 
+                MedicoNegocio negocioMedico = new MedicoNegocio();
+                List<Medico> listaMedicos = negocioMedico.listar();
+                int idMedico = turnoSeleccionado.Medico.Id;//no me asigna bien el id del medico
+                Medico medicoSeleccionado = listaMedicos.Find(m => m.Id == idMedico);
 
-                    
+                PacienteNegocio negocioPaciente = new PacienteNegocio();
+                List<Paciente> listaPacientes = negocioPaciente.listar();
+                int idPaciente = turnoSeleccionado.Paciente.Id;
+                Paciente pacienteSeleccionado = listaPacientes.Find(m => m.Id == idPaciente);
 
-                }
+                lblFechaTurno.Text = turnoSeleccionado.Fecha.ToString("dd/MM/yyyy");
+                lblNombreCompleto.Text = turnoSeleccionado.Paciente.NombreCompleto;
+                lblMedico.Text = medicoSeleccionado.Apellido + " " + medicoSeleccionado.Nombre;
+                lblFechaNacimiento.Text = pacienteSeleccionado.FechaNacimiento.ToString("dd/MM/yyyy");
+                lblCelular.Text = pacienteSeleccionado.Celular;
+                lblDNI.Text = pacienteSeleccionado.Dni.ToString();
+                lblEspecialidad.Text = turnoSeleccionado.Especialidad.Nombre;
+                lblCobertura.Text = pacienteSeleccionado.Cobertura;
+
             }
         }
 

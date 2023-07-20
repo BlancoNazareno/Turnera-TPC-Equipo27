@@ -4,14 +4,35 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <div class="text-end">
-            <asp:Button ID="btnAgregar" runat="server" Text="Agregar" CssClass="btn btn-success m-2" OnClick="btnAgregar_Click" PostBackUrl="~/FormMedico.aspx" />
+        <div class="row">
+            <div class="col-3 align-self-center">
+                <div class="mb-3">
+                    <asp:TextBox runat="server" ID="txtFiltroApellido" CssClass="form-control" AutoPostBack="true"
+                        OnTextChanged="txtFiltroApellido_TextChanged"  placeholder="Buscar por Apellido" />
+                </div>
+            </div>
+            <div class="col-3 align-self-center">
+                <div class="mb-3">
+                    <asp:TextBox runat="server" ID="txtFiltroEspecialidad" CssClass="form-control" AutoPostBack="true"
+                        OnTextChanged="txtFiltroEspecialidad_TextChanged" placeholder="Buscar por Especialidad" />
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="mb-3">
+                    <asp:Button ID="btnLimpiar" runat="server" Text="Limpiar" CssClass="btn btn-success m-2" 
+                        OnClick="btnLimpiar_Click"/>
+                </div>
+            </div>
+            <div class="col-4 text-end">
+                <asp:Button ID="btnAgregar" runat="server" Text="Agregar Medico" CssClass="btn btn-success m-2" OnClick="btnAgregar_Click" PostBackUrl="~/FormPaciente.aspx" />
+            </div>
         </div>
         <asp:GridView ID="dgvMedicos" runat="server" CssClass="table table-dark" AutoGenerateColumns="false">
             <Columns>
                 <asp:BoundField HeaderText="ID" DataField="Id" />
                 <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
                 <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                <asp:BoundField HeaderText="Especialidad" DataField="Especialidad" />
                 <asp:BoundField HeaderText="DNI" DataField="Dni" />
                 <asp:TemplateField HeaderText="Fecha de Nacimiento">
                     <ItemTemplate>
@@ -19,7 +40,6 @@
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField HeaderText="Mail" DataField="Mail" />
-                <asp:BoundField HeaderText="Especialidad" DataField="Especialidad" />
                 <asp:TemplateField>
                     <HeaderTemplate>
                         <% if (((dominio.Paciente)Session["usuario"]).TipoUsuario == dominio.TipoUsuario.ADMIN)

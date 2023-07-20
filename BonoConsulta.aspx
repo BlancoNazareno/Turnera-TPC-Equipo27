@@ -5,35 +5,31 @@
         .white-text {
             color: white;
         }
-
         .double-space {
             height: 2.5rem;
         }
-
         .dashed-line {
             border-bottom: 1px dashed #000;
         }
-
         .encuadrado {
             color: white;
             border: 1px solid #000;
             padding: 20px;
         }
-
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container encuadrado">
-        <h2 class="white-text">Space Medicine - Hipólito Yrigoyen 288, Gral. Pacheco</h2>
-        <br />
+        <h2 class="white-text">Space Medicine<span class="float-end">ORDEN DE CONSULTA</span></h2>
+        <p class="white-text">Hipólito Yrigoyen 288, Gral. Pacheco</p>
         <div class="row mb-4">
             <div class="col-md-4">
-                <label for="txtFechaTurno" class="form-label white-text">Fecha:</label>
+                <label for="txtFechaTurno" class="form-label white-text">Fecha de Turno:</label>
                 <asp:Label runat="server" ID="lblFechaTurno" CssClass="form-control white-text"></asp:Label>
             </div>
             <div class="col-md-4">
-                <label for="txtApellidoMedico" class="form-label white-text">Medico:</label>
-                <asp:Label runat="server" ID="lblApellidoMedico" CssClass="form-control white-text"></asp:Label>
+                <label for="txtMedico" class="form-label white-text">Medico:</label>
+                <asp:Label runat="server" ID="lblMedico" CssClass="form-control white-text"></asp:Label>
             </div>
             <div class="col-md-4">
                 <label for="txtEspecialidad" class="form-label white-text">Especialidad:</label>
@@ -66,30 +62,23 @@
             <br />
             <div class="col-md-12">
                 <label for="txtDiagnostico" class="form-label white-text">Diagnóstico:</label>
-                <textarea id="txtDiagnostico" class="form-control white-text" rows="2"></textarea>
+                <textarea id="txtDiagnostico" class="form-control white-text" rows="2" readonly></textarea>
             </div>
             <div class="row">
-                <div class="col-md-6 double-space">
-                    <label for="txtFirmaMedico" class="form-label white-text">Firma y sello:</label>
-                    <br />
-                    <br />
-                    <br />
-                    ----------------------------------
+                <div class="col-md-6 ">
+                    <label for="txtFirmaMedico" class="form-label white-text">Firma y sello de Profesional:</label>
+                    <textarea class="form-control white-text" id="txtFirmaMedico" readonly rows="2"></textarea>
                 </div>
-                <div class="col-md-6 double-space">
-                    <label for="txtFirmaPaciente" class="form-label white-text">Firma de Paciente:</label>
-                    <br />
-                    <br />
-                    <br />
-                    ----------------------------------
+                <div class="col-md-6">
+                    <label for="txtFirmaPaciente" class="form-label white-text">Firma del Afiliado:</label>
+                    <textarea class="form-control white-text" id="txtFirmaPaciente" readonly rows="2"></textarea>
                 </div>
             </div>
-            <br />
-            <br />
-            <br />
             <div class="row">
                 <div class="col-md-12">
-                    <asp:Button runat="server" ID="btnImprimir" Text="Imprimir" CssClass="btn btn-primary float-end" OnClientClick="window.print();" />
+                    <br>
+                    <asp:Button runat="server" ID="btnImprimir" Text="Generar" CssClass="btn btn-primary float-end"
+                        OnClientClick="window.print();" />
                 </div>
             </div>
         </div>

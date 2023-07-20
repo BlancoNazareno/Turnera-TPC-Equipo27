@@ -79,7 +79,11 @@ namespace Turnera_TPC_Equipo27
 
         protected void btnComunicarse_Click(object sender, EventArgs e)
         {
-            string numeroCelularPaciente = "123456789";//AGREGAR CELULAR DE USUARIO
+            Button btnComunicarse = (Button)sender;
+            GridViewRow row = (GridViewRow)btnComunicarse.NamingContainer;
+            Label lblCelular = (Label)row.FindControl("lblCelular");
+
+            string numeroCelularPaciente = lblCelular.Text;
             string mensajePredeterminado = "Hola! Nos comunicamos desde Space Medicine";
 
             //Codifica el mensaje para que sea válido en la URL
@@ -91,20 +95,42 @@ namespace Turnera_TPC_Equipo27
             //Abre WhatsApp en una nueva pestaña
             ClientScript.RegisterStartupScript(this.GetType(), "OpenWindow", $"window.open('{enlaceWhatsapp}', '_blank');", true);
         }
-
-        protected void btnBono_Click(object sender, EventArgs e)
+        protected void txtFiltroApellido_TextChanged(object sender, EventArgs e)
         {
+            string apellidoBuscado = txtFiltroApellido.Text.Trim(); // Obtener el valor del campo de búsqueda y elimino espacios en blanco
+           
+            PacienteNegocio negocio = new PacienteNegocio();
+            List<Paciente> listaCompleta = negocio.listar();
 
-            Button btnBono = (Button)sender;
+            List<Paciente> listaFiltrada = listaCompleta.Where(p => p.Apellido.ToLower().Contains(apellidoBuscado.ToLower())).ToList();
 
-            // Obtener la fila que contiene el botón
-            GridViewRow row = (GridViewRow)btnBono.NamingContainer;
-
-            // Obtener el ID de la fila
-            string id = row.Cells[0].Text;
-
-            // Redirigir a otra página pasando el ID como parámetro en la URL
-            Response.Redirect("BonoConsulta.aspx?id=" + id);
+            dgvPacientes.DataSource = listaFiltrada;
+            dgvPacientes.DataBind();
         }
+
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtFiltroApellido.Text = string.Empty;
+            txtFiltroCobertura.Text = string.Empty;
+
+            PacienteNegocio negocio = new PacienteNegocio();
+            dgvPacientes.DataSource = negocio.listar();
+            dgvPacientes.RowDataBound += dgvPacientes_RowDataBound;
+            dgvPacientes.DataBind();
+        }
+
+        protected void txtFiltroCobertura_TextChanged(object sender, EventArgs e)
+        {
+            string cobertura = txtFiltroCobertura.Text.Trim(); // Obtener el valor del campo de búsqueda y elimino espacios en blanco
+
+            PacienteNegocio negocio = new PacienteNegocio();
+            List<Paciente> listaCompleta = negocio.listar();
+
+            List<Paciente> listaFiltrada = listaCompleta.Where(p => p.Cobertura.ToLower().Contains(cobertura.ToLower())).ToList();
+
+            dgvPacientes.DataSource = listaFiltrada;
+            dgvPacientes.DataBind();
+        }
+
     }
 }
