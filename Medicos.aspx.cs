@@ -82,7 +82,7 @@ namespace Turnera_TPC_Equipo27
             int idMedico = Convert.ToInt32(fila.Cells[0].Text);//Obtengo el valor de la celda 0
 
             MedicoNegocio negocio = new MedicoNegocio();
-            negocio.eliminarLogico(idMedico);
+            negocio.eliminar(idMedico);
             Response.Redirect("Medicos.aspx");
 
 

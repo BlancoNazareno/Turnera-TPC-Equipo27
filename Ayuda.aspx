@@ -5,9 +5,11 @@
         <div id="Ayuda">
         <div class="container" style="background-color: rgb(65, 65, 65);">
             <div class="text-light p-3 text-center" style="margin-top: 3rem; margin-bottom: 2rem">
-                <h4><strong>Sitio en construcción</strong></h4>
+                <h1><strong>Ayuda Turnos y horarios</strong></h1>
                 <br />
-                <p>¡Estamos trabajando para poder darte una mano ante cualquier consulta!</p>
+                <h4>¿Cómo solicitar turnos?</h4>
+                <p>Los turnos se solicitan de lunes a viernes, en horario de 10 a 17 a través de los siguientes medios: <br/>
+                    A través de nuestra web o Telefónicamente: 0810 999 1029 Mensaje de WhatsApp: 261 205 3408 Turnos para el servicio de Rehabilitación: WhatsApp 2612431356</p>
             </div>
             <div style="text-align: center;">
                 <td>

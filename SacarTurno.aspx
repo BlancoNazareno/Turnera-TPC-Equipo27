@@ -51,7 +51,7 @@
 
     </div>
 
-    <label for="txtId" class="form-label text-white"></label>
-    <asp:TextBox runat="server" ID="txtId" CssClass="form-control" />
+    <label for="txtId" class="form-label text-white" Visible="false"></label>
+    <asp:TextBox runat="server" ID="txtId" CssClass="form-control" Visible="false"/>
 
 </asp:Content>
