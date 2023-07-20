@@ -45,7 +45,7 @@ create table Disponibilidades(
 IDDisponibilidad int identity (1,1) not null,
 IDMedico int not null, 
 Dia int not null, 
-Hora varchar(50) not null, 
+Hora int not null, 
 Primary key (IDDisponibilidad), 
 Foreign key (IDMedico) references Medicos(IDMedico)
 )
@@ -65,7 +65,7 @@ Foreign key (IDPaciente) references Pacientes(IDPaciente)
 
 create table Horario (
 IDHorario int identity(1,1) not null,
-Hora varchar(50) not null,
+Hora int not null,
 Primary Key (IDHorario)
 )
 
