@@ -40,3 +40,9 @@ C:\Users\Matias\Desktop\Turnera-TPC-Equipo27-main17jul\Dominio\obj\Debug\Dominio
 C:\Users\Matias\Desktop\Turnera-TPC-Equipo27-main17jul\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\Matias\Desktop\Turnera-TPC-Equipo27-main17jul\Dominio\obj\Debug\dominio.dll
 C:\Users\Matias\Desktop\Turnera-TPC-Equipo27-main17jul\Dominio\obj\Debug\dominio.pdb
+C:\Users\Matias\Desktop\TP FINAL\Turnera-TPC-Equipo27\Dominio\bin\Debug\dominio.dll
+C:\Users\Matias\Desktop\TP FINAL\Turnera-TPC-Equipo27\Dominio\bin\Debug\dominio.pdb
+C:\Users\Matias\Desktop\TP FINAL\Turnera-TPC-Equipo27\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+C:\Users\Matias\Desktop\TP FINAL\Turnera-TPC-Equipo27\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\Matias\Desktop\TP FINAL\Turnera-TPC-Equipo27\Dominio\obj\Debug\dominio.dll
+C:\Users\Matias\Desktop\TP FINAL\Turnera-TPC-Equipo27\Dominio\obj\Debug\dominio.pdb

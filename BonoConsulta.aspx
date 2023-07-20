@@ -21,7 +21,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container encuadrado">
         <h2 class="white-text">Space Medicine<span class="float-end">ORDEN DE CONSULTA</span></h2>
-        <p class="white-text">Hipólito Yrigoyen 288, Gral. Pacheco</p>
+        <p class="white-text">Florentino Ameghino 946, Pacheco Partido de Tigre</p>
         <div class="row mb-4">
             <div class="col-md-4">
                 <label for="txtFechaTurno" class="form-label white-text">Fecha de Turno:</label>
