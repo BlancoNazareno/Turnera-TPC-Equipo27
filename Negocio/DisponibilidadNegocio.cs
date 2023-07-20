@@ -76,25 +76,28 @@ namespace negocio
 
         }
 
-        public List<Disponibilidad> listarDisponibilidad(int idMedico, int dia=0)
+        public List<Disponibilidad> listarDisponibilidad(int idMedico, DateTime fechaSeleccionada = default(DateTime))
         {
             AccesoDatos datos = new AccesoDatos();
             List<Disponibilidad> lista = new List<Disponibilidad>();
 
             try
             {
-                if (dia != 0)
+                if (fechaSeleccionada != default(DateTime))
                 {
-                    datos.setearConsulta("Select distinct D.Dia , D.Hora from Disponibilidades D where D.IDMedico = @id and D.Dia = @dia");
+                    int diaSemana = (int)fechaSeleccionada.DayOfWeek;
+                    //datos.setearConsulta("Select distinct D.Dia , D.Hora from Disponibilidades D where D.IDMedico = @id and D.Dia = @dia");
+                    datos.setearProcedimiento("sp_listarDisponibilidad");
                     datos.setearParametro("@id", idMedico);
-                    datos.setearParametro("@dia", dia);
+                    datos.setearParametro("@dia", diaSemana);
+                    datos.setearParametro("@fechaSel", fechaSeleccionada.Date);
                     datos.ejecutarLectura();
                     while (datos.Lector.Read())
                     {
                         Disponibilidad aux = new Disponibilidad();
                         aux.Id = idMedico;
-                        aux.Dia = dia;
-                        aux.Hora = (string)datos.Lector["Hora"];
+                        aux.Dia = diaSemana;
+                        aux.Hora = (int)datos.Lector["Hora"];
 
                         lista.Add(aux);
                     }
@@ -111,7 +114,7 @@ namespace negocio
                         Disponibilidad aux = new Disponibilidad();
                         aux.Id = idMedico;
                         aux.Dia = (int)datos.Lector["Dia"];
-                        aux.Hora = (string)datos.Lector["Hora"];
+                        aux.Hora = (int)datos.Lector["Hora"];
 
                         lista.Add(aux);
                     }

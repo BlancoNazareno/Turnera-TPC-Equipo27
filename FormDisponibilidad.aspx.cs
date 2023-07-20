@@ -127,7 +127,7 @@ namespace Turnera_TPC_Equipo27
                                     
                                 }
                             }
-                            nueva.Hora = row.Cells[0].Text;
+                            nueva.Hora = int.Parse(row.Cells[0].Text);
                             negocio.agregar(nueva);
 
                         }

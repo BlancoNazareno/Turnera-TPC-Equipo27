@@ -139,10 +139,9 @@ namespace Turnera_TPC_Equipo27
             if (int.TryParse(ddlMedico.SelectedValue, out idMedico))
             {
                 Debug.WriteLine("******", dia);
-                List<Disponibilidad> listaHorarios = negocio.listarDisponibilidad(idMedico, dia);
+                List<Disponibilidad> listaHorarios = negocio.listarDisponibilidad(idMedico, fechaSeleccionada);
 
-                Disponibilidad disponibilidadSeleccionar = new Disponibilidad { Id = 0, Hora = "Selecciona un horario" };
-                listaHorarios.Insert(0, disponibilidadSeleccionar);
+                
 
                 ddlHorarios.DataSource = listaHorarios;
                 ddlHorarios.DataValueField = "Hora";
@@ -178,7 +177,7 @@ namespace Turnera_TPC_Equipo27
                 nuevo.Medico.Id = int.Parse(ddlMedico.SelectedValue);
 
                 DateTime fechaYHorario = fechaSeleccionada.Date;
-                DateTime horario = DateTime.ParseExact(horarioSeleccionado, "HH:mm", CultureInfo.InvariantCulture);
+                DateTime horario = DateTime.ParseExact(horarioSeleccionado, "HH", CultureInfo.InvariantCulture);
 
                 fechaYHorario = fechaYHorario.Add(horario.TimeOfDay);
                 Debug.WriteLine(fechaYHorario);
@@ -244,7 +243,9 @@ namespace Turnera_TPC_Equipo27
                 e.Day.IsSelectable = false; // Deshabilita la selección del día
                 e.Cell.ForeColor = System.Drawing.Color.Gray;
             }
+            DateTime fechaSeleccionada = cldTurno.SelectedDate;
             int idMedico;
+
             if (int.TryParse(ddlMedico.SelectedValue, out idMedico))
             {
                 DisponibilidadNegocio negocio = new DisponibilidadNegocio();

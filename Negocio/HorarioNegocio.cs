@@ -23,7 +23,7 @@ namespace negocio
                 {
                     Horario aux = new Horario();
                     aux.Id = (int)datos.Lector["IDHorario"];
-                    aux.Hora = (string)datos.Lector["Hora"];
+                    aux.Hora = (int)datos.Lector["Hora"];
                     lista.Add(aux);
                 }
                 return lista;

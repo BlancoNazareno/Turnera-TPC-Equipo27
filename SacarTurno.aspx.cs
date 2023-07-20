@@ -98,10 +98,10 @@ namespace Turnera_TPC_Equipo27
             ddlHorarios.Visible = true;
             lblHorarios.Visible = true;
 
-            Horario disponibilidadSeleccionar = new Horario { Id = 0, Hora = "Selecciona un horario" };
+            
             HorarioNegocio negocio = new HorarioNegocio();
             List<Horario> listaHorarios = negocio.listar();
-            listaHorarios.Insert(0, disponibilidadSeleccionar);
+            
             ddlHorarios.DataSource = listaHorarios;
             ddlHorarios.DataValueField = "Hora";
             ddlHorarios.DataTextField = "Hora";

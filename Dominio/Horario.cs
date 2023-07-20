@@ -10,6 +10,9 @@ namespace dominio
     {
         public int Id { get; set; }
 
-        public string Hora { get; set; }
+        public int Hora { get; set; }
+
+        public string Defecto { get; set; }
+        public Horario(string def = "Seleccione un Horario") { Defecto = def; }
     }
 }

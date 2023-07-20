@@ -12,7 +12,8 @@ namespace dominio
         public int Id { get; set; }
         public Medico Medico { get; set; }
         public int Dia { get; set; }
-        public string Hora { get; set; }
+        public int Hora { get; set; }
+        public string Defecto { get; set; }
 
 
     }
