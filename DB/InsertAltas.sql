@@ -23,4 +23,4 @@ Insert into Dia (Dia, NombreDia)
 values (1, 'Lunes'), (2, 'Martes'), (3, 'Miercoles'), (4, 'Jueves'), (5, 'Viernes')
 
 Insert into Horario (Hora)
-values (11),(12),(13),(14),(15),(16),(17)
+values (10),(11),(12),(13),(14),(15),(16),(17)
