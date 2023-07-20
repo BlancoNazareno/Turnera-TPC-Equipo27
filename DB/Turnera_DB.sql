@@ -15,6 +15,7 @@ create table Pacientes(
  Mail varchar(100) not null,
  Contrasenia varchar (100) not null,
  Cobertura varchar(30) not null,
+ Celular varchar (15) not null, 
  Estado bit not null,
  TipoUsuario int not null, 
  Primary key (IDPaciente)
@@ -74,3 +75,23 @@ Dia int not null,
 NombreDia varchar(20) not null,
 Primary Key(IDDia)
 )
+
+CREATE PROCEDURE sp_listarDisponibilidad
+    @id INT,
+    @dia INT,
+    @fechaSel DATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT DISTINCT D.Dia, D.Hora
+    FROM Disponibilidades D
+    WHERE D.IDMedico = @id
+      AND D.Dia = @dia
+      AND NOT EXISTS (
+        SELECT 1
+        FROM Turnos T
+        WHERE D.IDMedico = T.IDMedico AND D.Dia = @dia AND D.Hora = DATEPART(HOUR, T.Fecha)
+          AND CAST(T.Fecha AS DATE) = @fechaSel
+      );
+END;
