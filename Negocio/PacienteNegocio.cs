@@ -276,5 +276,35 @@ namespace negocio
             return email;
         }
 
+        public string listarNombre(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            string nombreCompleto = string.Empty;
+            try
+            {
+                datos.setearConsulta("select P.Nombre, P.Apellido from Pacientes P where IDPaciente = @id  ");
+                datos.setearParametro("@id", id);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                   string nombre = datos.Lector["Nombre"].ToString();
+                   string apellido = datos.Lector["Apellido"].ToString();
+                    nombreCompleto = nombre + " " + apellido; 
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            return nombreCompleto;
+
+        }
+
     }
 }

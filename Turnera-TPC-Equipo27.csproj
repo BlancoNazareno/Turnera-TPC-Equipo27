@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Ayuda.aspx" />
     <Content Include="BonoConsulta.aspx" />
+    <Content Include="confirmacionTurnoMail.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Disponibilidades.aspx" />
     <Content Include="Error.aspx" />
@@ -112,6 +113,13 @@
     </Compile>
     <Compile Include="BonoConsulta.aspx.designer.cs">
       <DependentUpon>BonoConsulta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="confirmacionTurnoMail.aspx.cs">
+      <DependentUpon>confirmacionTurnoMail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="confirmacionTurnoMail.aspx.designer.cs">
+      <DependentUpon>confirmacionTurnoMail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

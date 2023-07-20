@@ -8,6 +8,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
+
 
 namespace Turnera_TPC_Equipo27
 {
@@ -161,12 +163,13 @@ namespace Turnera_TPC_Equipo27
             string horarioSeleccionado = ddlHorarios.SelectedValue;
             DateTime fechaSeleccionada = cldTurno.SelectedDate;
 
+            int pacienteId = int.Parse(ddlPaciente.SelectedValue);
 
             nuevo.Paciente = new Paciente();
             nuevo.Paciente.Id = int.Parse(ddlPaciente.SelectedValue);
             string emailDestino = negocioPaciente.obtenerEmail(int.Parse(ddlPaciente.SelectedValue));
+            string nombrePaciente = negocioPaciente.listarNombre(int.Parse(ddlPaciente.SelectedValue));
             EmailService emailService = new EmailService();
-            emailService.armarCorreo(emailDestino, "Turno Correcto", "Cuerpo");
             try
             {
 
@@ -192,7 +195,15 @@ namespace Turnera_TPC_Equipo27
                 else
                 {
                     negocio.agregar(nuevo);
+                    string rutaArchivo = Server.MapPath("~/confirmacionTurnoMail.aspx");
+                    string contenidoArchivo = File.ReadAllText(rutaArchivo);
+                    contenidoArchivo = contenidoArchivo.Replace("{nombre}", nombrePaciente);
+                    contenidoArchivo = contenidoArchivo.Replace("{fecha}", cldTurno.SelectedDate.ToShortDateString());
+
+
+                    emailService.armarCorreo(emailDestino, "Turno Correcto", contenidoArchivo);
                     emailService.enviarEmail();
+                   
                 }
 
             }
