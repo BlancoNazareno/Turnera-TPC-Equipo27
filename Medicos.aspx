@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="col-4 text-end">
-                <asp:Button ID="btnAgregar" runat="server" Text="Agregar Medico" CssClass="btn btn-success m-2" OnClick="btnAgregar_Click" PostBackUrl="~/FormPaciente.aspx" />
+                <asp:Button ID="btnAgregar" runat="server" Text="Agregar Medico" CssClass="btn btn-success m-2" OnClick="btnAgregar_Click" PostBackUrl="~/FormMedico.aspx" />
             </div>
         </div>
         <asp:GridView ID="dgvMedicos" runat="server" CssClass="table table-dark" AutoGenerateColumns="false">
