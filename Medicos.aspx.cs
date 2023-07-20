@@ -88,5 +88,41 @@ namespace Turnera_TPC_Equipo27
 
 
         }
+
+        protected void txtFiltroEspecialidad_TextChanged(object sender, EventArgs e)
+        {
+            string especialidad = txtFiltroEspecialidad.Text.Trim(); // Obtener el valor del campo de búsqueda y elimino espacios en blanco
+
+            MedicoNegocio negocio = new MedicoNegocio();
+            List<Medico> listaCompleta = negocio.listar();
+
+            List<Medico> listaFiltrada = listaCompleta.Where(m => m.Especialidad.Nombre.ToLower().Contains(especialidad.ToLower())).ToList(); 
+            dgvMedicos.DataSource = listaFiltrada;
+            dgvMedicos.DataBind();
+        }
+
+        protected void txtFiltroApellido_TextChanged(object sender, EventArgs e)
+        {
+            string apellidoBuscado = txtFiltroApellido.Text.Trim(); // Obtener el valor del campo de búsqueda y elimino espacios en blanco
+
+            MedicoNegocio negocio = new MedicoNegocio();
+            List<Medico> listaCompleta = negocio.listar();
+
+            List<Medico> listaFiltrada = listaCompleta.Where(p => p.Apellido.ToLower().Contains(apellidoBuscado.ToLower())).ToList();
+
+            dgvMedicos.DataSource = listaFiltrada;
+            dgvMedicos.DataBind();
+        }
+
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtFiltroApellido.Text = string.Empty;
+            txtFiltroEspecialidad.Text = string.Empty;
+
+            MedicoNegocio negocio = new MedicoNegocio();
+            dgvMedicos.DataSource = negocio.listar();
+            dgvMedicos.RowDataBound += dgvMedicos_RowDataBound;
+            dgvMedicos.DataBind();
+        }
     }
 }

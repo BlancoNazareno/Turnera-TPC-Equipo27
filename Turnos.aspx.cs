@@ -49,10 +49,6 @@ namespace Turnera_TPC_Equipo27
         }
 
 
-
-
-
-
         protected void btnModificar_Click(object sender, EventArgs e)
         {
             if (sender is Button)
@@ -73,6 +69,122 @@ namespace Turnera_TPC_Equipo27
             TurnoNegocio negocio = new TurnoNegocio();
             negocio.eliminarLogico(idTurno);
             Response.Redirect("Turnos.aspx");
+        }
+
+
+        protected void btnBono_Click(object sender, EventArgs e)
+        {
+            Button btnBono = (Button)sender;
+
+            // Obtener la fila que contiene el botón
+            GridViewRow row = (GridViewRow)btnBono.NamingContainer;
+
+            // Obtener el ID de la fila
+            string id = row.Cells[0].Text;
+
+            // Redirigir a otra página pasando el ID como parámetro en la URL
+            Response.Redirect("BonoConsulta.aspx?id=" + id);
+        }
+
+        protected void txtFiltroApellido_TextChanged(object sender, EventArgs e)
+        {
+            string apellidoBuscado = txtFiltroApellido.Text.Trim(); // Obtener el valor del campo de búsqueda y elimino espacios en blanco
+
+            TurnoNegocio negocio = new TurnoNegocio();
+            List<Turno> listaCompleta = negocio.listar();
+
+            List<Turno> listaFiltrada = listaCompleta.Where(p => p.Paciente.Apellido.ToLower().Contains(apellidoBuscado.ToLower())).ToList();
+
+            dgvTurnosAdmin.DataSource = listaFiltrada;
+            dgvTurnosAdmin.DataBind();
+
+        }
+
+        protected void txtFiltroApellidoMedico_TextChanged(object sender, EventArgs e)
+        {
+            string apellidoBuscado = txtFiltroApellidoMedico.Text.Trim(); // Obtener el valor del campo de búsqueda y elimino espacios en blanco
+
+            TurnoNegocio negocio = new TurnoNegocio();
+            List<Turno> listaCompleta = negocio.listar();
+
+            List<Turno> listaFiltrada = listaCompleta.Where(p => p.Medico.Apellido.ToLower().Contains(apellidoBuscado.ToLower())).ToList();
+
+            dgvTurnosAdmin.DataSource = listaFiltrada;
+            dgvTurnosAdmin.DataBind();
+        }
+
+        protected void txtFiltroCobertura_TextChanged(object sender, EventArgs e)
+        {
+            string cobertura = txtFiltroCobertura.Text.Trim(); // Obtener el valor del campo de búsqueda y elimino espacios en blanco
+
+            TurnoNegocio negocio = new TurnoNegocio();
+            List<Turno> listaCompleta = negocio.listar();
+
+            List<Turno> listaFiltrada = listaCompleta.Where(p => p.Paciente.Cobertura.ToLower().Contains(cobertura.ToLower())).ToList();
+
+            dgvTurnosAdmin.DataSource = listaFiltrada;
+            dgvTurnosAdmin.DataBind();
+        }
+
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtFiltroApellido.Text = string.Empty;
+            txtFiltroApellidoMedico.Text = string.Empty;
+            txtFiltroCobertura.Text = string.Empty;
+            txtFiltroEspecialidad.Text = string.Empty;
+
+            TurnoNegocio negocio = new TurnoNegocio();
+            dgvTurnosAdmin.DataSource = negocio.listar();
+            dgvTurnosAdmin.RowDataBound += dgvTurnosAdmin_RowDataBound;
+            dgvTurnosAdmin.DataBind();
+        }
+
+        protected void btnActivos_Click(object sender, EventArgs e)
+        {
+            TurnoNegocio negocio = new TurnoNegocio();
+            List<Turno> listaCompleta = negocio.listar();
+
+            List<Turno> listaFiltrada = listaCompleta.Where(p => p.Estado).ToList();
+
+            dgvTurnosAdmin.DataSource = listaFiltrada;
+            dgvTurnosAdmin.DataBind();
+        }
+
+        protected void btnFinalizados_Click(object sender, EventArgs e)
+        {
+            TurnoNegocio negocio = new TurnoNegocio();
+            List<Turno> listaCompleta = negocio.listar();
+
+            List<Turno> listaFiltrada = listaCompleta.Where(p => !p.Estado).ToList();
+
+            dgvTurnosAdmin.DataSource = listaFiltrada;
+            dgvTurnosAdmin.DataBind();
+        }
+
+        protected void txtFiltroEspecialidad_TextChanged(object sender, EventArgs e)
+        {
+            string especialidad = txtFiltroEspecialidad.Text.Trim(); // Obtener el valor del campo de búsqueda y elimino espacios en blanco
+
+            TurnoNegocio negocio = new TurnoNegocio();
+            List<Turno> listaCompleta = negocio.listar();
+
+            List<Turno> listaFiltrada = listaCompleta.Where(p => p.Especialidad.Nombre.ToLower().Contains(especialidad.ToLower())).ToList();
+
+            dgvTurnosAdmin.DataSource = listaFiltrada;
+            dgvTurnosAdmin.DataBind();
+        }
+
+        protected void btnTodos_Click(object sender, EventArgs e)
+        {
+            txtFiltroApellido.Text = string.Empty;
+            txtFiltroApellidoMedico.Text = string.Empty;
+            txtFiltroCobertura.Text = string.Empty;
+            txtFiltroEspecialidad.Text = string.Empty;
+
+            TurnoNegocio negocio = new TurnoNegocio();
+            dgvTurnosAdmin.DataSource = negocio.listar();
+            dgvTurnosAdmin.RowDataBound += dgvTurnosAdmin_RowDataBound;
+            dgvTurnosAdmin.DataBind();
         }
     }
 }

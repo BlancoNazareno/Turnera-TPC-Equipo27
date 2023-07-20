@@ -20,7 +20,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("SELECT T.IDTurno, T.Fecha, E.Especialidad AS NombreEspecialidad, M.Nombre AS NombreMedico, M.Apellido AS ApellidoMedico, P.Nombre AS NombrePaciente, P.Apellido AS ApellidoPaciente,  T.Estado FROM Turnos T INNER JOIN Especialidades E ON T.IDEspecialidad = E.IDEspecialidad INNER JOIN Medicos M ON T.IDMedico = M.IDMedico INNER JOIN Pacientes P ON T.IDPaciente = P.IDPaciente");
+                datos.setearConsulta("SELECT T.IDTurno, T.Fecha, E.Especialidad AS NombreEspecialidad, M.IDMedico AS IdMedico, M.Nombre AS NombreMedico, M.Apellido AS ApellidoMedico, P.IDPaciente AS IdPaciente, P.Nombre AS NombrePaciente, P.Apellido AS ApellidoPaciente, P.Cobertura AS CoberturaPaciente, P.FechaNacimiento AS FechaNacimiento, P.Celular AS Celular, T.Estado FROM Turnos T INNER JOIN Especialidades E ON T.IDEspecialidad = E.IDEspecialidad INNER JOIN Medicos M ON T.IDMedico = M.IDMedico INNER JOIN Pacientes P ON T.IDPaciente = P.IDPaciente");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -36,11 +36,16 @@ namespace negocio
                     Medico medico = new Medico();
                     medico.Nombre = (string)datos.Lector["NombreMedico"];
                     medico.Apellido = (string)datos.Lector["ApellidoMedico"];
+                    medico.Id = (int)datos.Lector["IdMedico"];
                     turno.Medico = medico;
 
                     Paciente paciente = new Paciente();
+                    paciente.Id = (int)datos.Lector["IdPaciente"];
                     paciente.Nombre = (string)datos.Lector["NombrePaciente"];
                     paciente.Apellido = (string)datos.Lector["ApellidoPaciente"];
+                    paciente.Cobertura = (string)datos.Lector["CoberturaPaciente"];
+                    paciente.FechaNacimiento = (DateTime)datos.Lector["FechaNacimiento"];
+                    paciente.Celular = (string)datos.Lector["Celular"];
                     turno.Paciente = paciente;
 
                     

@@ -24,13 +24,13 @@ namespace Turnera_TPC_Equipo27
         protected global::System.Web.UI.WebControls.Label lblFechaTurno;
 
         /// <summary>
-        /// lblApellidoMedico control.
+        /// lblMedico control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblApellidoMedico;
+        protected global::System.Web.UI.WebControls.Label lblMedico;
 
         /// <summary>
         /// lblEspecialidad control.
